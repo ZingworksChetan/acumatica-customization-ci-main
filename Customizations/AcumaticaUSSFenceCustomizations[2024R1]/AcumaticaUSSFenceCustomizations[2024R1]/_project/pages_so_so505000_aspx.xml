@@ -1,0 +1,19 @@
+﻿<Page path="~/pages/so/so505000.aspx" pageSource="vVjfc9o4EH6/mfsfPM70ntpAe+1LDjpHIDSZgYTBtMlbRrE3oEaWXFmG0If722/XtgwmxpCDnqedMfJqv/2l/VZpvfnbGbEpOAMmpwm+tN3uiesMWWxA04c+F7j2T2O1Ejf6Soc9MIyL0zBddp1OYtTFHKS55RqSqO0anYDrfGOCB8zAGH4kEJu2+8hEjOtdFeSavZtPzU/NZvOUxdHzqR+7zpWcgeYmbruEdm8FXGfCDe34Kg29BKndrvPm8++/tdCLzMDJMgLnG9cmYWLEzGwP01MFiH7WVdKgB85Vr+36+P6e7EyXRoL5cKlEAJo+RrOe5zo6kQw98kDPUQ0qcfBpRc9no7seM8xTifYhVRagV7c8IGveN5tviq1xthXtjfkDuTZJgzbSPGR6+Y3Dou1ilFIrybFrFqLQ6O705uE7+CY+9W7w3xgEsBiu5Fxxn7ajowPFgnOYsTlXGneoKBGYBY/NIcCUYCrcBnndWHN7WxQ+bI9CvzYIFGryIdX0iD9e+L0Kk42SZ5YUh5/vuAzg+cx5T3kvhY72DCF8AL2KTZdFhitJZgiMC76iHDyyRBgyXStB+iHo5N86QqhFVwnBohhsTea2p/aT4JybpXPJpzOB/1GPoEiihSkEBMVCbp3rXAIJ4ltjXdUEwohiv7a2CtGALVVixomAzdB4hmkCTUJpy2LAHkDEOZyXZQVd8/hP9OFu6DqNSoyeVlFPLSTKhyE33RkedIit0nJgKvLT5yCCtmslqjE8mIZYIHjQnupguklsVEjVUwe1LlUN152B/3Sunrdj+bMnb6YWeJKwcoM6tJJYNdz/kiUskQkP4SLgpi6EKSIJ1/q0EjoM7UIGu7AKkV8dO29r7PYqhzTHt9zMejDHNnmZPNR5VSXdwUYgB/BoLLkdYA12Jy4hqzs9ZBLZSizrDNqyYU+bsqaldF2uc931Z3NNqBppAs+mqqrMGtJ1Qu375rGrIo5MVAO3KVnqrI2N1tpqlGhnX377czu/fanlty+aB6mWKb688MKywcdmM3re4LBKlktJCbmby6kNVyf4jr2Q+Dw7AjRkuc4qBOkWD5j2Z3bLS0o9Z8affY1oCrMJ9564pM/5oHElfyQ4ta3xaE/5CTV0YuSl9Ecq5tmHbH8fJ6eMe9M8YXrH8Hj9oN+uWvfa6/15x/dVIs34nvm+oSHmbT6s0B7E6kHsl/h3AHNsBJUFRlFPP5cmAe8m1zjgsXE3Nqabx2qxhYqP1bCGezT7La3CUlY+W9T29kKmXndx5L0kijTEcWpr+chnWatDsxIXkuGAigv9bH5PK4/OuVW4y5jVfFBjz+HzQRm2RHM1uFSCO2iuENmMxJ5ZyID6XI7wbqOCeg9LYq8DzDrmLoe7iV7eaD5FrzqhqQ92WfLwoiONuxKcSdRjFUyzI7HUW3YkNhVpfG416ptEKzv8m32pbBb1p0wuOyTXiRBF7irPMTmS8jh6DrK47OGvvD3YCwv97IjCxaz7K23Kp3Ko5rBnsWzaalnipbUYJbLJWmbvFGm3PRqIbTYDLp9ofGASF+dI5ZaOXgG1pV/0eIzZXdKMQPXwx9T81Sket9LAwyAryO94AbMwA+Uz4ud6D38l7r19vQ/wMOnjQa0GhdfqLB28HShI7SaJf211U1cbsSXV8UQZJo6r+auMGA/OmWDSP+65r77d/VeFJWrbqNWTk3cn+ByU6BrqWuuzY5rNj3ncM8KqOHsDeg5EqvWy4K/DIbZnbQI6jLd4yIonn4dz8Wr0VqOaRPPLWzHdly56L64DLboJ0ZSdTtwMb8Z4B7jF25RarA1MGU0OubR3sQ90zyrdIbM/a50zbf9emC1s0I7dsmbki9vlvw==">
+    <PXGridLevel DataMember="SOInvoiceList" ParentId="phG_grid_Levels#0" TypeFullName="PX.Web.UI.PXGridLevel">
+        <Children Key="Columns">
+            <AddItem>
+                <PXGridColumn TypeFullName="PX.Web.UI.PXGridColumn">
+                    <Prop Key="DataField" Value="HiddenOrderType" />
+                    <Prop Key="Width" Value="70" />
+                </PXGridColumn>
+            </AddItem>
+            <AddItem>
+                <PXGridColumn TypeFullName="PX.Web.UI.PXGridColumn">
+                    <Prop Key="DataField" Value="HiddenOrderNbr" />
+                    <Prop Key="Width" Value="70" />
+                </PXGridColumn>
+            </AddItem>
+            <PXGridColumn DataField="CustomerID_BAccountR_acctName" OriginalIndex="4" />
+        </Children>
+    </PXGridLevel>
+</Page>
