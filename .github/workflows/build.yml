@@ -28,8 +28,11 @@ jobs:
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1.1
 
-      # - name: Restore (if using NuGet)
-      #   run: nuget restore $env:SOLUTION
+      - name: Install NuGet CLI
+        uses: NuGet/setup-nuget@v1
+
+      - name: Restore (if using NuGet)
+        run: nuget restore $env:SOLUTION
 
       - name: Build Project
         run: msbuild $env:PROJECT /p:Configuration=Release
