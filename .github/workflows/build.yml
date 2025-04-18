@@ -69,16 +69,26 @@ jobs:
       - name: Copy DLL to Customization Bin
         shell: pwsh
         run: |
-          $source = "${{ github.workspace }}\AcumaticaUSSFenceCustomizations[2024R1]\bin\Release"
-          $destination = "Customizations\AcumaticaUSSFenceCustomizations[2024R1]\AcumaticaUSSFenceCustomizations[2024R1]\Bin"
+          $projectName = "AcumaticaUSSFenceCustomizations`[2024R1`]"
+          $dllName = "AcumaticaUSSFenceCustomizations[2024R1].dll"
 
-          Write-Host "🔁 Copying built files from $source to $destination"
+          # Full source path
+          $source = Join-Path -Path $PWD.Path -ChildPath "$projectName\bin\Release"
+
+          # Destination inside the Customizations folder
+          $destination = Join-Path -Path $PWD.Path -ChildPath "Customizations\$projectName\$projectName\Bin"
+
+          Write-Host "🔁 Copying built DLL from: $source"
+          Write-Host "➡️ Destination path: $destination"
+
+          # Safety check before copying
           if (Test-Path $source) {
               New-Item -ItemType Directory -Force -Path $destination | Out-Null
-              Copy-Item -Path (Join-Path $source "AcumaticaUSSFenceCustomizations[2024R1].dll") -Destination $destination -Force              
-              Write-Host "✅ Files copied to $destination"
+              Copy-Item -Path (Join-Path $source $dllName) -Destination $destination -Force
+              Write-Host "✅ DLL copied to $destination"
           } else {
               Write-Host "❌ Source path not found: $source"
+              Get-ChildItem -Recurse | Where-Object { $_.Name -like "*.dll" } | Format-Table FullName
           }
 
       - name: Create ZIP Package
