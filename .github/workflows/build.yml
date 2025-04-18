@@ -37,7 +37,7 @@ jobs:
       - name: Copy DLLs to bin\Release
         shell: pwsh
         run: |
-          Copy-Item -Path "C:\Program Files\Acumatica ERP\USSFence\Bin/*" -Destination "AcumaticaUSSFenceCustomizations[2024R1]\bin\Release" -Force
+          Copy-Item -Path "C:\Program Files\Acumatica ERP\USSFence\Bin\*" -Destination "AcumaticaUSSFenceCustomizations[2024R1]\bin\Release" -Force
 
       - name: Build Project
         run: msbuild $env:PROJECT /p:Configuration=Release
