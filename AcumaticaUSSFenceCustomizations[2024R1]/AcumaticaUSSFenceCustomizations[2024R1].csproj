@@ -36,30 +36,30 @@
   <ItemGroup>
     <Reference Include="NAWUnitedSiteServices, Version=24.110.17.50207, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\DLL's\NAWUnitedSiteServices.dll</HintPath>
+      <HintPath>bin\Release\NAWUnitedSiteServices.dll</HintPath>
     </Reference>
     <Reference Include="NV.Rental360, Version=24.116.26.50205, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\DLL's\NV.Rental360.dll</HintPath>
+      <HintPath>bin\Release\NV.Rental360.dll</HintPath>
     </Reference>
     <Reference Include="PX.Common">
-      <HintPath>..\..\..\..\Bin\PX.Common.dll</HintPath>
+      <HintPath>bin\Release\PX.Common.dll</HintPath>
     </Reference>
     <Reference Include="PX.Common.Std">
-      <HintPath>..\..\..\..\Bin\PX.Common.Std.dll</HintPath>
+      <HintPath>bin\Release\PX.Common.Std.dll</HintPath>
     </Reference>
     <Reference Include="PX.CS.Contracts">
-      <HintPath>..\..\..\..\Bin\PX.CS.Contracts.dll</HintPath>
+      <HintPath>bin\Release\PX.CS.Contracts.dll</HintPath>
     </Reference>
     <Reference Include="PX.Data">
-      <HintPath>..\..\..\..\Bin\PX.Data.dll</HintPath>
+      <HintPath>bin\Release\PX.Data.dll</HintPath>
     </Reference>
     <Reference Include="PX.Objects">
-      <HintPath>..\..\..\..\Bin\PX.Objects.DLL</HintPath>
+      <HintPath>bin\Release\PX.Objects.DLL</HintPath>
     </Reference>
     <Reference Include="PX.Web.UI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Bin\PX.Web.UI.dll</HintPath>
+      <HintPath>bin\Release\PX.Web.UI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
