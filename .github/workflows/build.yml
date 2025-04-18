@@ -69,12 +69,17 @@ jobs:
       - name: Copy DLL to Customization Bin
         shell: pwsh
         run: |
-          $targetBin = "Customizations\AcumaticaUSSFenceCustomizations[2024R1]\AcumaticaUSSFenceCustomizations[2024R1]\Bin"
-          if (-not (Test-Path $targetBin)) {
-            New-Item -ItemType Directory -Path $targetBin -Force
+          $source = "AcumaticaUSSFenceCustomizations[2024R1]\bin\Release"
+          $destination = "Customizations\AcumaticaUSSFenceCustomizations[2024R1]\AcumaticaUSSFenceCustomizations[2024R1]\Bin"
+
+          Write-Host "🔁 Copying built files from $source to $destination"
+          if (Test-Path $source) {
+              New-Item -ItemType Directory -Force -Path $destination | Out-Null
+              Copy-Item "$source\AcumaticaUSSFenceCustomizations[2024R1].dll" -Destination $destination -Recurse -Force
+              Write-Host "✅ Files copied to $destination"
+          } else {
+              Write-Host "❌ Source path not found: $source"
           }
-          Copy-Item "AcumaticaUSSFenceCustomizations[2024R1]\bin\Release\AcumaticaUSSFenceCustomizations[2024R1].dll" `
-           -Destination $targetBin -Force
 
       - name: Create ZIP Package
         run: |
