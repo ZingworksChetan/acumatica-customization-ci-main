@@ -48,7 +48,7 @@ public class SOOrderEntry_Extension : PXGraphExtension<SOOrderEntry>
         Base.Delete.SetVisible(isSystemAdmin || !isROorRQ);
         //Story: FOX-446 | Engineer: [Divya Kurumkar] | Date: [2025-02-25]
         //Story: FOX-655 | Engineer: [Divya Kurumkar] | Date: [2025-03-19] 
-        //int? isInvoiceType = cache.GetValue<usrNVInvoiceType>(currentSalesOrder) as int?;
+        int? isInvoiceType = cache.GetValue<usrNVInvoiceType>(currentSalesOrder) as int?;
         //bool isEnableCreateworkOrder = (isInvoiceType == 1);
         int? rentalStatus = cache.GetValue<usrNVRTRentalStatus>(currentSalesOrder) as int?;
         int? invoiceStage = cache.GetValue<usrNAWInvoiceStage>(currentSalesOrder) as int?;
@@ -104,6 +104,7 @@ public class SOOrderEntry_Extension : PXGraphExtension<SOOrderEntry>
         var sOLineDetails = (SOLine)e.Row;
         if (sOLineDetails.OrderQty == 0)
         {
+            // Acuminator disable once PX1050 HardcodedStringInLocalizationMethod [Justification]
             throw new PXRowPersistingException(nameof(SOLine.orderQty), sOLineDetails.OrderQty, "Quantity must be greater than 0");
         }
     }

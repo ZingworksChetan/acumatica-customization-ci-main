@@ -2433,11 +2433,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\acumatica-uss-fence-customizations-main\\AcumaticaUSSFenceCustomizations[2024R1]\\AcumaticaUSSFenceCustomizations[2024R1].csproj",
+      "projectUniqueName": "F:\\POC\\acumatica-customization-ci-main\\AcumaticaUSSFenceCustomizations[2024R1]\\AcumaticaUSSFenceCustomizations[2024R1].csproj",
       "projectName": "AcumaticaUSSFenceCustomizations[2024R1]",
-      "projectPath": "F:\\acumatica-uss-fence-customizations-main\\AcumaticaUSSFenceCustomizations[2024R1]\\AcumaticaUSSFenceCustomizations[2024R1].csproj",
+      "projectPath": "F:\\POC\\acumatica-customization-ci-main\\AcumaticaUSSFenceCustomizations[2024R1]\\AcumaticaUSSFenceCustomizations[2024R1].csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "F:\\acumatica-uss-fence-customizations-main\\AcumaticaUSSFenceCustomizations[2024R1]\\obj\\",
+      "outputPath": "F:\\POC\\acumatica-customization-ci-main\\AcumaticaUSSFenceCustomizations[2024R1]\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "UsingMicrosoftNETSdk": false,

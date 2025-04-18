@@ -1,2 +1,4 @@
 F:\acumatica-uss-fence-customizations-main\AcumaticaUSSFenceCustomizations[2024R1]\obj\Debug\AcumaticaUSSFenceCustomizations[2024R1].csproj.AssemblyReference.cache
 F:\acumatica-uss-fence-customizations-main\AcumaticaUSSFenceCustomizations[2024R1]\obj\Debug\AcumaticaUSSFenceCustomizations[2024R1].csproj.CoreCompileInputs.cache
+F:\POC\acumatica-customization-ci-main\AcumaticaUSSFenceCustomizations[2024R1]\obj\Debug\AcumaticaUSSFenceCustomizations[2024R1].csproj.AssemblyReference.cache
+F:\POC\acumatica-customization-ci-main\AcumaticaUSSFenceCustomizations[2024R1]\obj\Debug\AcumaticaUSSFenceCustomizations[2024R1].csproj.CoreCompileInputs.cache
