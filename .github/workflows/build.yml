@@ -84,12 +84,12 @@ jobs:
           
           # Check the contents of the 'bin\Release' folder
           Write-Host "🔎 Listing files in $source"
-          Get-ChildItem -Path $source | Select-Object FullName
+          Get-ChildItem -LiteralPath $source | Select-Object FullName
 
           # Safety check before copying
-          if (Test-Path $source) {
+          if (Test-Path -LiteralPath $source) {
               New-Item -ItemType Directory -Force -Path $destination | Out-Null
-              Copy-Item -Path (Join-Path $source $dllName) -Destination $destination -Force
+              Copy-Item -LiteralPath (Join-Path $source $dllName) -Destination $destination -Force
               Write-Host "✅ DLL copied to $destination"
           } else {
               Write-Host "❌ Source path not found: $source"
