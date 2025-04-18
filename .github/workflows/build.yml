@@ -1,11 +1,12 @@
 name: Build Acumatica Customization
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'AcumaticaUSSFenceCustomizations[2024R1]/**'
+  workflow_dispatch:
+  # push:
+  #   branches:
+  #     - main
+  #   paths:
+  #     - 'AcumaticaUSSFenceCustomizations[2024R1]/**'
       - 'Customizations/AcumaticaUSSFenceCustomizations[2024R1]/**'
 
 jobs:
