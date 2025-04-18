@@ -28,15 +28,15 @@ jobs:
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1.1
 
-      - name: Restore (if using NuGet)
-        run: nuget restore $env:SOLUTION
+      # - name: Restore (if using NuGet)
+      #   run: nuget restore $env:SOLUTION
 
       - name: Build Project
         run: msbuild $env:PROJECT /p:Configuration=Release
 
       - name: Copy DLL to Customization Bin
         run: |
-          Copy-Item "AcumaticaUSSFenceCustomizations[2024R1]\bin\Debug\AcumaticaUSSFenceCustomizations[2024R1].dll" `
+          Copy-Item "AcumaticaUSSFenceCustomizations[2024R1]\bin\Release\AcumaticaUSSFenceCustomizations[2024R1].dll" `
             -Destination "Customizations\AcumaticaUSSFenceCustomizations[2024R1]\Bin\" -Force
 
       - name: Create ZIP Package
