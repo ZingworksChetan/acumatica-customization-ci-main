@@ -81,6 +81,11 @@ jobs:
           Write-Host "🔁 Copying built DLL from: $source"
           Write-Host "➡️ Destination path: $destination"
 
+          
+          # Check the contents of the 'bin\Release' folder
+          Write-Host "🔎 Listing files in $source"
+          Get-ChildItem -Path $source | Select-Object FullName
+
           # Safety check before copying
           if (Test-Path $source) {
               New-Item -ItemType Directory -Force -Path $destination | Out-Null
