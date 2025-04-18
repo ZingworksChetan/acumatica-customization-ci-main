@@ -1,3 +1,0 @@
-﻿<Table TableName="SOOrder">
-    <Column TableName="SOOrder" ColumnName="UsrZWAcquisitionCode" ColumnType="string" AllowNull="True" MaxLength="80" DecimalPrecision="2" DecimalLength="80" IsNewColumn="True" IsUnicode="True" />
-</Table>
