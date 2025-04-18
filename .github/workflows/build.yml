@@ -31,8 +31,8 @@ jobs:
       - name: Install NuGet CLI
         uses: NuGet/setup-nuget@v1
 
-      - name: Restore (if using NuGet)
-        run: nuget restore $env:SOLUTION
+      # - name: Restore (if using NuGet)
+      #   run: nuget restore $env:SOLUTION
 
       - name: Copy Bin files from Acumatica instance (with fallback logging)
         shell: pwsh
@@ -51,6 +51,9 @@ jobs:
             Get-ChildItem "C:\Program Files\Acumatica ERP\" -Recurse -Directory | Where-Object Name -like "*USSFence*" | Format-List FullName
             throw "❌ Cannot find source path: $source"
           }
+
+      - name: Restore (if using NuGet)
+        run: nuget restore $env:SOLUTION
 
       - name: Build Project
         run: msbuild $env:PROJECT /p:Configuration=Release
