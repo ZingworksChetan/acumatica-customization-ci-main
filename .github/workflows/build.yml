@@ -69,7 +69,7 @@ jobs:
       - name: Copy DLL to Customization Bin
         shell: pwsh
         run: |
-          $targetBin = "Customizations\AcumaticaUSSFenceCustomizations[2024R1]\Bin"
+          $targetBin = "Customizations\AcumaticaUSSFenceCustomizations[2024R1]\AcumaticaUSSFenceCustomizations[2024R1]\Bin"
           if (-not (Test-Path $targetBin)) {
             New-Item -ItemType Directory -Path $targetBin -Force
           }
