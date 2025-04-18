@@ -1,0 +1,49 @@
+name: Build Acumatica Customization
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'AcumaticaUSSFenceCustomizations[2024R1]/**'
+      - 'Customizations/AcumaticaUSSFenceCustomizations[2024R1]/**'
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    env:
+      SOLUTION: 'AcumaticaUSSFenceCustomizations[2024R1].sln'
+      PROJECT: 'AcumaticaUSSFenceCustomizations[2024R1]\AcumaticaUSSFenceCustomizations[2024R1].csproj'
+      ZIP_OUTPUT: 'AcumaticaUSSFenceCustomizations[2024R1].zip'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1.1
+
+      - name: Restore (if using NuGet)
+        run: nuget restore $env:SOLUTION
+
+      - name: Build Project
+        run: msbuild $env:PROJECT /p:Configuration=Release
+
+      - name: Copy DLL to Customization Bin
+        run: |
+          Copy-Item "AcumaticaUSSFenceCustomizations[2024R1]\bin\Debug\AcumaticaUSSFenceCustomizations[2024R1].dll" `
+            -Destination "Customizations\AcumaticaUSSFenceCustomizations[2024R1]\Bin\" -Force
+
+      - name: Create ZIP Package
+        run: |
+          Compress-Archive -Path "Customizations\AcumaticaUSSFenceCustomizations[2024R1]\*" `
+            -DestinationPath $env:ZIP_OUTPUT -Force
+
+      # - name: Publish to Acumatica Dev
+      #   run: |
+      #     pwsh ./scripts/publishCustomization.ps1 `
+      #       -zipPath $env:ZIP_OUTPUT `
+      #       -instanceUrl "${{ secrets.ACU_DEV_URL }}" `
+      #       -username "${{ secrets.ACU_USERNAME }}" `
+      #       -password "${{ secrets.ACU_PASSWORD }}"
