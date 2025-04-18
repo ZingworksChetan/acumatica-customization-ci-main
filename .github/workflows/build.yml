@@ -36,7 +36,7 @@ jobs:
 
       - name: Copy DLLs to bin\Release
         shell: pwsh
-        run: |
+        run: | 
           $destination = "AcumaticaUSSFenceCustomizations[2024R1]\bin\Release\"
           New-Item -ItemType Directory -Force -Path $destination
           Copy-Item -Path "C:\Program Files\Acumatica ERP\USSFence\Bin\*" -Destination $destination -Force
