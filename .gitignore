@@ -1,0 +1,4 @@
+.vs/
+AcumaticaUSSFenceCustomizations[2024R1]/obj/
+*.csproj.user
+build.props
