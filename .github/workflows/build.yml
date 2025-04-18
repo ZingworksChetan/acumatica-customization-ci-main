@@ -2,12 +2,15 @@ name: Build Acumatica Customization
 
 on:
   workflow_dispatch:
-  # push:
-  #   branches:
-  #     - main
-  #   paths:
-  #     - 'AcumaticaUSSFenceCustomizations[2024R1]/**'
-      - 'Customizations/AcumaticaUSSFenceCustomizations[2024R1]/**'
+    inputs:
+      env:
+        description: 'Environment to deploy to (e.g. Dev, QA, Prod)'
+        required: true
+        default: 'Dev'
+      branch:
+        description: 'Git branch to build'
+        required: true
+        default: 'main'
 
 jobs:
   build:
