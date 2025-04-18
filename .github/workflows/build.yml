@@ -1,4 +1,4 @@
-name: Build Acumatica Customization
+﻿name: Build Acumatica Customization
 
 on:
   workflow_dispatch:
@@ -34,13 +34,23 @@ jobs:
       - name: Restore (if using NuGet)
         run: nuget restore $env:SOLUTION
 
-      - name: Copy DLLs to bin\Release
+      - name: Copy Bin files from Acumatica instance (with fallback logging)
         shell: pwsh
-        run: | 
+        run: |
           $source = "C:\Program Files\Acumatica ERP\USSFence\Bin"
-          $destination = "AcumaticaUSSFenceCustomizations[2024R1]\bin\Release\"
-          New-Item -ItemType Directory -Force -Path $destination
-          Copy-Item -Path "$source\*" -Destination $destination -Force
+          $destination = "AcumaticaUSSFenceCustomizations[2024R1]\bin\Release"
+
+          Write-Host "🔍 Checking source path: $source"
+          if (Test-Path $source) {
+           Write-Host "✅ Source path exists."
+            New-Item -ItemType Directory -Force -Path $destination | Out-Null
+            Copy-Item -Path "$source\*" -Destination $destination -Force -Recurse
+            Write-Host "✅ Files copied to $destination"
+          } else {
+            Write-Host "❌ Source path not found: $source"
+            Get-ChildItem "C:\Program Files\Acumatica ERP\" -Recurse -Directory | Where-Object Name -like "*USSFence*" | Format-List FullName
+            throw "❌ Cannot find source path: $source"
+          }
 
       - name: Build Project
         run: msbuild $env:PROJECT /p:Configuration=Release
