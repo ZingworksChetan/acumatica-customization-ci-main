@@ -66,11 +66,12 @@ jobs:
           PROJECT: AcumaticaUSSFenceCustomizations[2024R1]\AcumaticaUSSFenceCustomizations[2024R1].csproj
           NUGET_PACKAGES: ${{ github.workspace }}\.nuget\packages
 
-      - name: Copy DLL to Customization Bin
+      - name: Copy DLL and PDB to Customization Bin
         shell: pwsh
         run: |
           $projectName = "AcumaticaUSSFenceCustomizations`[2024R1`]"
           $dllName = "AcumaticaUSSFenceCustomizations[2024R1].dll"
+          $pdbName = "AcumaticaUSSFenceCustomizations[2024R1].pdb"
 
           # Full source path
           $source = Join-Path -Path $PWD.Path -ChildPath "$projectName\bin\Release"
@@ -78,17 +79,40 @@ jobs:
           # Destination inside the Customizations folder
           $destination = Join-Path -Path $PWD.Path -ChildPath "Customizations\$projectName\$projectName\Bin"
 
-          Write-Host "🔁 Copying built DLL from: $source"
+          Write-Host "🔁 Copying built DLL & PDB from: $source"
           Write-Host "➡️ Destination path: $destination"
 
           if (Test-Path -LiteralPath $source) {
-              New-Item -ItemType Directory -Force -Path $destination | Out-Null
-              Copy-Item -LiteralPath (Join-Path $source $dllName) -Destination $destination -Force
-              Write-Host "✅ DLL copied to $destination"
-          } else {
-              Write-Host "❌ Source path not found: $source"
-              Get-ChildItem -Recurse | Where-Object { $_.Name -like "*.dll" } | Format-Table FullName
-          }
+             New-Item -ItemType Directory -Force -Path $destination | Out-Null
+
+             $dllSourcePath = Join-Path $source $dllName
+             $pdbSourcePath = Join-Path $source $pdbName
+
+             Copy-Item -LiteralPath $dllSourcePath -Destination $destination -Force
+             Write-Host "✅ DLL copied to $destination"
+
+             if (Test-Path -LiteralPath $pdbSourcePath) {
+                  Copy-Item -LiteralPath $pdbSourcePath -Destination $destination -Force
+                  Write-Host "✅ PDB copied to $destination"
+               } else {
+                  Write-Host "⚠️ PDB file not found: $pdbSourcePath"
+               }
+            } else {
+                 Write-Host "❌ Source path not found: $source"
+           }
+
+      - name: Build CustomizationPackageTools.exe
+        run: |
+            cd CustomizationPackageTools
+            dotnet build --configuration Release
+            cd ..
+        shell: pwsh
+
+      - name: Run Build Customization
+        shell: pwsh
+        run: |
+          cd "${{ github.workspace }}"
+          ./buildCustomization.ps1 "AcumaticaUSSFenceCustomizations[2024R1]"
 
       - name: Create ZIP Package
         run: |
