@@ -81,12 +81,6 @@ jobs:
           Write-Host "🔁 Copying built DLL from: $source"
           Write-Host "➡️ Destination path: $destination"
 
-          
-          # Check the contents of the 'bin\Release' folder
-          Write-Host "🔎 Listing files in $source"
-          (Get-ChildItem -LiteralPath $source).FullName
-
-          # Safety check before copying
           if (Test-Path -LiteralPath $source) {
               New-Item -ItemType Directory -Force -Path $destination | Out-Null
               Copy-Item -LiteralPath (Join-Path $source $dllName) -Destination $destination -Force
@@ -98,7 +92,7 @@ jobs:
 
       - name: Create ZIP Package
         run: |
-          Compress-Archive -Path "Customizations\AcumaticaUSSFenceCustomizations[2024R1]\*" `
+          Compress-Archive -Path "Customizations\AcumaticaUSSFenceCustomizations[2024R1]\AcumaticaUSSFenceCustomizations[2024R1]\*" `
             -DestinationPath $env:ZIP_OUTPUT -Force
 
       # - name: Publish to Acumatica Dev
