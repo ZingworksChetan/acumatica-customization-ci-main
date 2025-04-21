@@ -28,8 +28,8 @@ jobs:
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1.1
 
-      - name: Install NuGet CLI
-        uses: NuGet/setup-nuget@v1
+      # - name: Install NuGet CLI
+      #   uses: NuGet/setup-nuget@v1
 
       # - name: Restore (if using NuGet)
       #   run: nuget restore $env:SOLUTION
@@ -52,12 +52,12 @@ jobs:
             throw "❌ Cannot find source path: $source"
           }
 
-      - name: Restore NuGet packages
-        run: nuget restore $env:SOLUTION
-        shell: pwsh
-        env:
-          SOLUTION: AcumaticaUSSFenceCustomizations[2024R1].sln
-          NUGET_PACKAGES: ${{ github.workspace }}\.nuget\packages
+      # - name: Restore NuGet packages
+      #   run: nuget restore $env:SOLUTION
+      #   shell: pwsh
+      #   env:
+      #     SOLUTION: AcumaticaUSSFenceCustomizations[2024R1].sln
+      #     NUGET_PACKAGES: ${{ github.workspace }}\.nuget\packages
 
       - name: Build Project
         run: msbuild $env:PROJECT /p:Configuration=Release
