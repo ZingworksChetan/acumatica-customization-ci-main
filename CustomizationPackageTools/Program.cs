@@ -248,7 +248,7 @@ namespace Velixo.Common.CustomizationPackageTools
         private static async Task ImportCustomization(List<string> cookies, string projectName, string description, int level, string baseUrl)
         {
             //string packagePath = Path.Combine($"./acumatica-customization/Customization/{projectName}", $"{projectName}.zip");
-            string packagePath = Path.Combine($"{projectName}.zip");
+            string packagePath = Path.Combine("build", $"{projectName}.zip");
 
             if (!File.Exists(packagePath))
             {

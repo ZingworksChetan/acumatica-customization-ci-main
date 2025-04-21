@@ -112,7 +112,7 @@ jobs:
         shell: pwsh
         run: |
           cd "${{ github.workspace }}"
-          ./buildCustomization.ps1 "ZWJCLEnergyExtendedFunctionality[24R1]"
+          ./buildCustomization.ps1 "AcumaticaUSSFenceCustomizations[2024R1]"
 
       - name: Create ZIP Package
         run: |
