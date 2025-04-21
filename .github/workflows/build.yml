@@ -84,7 +84,7 @@ jobs:
           
           # Check the contents of the 'bin\Release' folder
           Write-Host "🔎 Listing files in $source"
-          Get-ChildItem -LiteralPath $source | Select-Object FullName
+          (Get-ChildItem -LiteralPath $source).FullName
 
           # Safety check before copying
           if (Test-Path -LiteralPath $source) {
