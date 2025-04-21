@@ -28,12 +28,6 @@ jobs:
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1.1
 
-      # - name: Install NuGet CLI
-      #   uses: NuGet/setup-nuget@v1
-
-      # - name: Restore (if using NuGet)
-      #   run: nuget restore $env:SOLUTION
-
       - name: Copy Bin files from Acumatica instance (with fallback logging)
         shell: pwsh
         run: |
@@ -51,13 +45,6 @@ jobs:
             Get-ChildItem "C:\Program Files\Acumatica ERP\" -Recurse -Directory | Where-Object Name -like "*USSFence*" | Format-List FullName
             throw "❌ Cannot find source path: $source"
           }
-
-      # - name: Restore NuGet packages
-      #   run: nuget restore $env:SOLUTION
-      #   shell: pwsh
-      #   env:
-      #     SOLUTION: AcumaticaUSSFenceCustomizations[2024R1].sln
-      #     NUGET_PACKAGES: ${{ github.workspace }}\.nuget\packages
 
       - name: Build Project
         run: msbuild $env:PROJECT /p:Configuration=Release
@@ -114,15 +101,3 @@ jobs:
           cd "${{ github.workspace }}"
           ./buildCustomization.ps1 "AcumaticaUSSFenceCustomizations[2024R1]"
 
-      - name: Create ZIP Package
-        run: |
-          Compress-Archive -Path "Customizations\AcumaticaUSSFenceCustomizations[2024R1]\AcumaticaUSSFenceCustomizations[2024R1]\*" `
-            -DestinationPath $env:ZIP_OUTPUT -Force
-
-      # - name: Publish to Acumatica Dev
-      #   run: |
-      #     pwsh ./scripts/publishCustomization.ps1 `
-      #       -zipPath $env:ZIP_OUTPUT `
-      #       -instanceUrl "${{ secrets.ACU_DEV_URL }}" `
-      #       -username "${{ secrets.ACU_USERNAME }}" `
-      #       -password "${{ secrets.ACU_PASSWORD }}"
