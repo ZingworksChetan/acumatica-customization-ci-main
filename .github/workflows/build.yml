@@ -37,7 +37,7 @@ jobs:
       - name: Copy Bin files from Acumatica instance (with fallback logging)
         shell: pwsh
         run: |
-          $source = "C:\Program Files\Acumatica ERP\USSFence\Bin"
+          $source = "C:\Program Files\Acumatica ERP\JCLEnergies\Bin"
           $destination = "AcumaticaUSSFenceCustomizations[2024R1]\bin\Release"
 
           Write-Host "🔍 Checking source path: $source"
@@ -112,7 +112,7 @@ jobs:
         shell: pwsh
         run: |
           cd "${{ github.workspace }}"
-          ./buildCustomization.ps1 "AcumaticaUSSFenceCustomizations[2024R1]"
+          ./buildCustomization.ps1 "ZWJCLEnergyExtendedFunctionality[24R1]"
 
       - name: Create ZIP Package
         run: |
