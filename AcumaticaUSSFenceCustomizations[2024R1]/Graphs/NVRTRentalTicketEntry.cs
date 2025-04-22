@@ -19,7 +19,6 @@ namespace Graphs
             List<string> userRoles = UserRoleHelper.GetCurrentUserRolesList();
             bool isNonAdmin = !userRoles.Contains("Administrator");
             PXUIFieldAttribute.SetVisible<NVRTRentalTicket.branchID>(e.Cache, e.Row, !isNonAdmin);
-
         }
         #endregion
 
