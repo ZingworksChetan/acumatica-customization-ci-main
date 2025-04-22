@@ -1,0 +1,21 @@
+name: Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      env:
+        description: 'Environment to deploy to (e.g. Dev)'
+        required: true
+        default: 'dev'
+jobs:
+  build:
+    runs-on: windows-latest
+
+    env:
+      SOLUTION: 'AcumaticaUSSFenceCustomizations[2024R1].sln'
+      PROJECT: 'AcumaticaUSSFenceCustomizations[2024R1]\AcumaticaUSSFenceCustomizations[2024R1].csproj'
+      ZIP_OUTPUT: 'AcumaticaUSSFenceCustomizations[2024R1].zip'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
