@@ -1,2 +1,0 @@
-F:\POC\acumatica-customization-ci-main\AcumaticaUSSFenceCustomizations[2024R1]\obj\Release\AcumaticaUSSFenceCustomizations[2024R1].csproj.AssemblyReference.cache
-F:\POC\acumatica-customization-ci-main\AcumaticaUSSFenceCustomizations[2024R1]\obj\Release\AcumaticaUSSFenceCustomizations[2024R1].csproj.CoreCompileInputs.cache
