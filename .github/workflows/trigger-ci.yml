@@ -13,5 +13,5 @@ jobs:
         run: |
           curl -X POST https://api.github.com/repos/ZingworksChetan/acumatica-customization-cicd-main/dispatches \
             -H "Accept: application/vnd.github+json" \
-            -H "Authorization: token ${{ secrets.CICDTOKEN }}" \
+            -H "Authorization: token ${{ secrets.CICDMAIN }}" \
             -d '{"event_type":"deploy-to-dev","client_payload":{"branch":"${{ github.ref_name }}"}}'
