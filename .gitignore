@@ -1,4 +1,5 @@
 .vs/
 AcumaticaUSSFenceCustomizations[2024R1]/obj/
+CustomizationPackageTool/obj/
 *.csproj.user
 build.props

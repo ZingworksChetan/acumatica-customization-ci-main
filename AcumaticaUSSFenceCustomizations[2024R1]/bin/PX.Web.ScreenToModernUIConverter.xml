@@ -1,0 +1,362 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PX.Web.ScreenToModernUIConverter</name>
+    </assembly>
+    <members>
+        <member name="F:PX.Web.ScreenToModernUIConverter.DialogResults.None">
+            <summary>None of the buttons was clicked.</summary>
+        </member>
+        <member name="F:PX.Web.ScreenToModernUIConverter.DialogResults.OK">
+            <summary>The user clicked OK.</summary>
+        </member>
+        <member name="F:PX.Web.ScreenToModernUIConverter.DialogResults.Cancel">
+            <summary>The user clicked Cancel.</summary>
+        </member>
+        <member name="F:PX.Web.ScreenToModernUIConverter.DialogResults.Abort">
+            <summary>The user clicked Abort.</summary>
+        </member>
+        <member name="F:PX.Web.ScreenToModernUIConverter.DialogResults.Retry">
+            <summary>The user clicked Retry.</summary>
+        </member>
+        <member name="F:PX.Web.ScreenToModernUIConverter.DialogResults.Ignore">
+            <summary>The user clicked Ignore.</summary>
+        </member>
+        <member name="F:PX.Web.ScreenToModernUIConverter.DialogResults.Yes">
+            <summary>The user clicked Yes.</summary>
+        </member>
+        <member name="F:PX.Web.ScreenToModernUIConverter.DialogResults.No">
+            <summary>The user clicked No.</summary>
+        </member>
+        <member name="F:PX.Web.ScreenToModernUIConverter.HorizontalAlign.NotSet">
+            <summary>The horizontal alignment is not set.</summary>
+        </member>
+        <member name="F:PX.Web.ScreenToModernUIConverter.HorizontalAlign.Left">
+            <summary>The contents of a container are left justified.</summary>
+        </member>
+        <member name="F:PX.Web.ScreenToModernUIConverter.HorizontalAlign.Center">
+            <summary>The contents of a container are centered.</summary>
+        </member>
+        <member name="F:PX.Web.ScreenToModernUIConverter.HorizontalAlign.Right">
+            <summary>The contents of a container are right justified.</summary>
+        </member>
+        <member name="F:PX.Web.ScreenToModernUIConverter.HorizontalAlign.Justify">
+            <summary>The contents of a container are uniformly spread out and aligned with both the left and right margins.</summary>
+        </member>
+        <member name="T:PX.Web.ScreenToModernUIConverter.Templates.ScreenLayout">
+            <summary>
+            Class to produce the template output
+            </summary>
+        </member>
+        <member name="M:PX.Web.ScreenToModernUIConverter.Templates.ScreenLayout.TransformText">
+            <summary>
+            Create the template output
+            </summary>
+        </member>
+        <member name="T:PX.Web.ScreenToModernUIConverter.Templates.ScreenLayoutBase">
+            <summary>
+            Base class for this transformation
+            </summary>
+        </member>
+        <member name="P:PX.Web.ScreenToModernUIConverter.Templates.ScreenLayoutBase.GenerationEnvironment">
+            <summary>
+            The string builder that generation-time code is using to assemble generated output
+            </summary>
+        </member>
+        <member name="P:PX.Web.ScreenToModernUIConverter.Templates.ScreenLayoutBase.Errors">
+            <summary>
+            The error collection for the generation process
+            </summary>
+        </member>
+        <member name="P:PX.Web.ScreenToModernUIConverter.Templates.ScreenLayoutBase.indentLengths">
+            <summary>
+            A list of the lengths of each indent that was added with PushIndent
+            </summary>
+        </member>
+        <member name="P:PX.Web.ScreenToModernUIConverter.Templates.ScreenLayoutBase.CurrentIndent">
+            <summary>
+            Gets the current indent we use when adding lines to the output
+            </summary>
+        </member>
+        <member name="P:PX.Web.ScreenToModernUIConverter.Templates.ScreenLayoutBase.Session">
+            <summary>
+            Current transformation session
+            </summary>
+        </member>
+        <member name="M:PX.Web.ScreenToModernUIConverter.Templates.ScreenLayoutBase.Write(System.String)">
+            <summary>
+            Write text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:PX.Web.ScreenToModernUIConverter.Templates.ScreenLayoutBase.WriteLine(System.String)">
+            <summary>
+            Write text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:PX.Web.ScreenToModernUIConverter.Templates.ScreenLayoutBase.Write(System.String,System.Object[])">
+            <summary>
+            Write formatted text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:PX.Web.ScreenToModernUIConverter.Templates.ScreenLayoutBase.WriteLine(System.String,System.Object[])">
+            <summary>
+            Write formatted text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:PX.Web.ScreenToModernUIConverter.Templates.ScreenLayoutBase.Error(System.String)">
+            <summary>
+            Raise an error
+            </summary>
+        </member>
+        <member name="M:PX.Web.ScreenToModernUIConverter.Templates.ScreenLayoutBase.Warning(System.String)">
+            <summary>
+            Raise a warning
+            </summary>
+        </member>
+        <member name="M:PX.Web.ScreenToModernUIConverter.Templates.ScreenLayoutBase.PushIndent(System.String)">
+            <summary>
+            Increase the indent
+            </summary>
+        </member>
+        <member name="M:PX.Web.ScreenToModernUIConverter.Templates.ScreenLayoutBase.PopIndent">
+            <summary>
+            Remove the last indent that was added with PushIndent
+            </summary>
+        </member>
+        <member name="M:PX.Web.ScreenToModernUIConverter.Templates.ScreenLayoutBase.ClearIndent">
+            <summary>
+            Remove any indentation
+            </summary>
+        </member>
+        <member name="T:PX.Web.ScreenToModernUIConverter.Templates.ScreenLayoutBase.ToStringInstanceHelper">
+            <summary>
+            Utility class to produce culture-oriented representation of an object as a string.
+            </summary>
+        </member>
+        <member name="P:PX.Web.ScreenToModernUIConverter.Templates.ScreenLayoutBase.ToStringInstanceHelper.FormatProvider">
+            <summary>
+            Gets or sets format provider to be used by ToStringWithCulture method.
+            </summary>
+        </member>
+        <member name="M:PX.Web.ScreenToModernUIConverter.Templates.ScreenLayoutBase.ToStringInstanceHelper.ToStringWithCulture(System.Object)">
+            <summary>
+            This is called from the compile/run appdomain to convert objects within an expression block to a string
+            </summary>
+        </member>
+        <member name="P:PX.Web.ScreenToModernUIConverter.Templates.ScreenLayoutBase.ToStringHelper">
+            <summary>
+            Helper to produce culture-oriented representation of an object as a string
+            </summary>
+        </member>
+        <member name="T:PX.Web.ScreenToModernUIConverter.Templates.ScreenViewModelGenerator">
+            <summary>
+            Class to produce the template output
+            </summary>
+        </member>
+        <member name="M:PX.Web.ScreenToModernUIConverter.Templates.ScreenViewModelGenerator.TransformText">
+            <summary>
+            Create the template output
+            </summary>
+        </member>
+        <member name="T:PX.Web.ScreenToModernUIConverter.Templates.ScreenViewModelGeneratorBase">
+            <summary>
+            Base class for this transformation
+            </summary>
+        </member>
+        <member name="P:PX.Web.ScreenToModernUIConverter.Templates.ScreenViewModelGeneratorBase.GenerationEnvironment">
+            <summary>
+            The string builder that generation-time code is using to assemble generated output
+            </summary>
+        </member>
+        <member name="P:PX.Web.ScreenToModernUIConverter.Templates.ScreenViewModelGeneratorBase.Errors">
+            <summary>
+            The error collection for the generation process
+            </summary>
+        </member>
+        <member name="P:PX.Web.ScreenToModernUIConverter.Templates.ScreenViewModelGeneratorBase.indentLengths">
+            <summary>
+            A list of the lengths of each indent that was added with PushIndent
+            </summary>
+        </member>
+        <member name="P:PX.Web.ScreenToModernUIConverter.Templates.ScreenViewModelGeneratorBase.CurrentIndent">
+            <summary>
+            Gets the current indent we use when adding lines to the output
+            </summary>
+        </member>
+        <member name="P:PX.Web.ScreenToModernUIConverter.Templates.ScreenViewModelGeneratorBase.Session">
+            <summary>
+            Current transformation session
+            </summary>
+        </member>
+        <member name="M:PX.Web.ScreenToModernUIConverter.Templates.ScreenViewModelGeneratorBase.Write(System.String)">
+            <summary>
+            Write text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:PX.Web.ScreenToModernUIConverter.Templates.ScreenViewModelGeneratorBase.WriteLine(System.String)">
+            <summary>
+            Write text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:PX.Web.ScreenToModernUIConverter.Templates.ScreenViewModelGeneratorBase.Write(System.String,System.Object[])">
+            <summary>
+            Write formatted text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:PX.Web.ScreenToModernUIConverter.Templates.ScreenViewModelGeneratorBase.WriteLine(System.String,System.Object[])">
+            <summary>
+            Write formatted text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:PX.Web.ScreenToModernUIConverter.Templates.ScreenViewModelGeneratorBase.Error(System.String)">
+            <summary>
+            Raise an error
+            </summary>
+        </member>
+        <member name="M:PX.Web.ScreenToModernUIConverter.Templates.ScreenViewModelGeneratorBase.Warning(System.String)">
+            <summary>
+            Raise a warning
+            </summary>
+        </member>
+        <member name="M:PX.Web.ScreenToModernUIConverter.Templates.ScreenViewModelGeneratorBase.PushIndent(System.String)">
+            <summary>
+            Increase the indent
+            </summary>
+        </member>
+        <member name="M:PX.Web.ScreenToModernUIConverter.Templates.ScreenViewModelGeneratorBase.PopIndent">
+            <summary>
+            Remove the last indent that was added with PushIndent
+            </summary>
+        </member>
+        <member name="M:PX.Web.ScreenToModernUIConverter.Templates.ScreenViewModelGeneratorBase.ClearIndent">
+            <summary>
+            Remove any indentation
+            </summary>
+        </member>
+        <member name="T:PX.Web.ScreenToModernUIConverter.Templates.ScreenViewModelGeneratorBase.ToStringInstanceHelper">
+            <summary>
+            Utility class to produce culture-oriented representation of an object as a string.
+            </summary>
+        </member>
+        <member name="P:PX.Web.ScreenToModernUIConverter.Templates.ScreenViewModelGeneratorBase.ToStringInstanceHelper.FormatProvider">
+            <summary>
+            Gets or sets format provider to be used by ToStringWithCulture method.
+            </summary>
+        </member>
+        <member name="M:PX.Web.ScreenToModernUIConverter.Templates.ScreenViewModelGeneratorBase.ToStringInstanceHelper.ToStringWithCulture(System.Object)">
+            <summary>
+            This is called from the compile/run appdomain to convert objects within an expression block to a string
+            </summary>
+        </member>
+        <member name="P:PX.Web.ScreenToModernUIConverter.Templates.ScreenViewModelGeneratorBase.ToStringHelper">
+            <summary>
+            Helper to produce culture-oriented representation of an object as a string
+            </summary>
+        </member>
+        <member name="T:PX.Web.ScreenToModernUIConverter.Templates.ViewsGenerator">
+            <summary>
+            Class to produce the template output
+            </summary>
+        </member>
+        <member name="M:PX.Web.ScreenToModernUIConverter.Templates.ViewsGenerator.TransformText">
+            <summary>
+            Create the template output
+            </summary>
+        </member>
+        <member name="T:PX.Web.ScreenToModernUIConverter.Templates.ViewsGeneratorBase">
+            <summary>
+            Base class for this transformation
+            </summary>
+        </member>
+        <member name="P:PX.Web.ScreenToModernUIConverter.Templates.ViewsGeneratorBase.GenerationEnvironment">
+            <summary>
+            The string builder that generation-time code is using to assemble generated output
+            </summary>
+        </member>
+        <member name="P:PX.Web.ScreenToModernUIConverter.Templates.ViewsGeneratorBase.Errors">
+            <summary>
+            The error collection for the generation process
+            </summary>
+        </member>
+        <member name="P:PX.Web.ScreenToModernUIConverter.Templates.ViewsGeneratorBase.indentLengths">
+            <summary>
+            A list of the lengths of each indent that was added with PushIndent
+            </summary>
+        </member>
+        <member name="P:PX.Web.ScreenToModernUIConverter.Templates.ViewsGeneratorBase.CurrentIndent">
+            <summary>
+            Gets the current indent we use when adding lines to the output
+            </summary>
+        </member>
+        <member name="P:PX.Web.ScreenToModernUIConverter.Templates.ViewsGeneratorBase.Session">
+            <summary>
+            Current transformation session
+            </summary>
+        </member>
+        <member name="M:PX.Web.ScreenToModernUIConverter.Templates.ViewsGeneratorBase.Write(System.String)">
+            <summary>
+            Write text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:PX.Web.ScreenToModernUIConverter.Templates.ViewsGeneratorBase.WriteLine(System.String)">
+            <summary>
+            Write text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:PX.Web.ScreenToModernUIConverter.Templates.ViewsGeneratorBase.Write(System.String,System.Object[])">
+            <summary>
+            Write formatted text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:PX.Web.ScreenToModernUIConverter.Templates.ViewsGeneratorBase.WriteLine(System.String,System.Object[])">
+            <summary>
+            Write formatted text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:PX.Web.ScreenToModernUIConverter.Templates.ViewsGeneratorBase.Error(System.String)">
+            <summary>
+            Raise an error
+            </summary>
+        </member>
+        <member name="M:PX.Web.ScreenToModernUIConverter.Templates.ViewsGeneratorBase.Warning(System.String)">
+            <summary>
+            Raise a warning
+            </summary>
+        </member>
+        <member name="M:PX.Web.ScreenToModernUIConverter.Templates.ViewsGeneratorBase.PushIndent(System.String)">
+            <summary>
+            Increase the indent
+            </summary>
+        </member>
+        <member name="M:PX.Web.ScreenToModernUIConverter.Templates.ViewsGeneratorBase.PopIndent">
+            <summary>
+            Remove the last indent that was added with PushIndent
+            </summary>
+        </member>
+        <member name="M:PX.Web.ScreenToModernUIConverter.Templates.ViewsGeneratorBase.ClearIndent">
+            <summary>
+            Remove any indentation
+            </summary>
+        </member>
+        <member name="T:PX.Web.ScreenToModernUIConverter.Templates.ViewsGeneratorBase.ToStringInstanceHelper">
+            <summary>
+            Utility class to produce culture-oriented representation of an object as a string.
+            </summary>
+        </member>
+        <member name="P:PX.Web.ScreenToModernUIConverter.Templates.ViewsGeneratorBase.ToStringInstanceHelper.FormatProvider">
+            <summary>
+            Gets or sets format provider to be used by ToStringWithCulture method.
+            </summary>
+        </member>
+        <member name="M:PX.Web.ScreenToModernUIConverter.Templates.ViewsGeneratorBase.ToStringInstanceHelper.ToStringWithCulture(System.Object)">
+            <summary>
+            This is called from the compile/run appdomain to convert objects within an expression block to a string
+            </summary>
+        </member>
+        <member name="P:PX.Web.ScreenToModernUIConverter.Templates.ViewsGeneratorBase.ToStringHelper">
+            <summary>
+            Helper to produce culture-oriented representation of an object as a string
+            </summary>
+        </member>
+    </members>
+</doc>

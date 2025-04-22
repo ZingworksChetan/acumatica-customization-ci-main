@@ -1,0 +1,700 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PX.Salesforce</name>
+    </assembly>
+    <members>
+        <member name="M:PX.Salesforce.EntitySyncBase.GetNonExportedItems">
+            <summary>
+            Get the list of NoteID and LocalID entities, that do not have SFSyncRecord.
+            </summary>
+        </member>
+        <member name="T:PX.Salesforce.SalesforceCollection`1">
+            <summary>
+            Used for deserialization of collections, received from SFDC
+            </summary>
+            <typeparam name="T">Collection type</typeparam>
+        </member>
+        <member name="M:PX.Salesforce.SFAdapter.CollectionAll``1(System.String)">
+            <summary>
+            Gets the collection of objects, include deleted objects.
+            </summary>
+        </member>
+        <member name="M:PX.Salesforce.SFAdapter.Collection``1(System.String)">
+            <summary>
+            Gets the collection of objects, where deleted objects are not included.
+            </summary>
+        </member>
+        <member name="T:PX.Salesforce.SFSyncController.EventBusReplayOptions">
+            <summary>
+            Event Bus Replay ID options
+            </summary>
+        </member>
+        <member name="F:PX.Salesforce.SFSyncController.EventBusReplayOptions.NewEvents">
+            <summary>
+            Subscriber receives new events that are broadcast after the client subscribes.
+            </summary>
+        </member>
+        <member name="F:PX.Salesforce.SFSyncController.EventBusReplayOptions.AllEvents">
+            <summary>
+            Subscriber receives all events, including past events that are within the retention window and new events.
+            </summary>
+        </member>
+        <member name="F:PX.Salesforce.SFSyncController.EventRetentionPeriod">
+            <summary>
+            Number of days how long Event Bus stored
+            </summary>
+        </member>
+        <member name="T:Cometd.Bayeux.ChannelId">
+            <summary> Holder of a channel ID broken into path segments</summary>
+        </member>
+        <member name="M:Cometd.Bayeux.ChannelId.matches(Cometd.Bayeux.ChannelId)">
+            <summary>Match channel IDs with wildcard support</summary>
+            <param name="name">
+            </param>
+            <returns> true if this channelID matches the passed channel ID. If this channel is wild, then matching is wild.
+            If the passed channel is wild, then it is the same as an equals call.
+            </returns>
+        </member>
+        <member name="P:Cometd.Bayeux.ChannelId.Wilds">
+            <returns> The list of wilds channels that match this channel, or
+            the empty list if this channel is already wild.
+            </returns>
+        </member>
+        <member name="T:Cometd.Bayeux.Client.IClientSession">
+            <summary> <p>This interface represents the client side Bayeux session.</p>
+            <p>In addition to the {@link Session common Bayeux session}, this
+            interface provides method to configure extension, access channels
+            and to initiate the communication with a Bayeux server(s).</p>
+            
+            </summary>
+            <version>  $Revision: 1483 $ $Date: 2009-03-04 14:56:47 +0100 (Wed, 04 Mar 2009) $
+            </version>
+        </member>
+        <member name="M:Cometd.Bayeux.Client.IClientSession.addExtension(Cometd.Bayeux.Client.IExtension)">
+            <summary> Adds an extension to this session.</summary>
+            <param name="extension">the extension to add
+            </param>
+            <seealso cref="M:Cometd.Bayeux.Client.IClientSession.removeExtension(Cometd.Bayeux.Client.IExtension)">
+            </seealso>
+        </member>
+        <member name="M:Cometd.Bayeux.Client.IClientSession.removeExtension(Cometd.Bayeux.Client.IExtension)">
+            <summary> Removes an extension from this session.</summary>
+            <param name="extension">the extension to remove
+            </param>
+            <seealso cref="M:Cometd.Bayeux.Client.IClientSession.addExtension(Cometd.Bayeux.Client.IExtension)">
+            </seealso>
+        </member>
+        <member name="M:Cometd.Bayeux.Client.IClientSession.handshake">
+            <summary> <p>Equivalent to {@link #handshake(Map) handshake(null)}.</p></summary>
+        </member>
+        <member name="M:Cometd.Bayeux.Client.IClientSession.handshake(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary> <p>Initiates the bayeux protocol handshake with the server(s).</p>
+            <p>The handshake initiated by this method is asynchronous and
+            does not wait for the handshake response.</p>
+            
+            </summary>
+            <param name="template">additional fields to add to the handshake message.
+            </param>
+        </member>
+        <member name="M:Cometd.Bayeux.Client.IClientSession.getChannel(System.String)">
+            <summary> <p>Returns a client side channel scoped by this session.</p>
+            <p>The channel name may be for a specific channel (e.g. "/foo/bar")
+            or for a wild channel (e.g. "/meta/**" or "/foo/*").</p>
+            <p>This method will always return a channel, even if the
+            the channel has not been created on the server side.  The server
+            side channel is only involved once a publish or subscribe method
+            is called on the channel returned by this method.</p>
+            <p>Typical usage examples are:</p>
+            <pre>
+            clientSession.getChannel("/foo/bar").subscribe(mySubscriptionListener);
+            clientSession.getChannel("/foo/bar").publish("Hello");
+            clientSession.getChannel("/meta/*").addListener(myMetaChannelListener);
+            </pre>
+            </summary>
+            <param name="channelName">specific or wild channel name.
+            </param>
+            <returns> a channel scoped by this session.
+            </returns>
+        </member>
+        <member name="T:Cometd.Bayeux.Client.IExtension">
+            <summary> <p>Extension API for client session.</p>
+            <p>An extension allows user code to interact with the Bayeux protocol as late
+            as messages are sent or as soon as messages are received.</p>
+            <p>Messages may be modified, or state held, so that the extension adds a
+            specific behavior simply by observing the flow of Bayeux messages.</p>
+            
+            </summary>
+            <seealso cref="M:Cometd.Bayeux.Client.IClientSession.addExtension(Cometd.Bayeux.Client.IExtension)">
+            </seealso>
+        </member>
+        <member name="M:Cometd.Bayeux.Client.IExtension.rcv(Cometd.Bayeux.Client.IClientSession,Cometd.Bayeux.IMutableMessage)">
+            <summary> Callback method invoked every time a normal message is received.</summary>
+            <param name="session">the session object that is receiving the message
+            </param>
+            <param name="message">the message received
+            </param>
+            <returns> true if message processing should continue, false if it should stop
+            </returns>
+        </member>
+        <member name="M:Cometd.Bayeux.Client.IExtension.rcvMeta(Cometd.Bayeux.Client.IClientSession,Cometd.Bayeux.IMutableMessage)">
+            <summary> Callback method invoked every time a meta message is received.</summary>
+            <param name="session">the session object that is receiving the meta message
+            </param>
+            <param name="message">the meta message received
+            </param>
+            <returns> true if message processing should continue, false if it should stop
+            </returns>
+        </member>
+        <member name="M:Cometd.Bayeux.Client.IExtension.send(Cometd.Bayeux.Client.IClientSession,Cometd.Bayeux.IMutableMessage)">
+            <summary> Callback method invoked every time a normal message is being sent.</summary>
+            <param name="session">the session object that is sending the message
+            </param>
+            <param name="message">the message being sent
+            </param>
+            <returns> true if message processing should continue, false if it should stop
+            </returns>
+        </member>
+        <member name="M:Cometd.Bayeux.Client.IExtension.sendMeta(Cometd.Bayeux.Client.IClientSession,Cometd.Bayeux.IMutableMessage)">
+            <summary> Callback method invoked every time a meta message is being sent.</summary>
+            <param name="session">the session object that is sending the message
+            </param>
+            <param name="message">the meta message being sent
+            </param>
+            <returns> true if message processing should continue, false if it should stop
+            </returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:Cometd.Bayeux.Client.IClientSessionChannel" -->
+        <member name="P:Cometd.Bayeux.Client.IClientSessionChannel.Session">
+            <returns> the client session associated with this channel
+            </returns>
+        </member>
+        <member name="M:Cometd.Bayeux.Client.IClientSessionChannel.addListener(Cometd.Bayeux.Client.IClientSessionChannelListener)">
+            <param name="listener">the listener to add
+            </param>
+        </member>
+        <member name="M:Cometd.Bayeux.Client.IClientSessionChannel.removeListener(Cometd.Bayeux.Client.IClientSessionChannelListener)">
+            <param name="listener">the listener to remove
+            </param>
+        </member>
+        <member name="M:Cometd.Bayeux.Client.IClientSessionChannel.publish(System.Object)">
+            <summary> Equivalent to {@link #publish(Object, Object) publish(data, null)}.</summary>
+            <param name="data">the data to publish
+            </param>
+        </member>
+        <member name="M:Cometd.Bayeux.Client.IClientSessionChannel.publish(System.Object,System.String)">
+            <summary> Publishes the given {@code data} to this channel,
+            optionally specifying the {@code messageId} to set on the
+            publish message.
+            </summary>
+            <param name="data">the data to publish
+            </param>
+            <param name="messageId">the message id to set on the message, or null to let the
+            implementation choose the message id.
+            </param>
+            <seealso cref="!:IMessage.getId()">
+            </seealso>
+        </member>
+        <member name="T:Cometd.Bayeux.Client.IClientSessionChannelListener">
+            <summary> <p>Represents a listener on a {@link ClientSessionChannel}.</p>
+            <p>Sub-interfaces specify the exact semantic of the listener.</p>
+            </summary>
+        </member>
+        <member name="T:Cometd.Bayeux.Client.IMessageListener">
+            <summary> A listener for messages on a {@link ClientSessionChannel}.</summary>
+        </member>
+        <member name="M:Cometd.Bayeux.Client.IMessageListener.onMessage(Cometd.Bayeux.Client.IClientSessionChannel,Cometd.Bayeux.IMessage)">
+            <summary> Callback invoked when a message is received on the given {@code channel}.</summary>
+            <param name="channel">the channel that received the message
+            </param>
+            <param name="message">the message received
+            </param>
+        </member>
+        <member name="T:Cometd.Bayeux.IBayeux">
+            <summary> <p>The {@link Bayeux} interface is the common API for both client-side and
+            server-side configuration and usage of the Bayeux object.</p>
+            <p>The {@link Bayeux} object handles configuration options and a set of
+            transports that is negotiated with the server.</p>
+            </summary>
+            <seealso cref="T:Cometd.Bayeux.ITransport">
+            </seealso>
+        </member>
+        <member name="P:Cometd.Bayeux.IBayeux.KnownTransportNames">
+            <returns> the set of known transport names of this {@link Bayeux} object.
+            </returns>
+            <seealso cref="!:getAllowedTransports()">
+            </seealso>
+        </member>
+        <member name="M:Cometd.Bayeux.IBayeux.getTransport(System.String)">
+            <param name="transport">the transport name
+            </param>
+            <returns> the transport with the given name or null
+            if no such transport exist
+            </returns>
+        </member>
+        <member name="P:Cometd.Bayeux.IBayeux.AllowedTransports">
+            <returns> the ordered list of transport names that will be used in the
+            negotiation of transports with the other peer.
+            </returns>
+            <seealso cref="!:getKnownTransportNames()">
+            </seealso>
+        </member>
+        <member name="M:Cometd.Bayeux.IBayeux.getOption(System.String)">
+            <param name="qualifiedName">the configuration option name
+            </param>
+            <returns> the configuration option with the given {@code qualifiedName}
+            </returns>
+            <seealso cref="M:Cometd.Bayeux.IBayeux.setOption(System.String,System.Object)">
+            </seealso>
+            <seealso cref="!:getOptionNames()">
+            </seealso>
+        </member>
+        <member name="M:Cometd.Bayeux.IBayeux.setOption(System.String,System.Object)">
+            <param name="qualifiedName">the configuration option name
+            </param>
+            <param name="value">the configuration option value
+            </param>
+            <seealso cref="M:Cometd.Bayeux.IBayeux.getOption(System.String)">
+            </seealso>
+        </member>
+        <member name="P:Cometd.Bayeux.IBayeux.OptionNames">
+            <returns> the set of configuration options
+            </returns>
+            <seealso cref="M:Cometd.Bayeux.IBayeux.getOption(System.String)">
+            </seealso>
+        </member>
+        <member name="T:Cometd.Bayeux.IBayeuxListener">
+            <summary> <p>The common base interface for Bayeux listeners.</p>
+            <p>Specific sub-interfaces define what kind of events listeners will be notified.</p>
+            </summary>
+        </member>
+        <member name="T:Cometd.Bayeux.Channel_Fields">
+            <summary> <p>A Bayeux channel is the primary message routing mechanism within Bayeux:
+            both Bayeux clients and Bayeux server use channels to group listeners that
+            are interested in receiving messages with that channel.</p>
+            
+            <p>This interface is the common root for both the
+            {@link org.cometd.bayeux.client.ClientSessionChannel client side} representation
+            of a channel and the {@link org.cometd.bayeux.server.ServerChannel server side}
+            representation of a channel.</p>
+            
+            <p>Channels are identified with strings that look like paths (e.g. "/foo/bar")
+            called "channel id".<br/>
+            Meta channels have channel ids starting with "/meta/" and are reserved for the
+            operation of they Bayeux protocol.<br/>
+            Service channels have channel ids starting with "/service/" and are channels
+            for which publish is disabled, so that only server side listeners will receive
+            the messages.</p>
+            
+            <p>A channel id may also be specified with wildcards.<br/>
+            For example "/meta/*" refers to all top level meta channels
+            like "/meta/subscribe" or "/meta/handshake".<br/>
+            The channel "/foo/**" is deeply wild and refers to all channels like "/foo/bar",
+            "/foo/bar/bob" and "/foo/bar/wibble/bip".<br/>
+            Wildcards can only be specified as last segment of a channel; therefore channel
+            "/foo/&#42;/bar/** is an invalid channel.</p>
+            
+            </summary>
+            <version>  $Revision: 1483 $ $Date: 2009-03-04 14:56:47 +0100 (Wed, 04 Mar 2009) $
+            </version>
+        </member>
+        <member name="P:Cometd.Bayeux.IChannel.Id">
+            <returns> The channel id as a String
+            </returns>
+        </member>
+        <member name="P:Cometd.Bayeux.IChannel.ChannelId">
+            <returns> The channel ID as a {@link ChannelId}
+            </returns>
+        </member>
+        <member name="P:Cometd.Bayeux.IChannel.Meta">
+            <returns> true if the channel is a meta channel
+            </returns>
+        </member>
+        <member name="P:Cometd.Bayeux.IChannel.Service">
+            <returns> true if the channel is a service channel
+            </returns>
+        </member>
+        <member name="P:Cometd.Bayeux.IChannel.Wild">
+            <returns> true if the channel is wild.
+            </returns>
+        </member>
+        <member name="P:Cometd.Bayeux.IChannel.DeepWild">
+            <returns> true if the channel is deeply wild.
+            </returns>
+        </member>
+        <member name="M:Cometd.Bayeux.IChannel.setAttribute(System.String,System.Object)">
+            <summary> <p>Sets a named channel attribute value.</p>
+            <p>Channel attributes are convenience data that allows arbitrary
+            application data to be associated with a channel.</p>
+            </summary>
+            <param name="name">the attribute name
+            </param>
+            <param name="value">the attribute value
+            </param>
+        </member>
+        <member name="M:Cometd.Bayeux.IChannel.getAttribute(System.String)">
+            <summary> <p>Retrieves the value of named channel attribute.</p></summary>
+            <param name="name">the name of the attribute
+            </param>
+            <returns> the attribute value or null if the attribute is not present
+            </returns>
+        </member>
+        <member name="P:Cometd.Bayeux.IChannel.AttributeNames">
+            <returns> the list of channel attribute names.
+            </returns>
+        </member>
+        <member name="M:Cometd.Bayeux.IChannel.removeAttribute(System.String)">
+            <summary> <p>Removes a named channel attribute.</p></summary>
+            <param name="name">the name of the attribute
+            </param>
+            <returns> the value of the attribute
+            </returns>
+        </member>
+        <member name="T:Cometd.Bayeux.Message_Fields">
+            <summary> <p>The Bayeux protocol exchange information by means of messages.</p>
+            <p>This interface represents the API of a Bayeux message, and consists
+            mainly of convenience methods to access the known fields of the message map.</p>
+            <p>This interface comes in both an immutable and {@link Mutable mutable} versions.<br/>
+            Mutability may be deeply enforced by an implementation, so that it is not correct
+            to cast a passed Message, to a Message.Mutable, even if the implementation
+            allows this.</p>
+            
+            </summary>
+            <version>  $Revision: 1483 $ $Date: 2009-03-04 14:56:47 +0100 (Wed, 04 Mar 2009) $
+            </version>
+        </member>
+        <member name="P:Cometd.Bayeux.IMessage.Advice">
+            <summary> Convenience method to retrieve the {@link #ADVICE_FIELD}</summary>
+            <returns> the advice of the message
+            </returns>
+        </member>
+        <member name="P:Cometd.Bayeux.IMessage.Channel">
+            <summary> Convenience method to retrieve the {@link #CHANNEL_FIELD}.
+            Bayeux message always have a non null channel.
+            </summary>
+            <returns> the channel of the message
+            </returns>
+        </member>
+        <member name="P:Cometd.Bayeux.IMessage.ChannelId">
+            <summary> Convenience method to retrieve the {@link #CHANNEL_FIELD}.
+            Bayeux message always have a non null channel.
+            </summary>
+            <returns> the channel of the message
+            </returns>
+        </member>
+        <member name="P:Cometd.Bayeux.IMessage.ClientId">
+            <summary> Convenience method to retrieve the {@link #CLIENT_ID_FIELD}</summary>
+            <returns> the client id of the message
+            </returns>
+        </member>
+        <member name="P:Cometd.Bayeux.IMessage.Data">
+            <summary> Convenience method to retrieve the {@link #DATA_FIELD}</summary>
+            <returns> the data of the message
+            </returns>
+            <seealso cref="!:getDataAsMap()">
+            </seealso>
+        </member>
+        <member name="P:Cometd.Bayeux.IMessage.Meta">
+            <summary> A messages that has a meta channel is dubbed a "meta message".</summary>
+            <returns> whether the channel's message is a meta channel
+            </returns>
+        </member>
+        <member name="P:Cometd.Bayeux.IMessage.Successful">
+            <summary> Convenience method to retrieve the {@link #SUCCESSFUL_FIELD}</summary>
+            <returns> whether the message is successful
+            </returns>
+        </member>
+        <member name="P:Cometd.Bayeux.IMessage.DataAsDictionary">
+            <returns> the data of the message as a map
+            </returns>
+            <seealso cref="!:getData()">
+            </seealso>
+        </member>
+        <member name="P:Cometd.Bayeux.IMessage.Ext">
+            <summary> Convenience method to retrieve the {@link #EXT_FIELD}</summary>
+            <returns> the ext of the message
+            </returns>
+        </member>
+        <member name="P:Cometd.Bayeux.IMessage.Id">
+            <summary> Convenience method to retrieve the {@link #ID_FIELD}</summary>
+            <returns> the id of the message
+            </returns>
+        </member>
+        <member name="P:Cometd.Bayeux.IMessage.JSON">
+            <returns> this message as a JSON string
+            </returns>
+        </member>
+        <member name="T:Cometd.Bayeux.IMutableMessage">
+            <summary> The mutable version of a {@link Message}</summary>
+        </member>
+        <member name="M:Cometd.Bayeux.IMutableMessage.getAdvice(System.Boolean)">
+            <summary> Convenience method to retrieve the {@link #ADVICE_FIELD} and create it if it does not exist</summary>
+            <param name="create">whether to create the advice field if it does not exist
+            </param>
+            <returns> the advice of the message
+            </returns>
+        </member>
+        <member name="M:Cometd.Bayeux.IMutableMessage.getDataAsDictionary(System.Boolean)">
+            <summary> Convenience method to retrieve the {@link #DATA_FIELD} and create it if it does not exist</summary>
+            <param name="create">whether to create the data field if it does not exist
+            </param>
+            <returns> the data of the message
+            </returns>
+        </member>
+        <member name="M:Cometd.Bayeux.IMutableMessage.getExt(System.Boolean)">
+            <summary> Convenience method to retrieve the {@link #EXT_FIELD} and create it if it does not exist</summary>
+            <param name="create">whether to create the ext field if it does not exist
+            </param>
+            <returns> the ext of the message
+            </returns>
+        </member>
+        <member name="P:Cometd.Bayeux.IMutableMessage.Channel">
+            <param name="channel">the channel of this message
+            </param>
+        </member>
+        <member name="P:Cometd.Bayeux.IMutableMessage.ClientId">
+            <param name="clientId">the client id of this message
+            </param>
+        </member>
+        <member name="P:Cometd.Bayeux.IMutableMessage.Data">
+            <param name="data">the data of this message
+            </param>
+        </member>
+        <member name="P:Cometd.Bayeux.IMutableMessage.Id">
+            <param name="id">the id of this message
+            </param>
+        </member>
+        <member name="P:Cometd.Bayeux.IMutableMessage.Successful">
+            <param name="successful">the successfulness of this message
+            </param>
+        </member>
+        <member name="T:Cometd.Bayeux.ISession">
+            <summary> <p>A Bayeux session represents a connection between a bayeux client and a bayeux server.</p>
+            <p>This interface is the common base interface for both the server side and the client side
+            representations of a session:</p>
+            <ul>
+            <li>if the remote client is not a Java client, then only a {@link org.cometd.bayeux.server.ServerSession}
+            instance will exist on the server and represents the remote client.</li>
+            <li>if the remote client is a Java client, then a {@link org.cometd.bayeux.client.ClientSession}
+            instance will exist on the client and a {@link org.cometd.bayeux.server.ServerSession}
+            instance will exist on the server, linked by the same clientId.</li>
+            <li>if the client is a Java client, but it is located in the server, then the
+            {@link org.cometd.bayeux.client.ClientSession} instance will be an instance
+            of {@link org.cometd.bayeux.server.LocalSession} and will be associated
+            with a {@link org.cometd.bayeux.server.ServerSession} instance.</li>
+            </ul>
+            
+            </summary>
+            <version>  $Revision: 1483 $ $Date: 2009-03-04 14:56:47 +0100 (Wed, 04 Mar 2009) $
+            </version>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:Cometd.Bayeux.ISession.Id" -->
+        <member name="P:Cometd.Bayeux.ISession.Connected">
+            <summary> <p>A connected session is a session where the link between the client and the server
+            has been established.</p>
+            </summary>
+            <returns> whether the session is connected
+            </returns>
+            <seealso cref="M:Cometd.Bayeux.ISession.disconnect">
+            </seealso>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:Cometd.Bayeux.ISession.Handshook" -->
+        <member name="M:Cometd.Bayeux.ISession.disconnect">
+            <summary> Disconnects this session, ending the link between the client and the server peers.</summary>
+            <seealso cref="!:isConnected()">
+            </seealso>
+        </member>
+        <member name="M:Cometd.Bayeux.ISession.setAttribute(System.String,System.Object)">
+            <summary> <p>Sets a named session attribute value.</p>
+            <p>Session attributes are convenience data that allows arbitrary
+            application data to be associated with a session.</p>
+            </summary>
+            <param name="name">the attribute name
+            </param>
+            <param name="value">the attribute value
+            </param>
+        </member>
+        <member name="M:Cometd.Bayeux.ISession.getAttribute(System.String)">
+            <summary> <p>Retrieves the value of named session attribute.</p></summary>
+            <param name="name">the name of the attribute
+            </param>
+            <returns> the attribute value or null if the attribute is not present
+            </returns>
+        </member>
+        <member name="P:Cometd.Bayeux.ISession.AttributeNames">
+            <returns> the list of session attribute names.
+            </returns>
+        </member>
+        <member name="M:Cometd.Bayeux.ISession.removeAttribute(System.String)">
+            <summary> <p>Removes a named session attribute.</p></summary>
+            <param name="name">the name of the attribute
+            </param>
+            <returns> the value of the attribute
+            </returns>
+        </member>
+        <member name="M:Cometd.Bayeux.ISession.batch(Cometd.Bayeux.BatchDelegate)">
+            <summary> <p>Executes the given command in a batch so that any Bayeux message sent
+            by the command (via the Bayeux API) is queued up until the end of the
+            command and then all messages are sent at once.</p>
+            </summary>
+            <param name="batch">the Runnable to run as a batch
+            </param>
+        </member>
+        <member name="M:Cometd.Bayeux.ISession.startBatch">
+            <summary> <p>Starts a batch, to be ended with {@link #endBatch()}.</p>
+            <p>The {@link #batch(Runnable)} method should be preferred since it automatically
+            starts and ends a batch without relying on a try/finally block.</p>
+            <p>This method is to be used in the cases where the use of {@link #batch(Runnable)}
+            is not possible or would make the code more complex.</p>
+            </summary>
+            <seealso cref="M:Cometd.Bayeux.ISession.endBatch">
+            </seealso>
+            <seealso cref="!:batch(IRunnable)">
+            </seealso>
+        </member>
+        <member name="M:Cometd.Bayeux.ISession.endBatch">
+            <summary> <p>Ends a batch started with {@link #startBatch()}.</p></summary>
+            <returns> true if the batch ended and there were messages to send.
+            </returns>
+            <seealso cref="M:Cometd.Bayeux.ISession.startBatch">
+            </seealso>
+        </member>
+        <member name="T:Cometd.Bayeux.ITransport">
+            <summary> <p>A transport abstract the details of the protocol used to send
+            Bayeux messages over the network, for example using HTTP or using
+            WebSocket.</p>
+            <p>{@link Transport}s have well known names and both a Bayeux client
+            and a Bayeux server can negotiate the transport they want to use by
+            exchanging the list of supported transport names.</p>
+            <p>Transports can be configured using <em>options</em>. The transport
+            implementation provides a set of {@link #getOptionNames() option names} that
+            it uses to configure itself and an {@link #getOptionPrefix() option prefix}
+            that allows specific tuning of the configuration.<br/>
+            Option prefixes may be composed of segments separated by the "." character.</p>
+            <p>For example, imagine to configure the transports for normal long polling,
+            for JSONP long polling and for WebSocket. All provide a common option name
+            called "timeout" and the JSONP long polling transport provides also a specific
+            option name called "callback".<br/>
+            The normal long polling transport has prefix "long-polling.json",
+            the JSONP long polling transport has prefix "long-polling.jsonp" and the
+            WebSocket long polling transport has prefix "ws". The first two prefixes
+            have 2 segments.</p>
+            <p>The configurator will asks the transports the set of option names, obtaining
+            ["timeout", "callback"]; then will ask each transport its prefix, obtaining
+            ["long-polling.json", "long-polling.jsonp"].<br/>
+            The configurator can now look in the configuration (for example a properties
+            file or servlet init parameters) for entries that combine the option names and
+            option prefix segments, such as:</p>
+            <ul>
+            <li>"timeout" => specifies the timeout for all transports</li>
+            <li>"long-polling.timeout" => specifies the timeout for both normal long polling
+            transport and JSONP long polling transport, but not for the WebSocket transport</li>
+            <li>"long-polling.jsonp.timeout" => specifies the timeout for JSONP long polling
+            transport overriding more generic entries</li>
+            <li>"ws.timeout" => specifies the timeout for WebSocket transport overriding more
+            generic entries</li>
+            <li>"long-polling.jsonp.callback" => specifies the "callback" parameter for the
+            JSONP long polling transport.</li>
+            </ul>
+            
+            </summary>
+            <version>  $Revision: 1483 $ $Date: 2009-03-04 14:56:47 +0100 (Wed, 04 Mar 2009) $
+            </version>
+        </member>
+        <member name="P:Cometd.Bayeux.ITransport.Name">
+            <returns> The well known name of this transport, used in transport negotiations
+            </returns>
+            <seealso cref="!:IBayeux.getAllowedTransports()">
+            </seealso>
+        </member>
+        <member name="M:Cometd.Bayeux.ITransport.getOption(System.String)">
+            <param name="name">the configuration option name
+            </param>
+            <returns> the configuration option with the given {@code qualifiedName}
+            </returns>
+            <seealso cref="!:getOptionNames()">
+            </seealso>
+        </member>
+        <member name="P:Cometd.Bayeux.ITransport.OptionNames">
+            <returns> the set of configuration options
+            </returns>
+            <seealso cref="M:Cometd.Bayeux.ITransport.getOption(System.String)">
+            </seealso>
+        </member>
+        <member name="P:Cometd.Bayeux.ITransport.OptionPrefix">
+            <summary> Specifies an option prefix made of string segments separated by the "."
+            character, used to override more generic configuration entries.
+            </summary>
+            <returns> the option prefix for this transport.
+            </returns>
+        </member>
+        <member name="T:Cometd.Client.BayeuxClient">
+            <summary> </summary>
+        </member>
+        <member name="M:Cometd.Client.BayeuxClient.waitForEmptySendQueue(System.Int32)">
+            <summary>
+            Wait for send queue to be emptied
+            </summary>
+            <param name="timeoutMS"></param>
+            <returns>true if queue is empty, false if timed out</returns>
+        </member>
+        <member name="T:Cometd.Client.Ext.AckExtension">
+            <summary> AckExtension
+            
+            This client-side extension enables the client to acknowledge to the server
+            the messages that the client has received.
+            For the acknowledgement to work, the server must be configured with the
+            correspondent server-side ack extension. If both client and server support
+            the ack extension, then the ack functionality will take place automatically.
+            By enabling this extension, all messages arriving from the server will arrive
+            via the long poll, so the comet communication will be slightly chattier.
+            The fact that all messages will return via long poll means also that the
+            messages will arrive with total order, which is not guaranteed if messages
+            can arrive via both long poll and normal response.
+            Messages are not acknowledged one by one, but instead a group of messages is
+            acknowledged when long poll returns.
+            
+            </summary>
+            <author>  dyu
+            </author>
+        </member>
+        <member name="T:Cometd.Client.Transport.ClientTransport">
+            <version> $Revision: 902 $ $Date: 2011-03-10 15:02:59 +0100 (Thu, 10 Mar 2011) $
+            </version>
+        </member>
+        <member name="T:Cometd.Client.Transport.LongPollingTransport">
+            <version>  $Revision$ $Date: 2010-10-19 12:35:37 +0200 (Tue, 19 Oct 2010) $
+            </version>
+        </member>
+        <member name="T:Cometd.Client.Transport.TransportException">
+            <version>  $Revision$ $Date: 2010-01-20 08:02:44 +0100 (Wed, 20 Jan 2010) $
+            </version>
+        </member>
+        <member name="T:Cometd.Client.Transport.ITransportListener">
+            <version>  $Revision: 902 $ $Date: 2010-10-01 22:45:07 +0200 (Fri, 01 Oct 2010) $
+            </version>
+        </member>
+        <member name="T:Cometd.Client.Transport.TransportRegistry">
+            <version>  $Revision$ $Date: 2010-10-01 11:38:19 +0200 (Fri, 01 Oct 2010) $
+            </version>
+        </member>
+        <member name="T:Cometd.Common.AbstractClientSession">
+            <summary> <p>Partial implementation of {@link ClientSession}.</p>
+            <p>It handles extensions and batching, and provides utility methods to be used by subclasses.</p>
+            </summary>
+        </member>
+        <member name="M:Cometd.Common.AbstractClientSession.receive(Cometd.Bayeux.IMutableMessage)">
+            <summary> <p>Receives a message (from the server) and process it.</p>
+            <p>Processing the message involves calling the receive {@link ClientSession.Extension extensions}
+            and the channel {@link ClientSessionChannel.ClientSessionChannelListener listeners}.</p>
+            </summary>
+            <param name="message">the message received.
+            </param>
+            <param name="mutable">the mutable version of the message received
+            </param>
+        </member>
+        <member name="T:Cometd.Common.AbstractClientSession.AbstractSessionChannel">
+            <summary> <p>A channel scoped to a {@link ClientSession}.</p></summary>
+        </member>
+    </members>
+</doc>

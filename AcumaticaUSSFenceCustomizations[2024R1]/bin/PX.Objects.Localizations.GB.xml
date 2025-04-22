@@ -1,0 +1,589 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PX.Objects.Localizations.GB</name>
+    </assembly>
+    <members>
+        <member name="T:PX.Objects.Localizations.GB.BACS.AP.APPrintChecksExt">
+            <summary>
+            The graph extension that adds a check when creating a batch from the processing form for the BACS Lloyds payment method.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.Localizations.GB.BACS.CA.CABatchEntryExt">
+            <summary>
+            The CABatchEntry extension is used to export batch payments for the BACS Lloyds payment export scenario.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.Localizations.GB.BACS.CA.CABatchEntryExt.PrintPaymentAndAddToBatchDel">
+            <summary>
+            Print the payment and add it to the batch delegate.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.Localizations.GB.HSBCDirectDepositType">
+            <summary>
+            Direct deposit type specific to the HSBC bank in the UK.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.Localizations.GB.LloydsDirectDepositType">
+            <summary>
+            Direct deposit type specific to the Lloyds bank in the UK.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.Localizations.GB.BACSHSBCProvider">
+            <summary>
+            Data provider class for the BACS export scenario specific to the HSBC bank in the UK.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.Localizations.GB.BACSWriter">
+            <summary>
+            BACS writer
+            </summary>
+        </member>
+        <member name="T:PX.Objects.Localizations.GB.BACSLloydsProvider">
+            <summary>
+            Data provider class for the BACS export scenario specific to the Lloyds bank in the UK.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.Localizations.GB.BACSLloydsProvider.Params">
+            <summary>
+            Export parameters
+            </summary>
+        </member>
+        <member name="T:PX.Objects.Localizations.GB.HMRC.DAC.BAccountMTDApplication">
+            <summary>
+            Business account that is used to file VAT with the MTD (Making Tax Digital) application.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.Localizations.GB.HMRC.DAC.BAccountMTDApplication.PK">
+            <summary>
+            Primary key
+            </summary>
+        </member>
+        <member name="P:PX.Objects.Localizations.GB.HMRC.DAC.BAccountMTDApplication.ApplicationID">
+            <summary>
+            Application ID
+            </summary>
+        </member>
+        <member name="P:PX.Objects.Localizations.GB.HMRC.DAC.BAccountMTDApplication.BAccountID">
+            <summary>
+            Business account ID
+            </summary>
+        </member>
+        <member name="T:PX.Objects.Localizations.GB.HMRC.DAC.BranchBAccountExt">
+            <summary>
+            Business account branch that is used to file VAT with the MTD (Making Tax Digital) application.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.Localizations.GB.HMRC.DAC.BranchBAccountExt.MTDApplicationID">
+            <summary>
+            MTD Application ID
+            </summary>
+        </member>
+        <member name="T:PX.Objects.Localizations.GB.HMRC.DAC.Obligation.periodKey">
+            <summary>
+            The ID code for the period that this obligation belongs to. The format is a string of four alphanumeric characters. Occasionally the format includes the # symbol.
+            For example: 18AD, 18A1, #001
+            </summary>
+        </member>
+        <member name="T:PX.Objects.Localizations.GB.HMRC.DAC.Obligation.start">
+            <summary>
+            The start date of this obligation period
+            Date in the format YYYY-MM-DD
+            For example: 2017-01-25
+            </summary>
+        </member>
+        <member name="T:PX.Objects.Localizations.GB.HMRC.DAC.Obligation.end">
+            <summary>
+            The end date of this obligation period
+            Date in the format YYYY-MM-DD
+            For example: 2017-01-25
+            </summary>
+        </member>
+        <member name="T:PX.Objects.Localizations.GB.HMRC.DAC.Obligation.due">
+            <summary>
+            The due date for this obligation period, in the format YYYY-MM-DD. 
+            For example: 2017-01-25. The due date for monthly/quarterly obligations is one month and seven days from the end date. 
+            The due date for Payment On Account customers is the last working day of the month after the end date. 
+            For example if the end date is 2018-02-28, the due date is 2018-03-29 
+            (because the 31 March is a Saturday and the 30 March is Good Friday).
+            </summary>
+        </member>
+        <member name="T:PX.Objects.Localizations.GB.HMRC.DAC.Obligation.status">
+            <summary>
+            Which obligation statuses to return (O = Open, F = Fulfilled)
+            For example: F
+            </summary>
+        </member>
+        <member name="T:PX.Objects.Localizations.GB.HMRC.DAC.Obligation.received">
+            <summary>
+            The obligation received date, is returned when status is (F = Fulfilled)
+            Date in the format YYYY-MM-DD
+            For example: 2017-01-25
+            </summary>
+        </member>
+        <member name="T:PX.Objects.Localizations.GB.HMRC.DAC.ObligationStatus">
+            <summary>
+            Allowed obligation statuses
+            </summary>
+        </member>
+        <member name="T:PX.Objects.Localizations.GB.HMRC.DAC.ObligationStatus.ListAttribute">
+            <summary>
+            List attribute of the obligation status.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.Localizations.GB.HMRC.DAC.ObligationStatus.fulfilled">
+            <summary>
+            Fulfilled obligation status
+            </summary>
+        </member>
+        <member name="T:PX.Objects.Localizations.GB.HMRC.DAC.ObligationStatus.open">
+            <summary>
+            Open obligation status
+            </summary>
+        </member>
+        <member name="T:PX.Objects.Localizations.GB.HMRC.DAC.OrganizationBAccountExt">
+            <summary>
+            Links the organization business account to the external MTD application.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.Localizations.GB.HMRC.DAC.OrganizationBAccountExt.MTDApplicationID">
+            <summary>
+            External MTD application ID
+            </summary>
+        </member>
+        <member name="T:PX.Objects.Localizations.GB.HMRC.DAC.VATPeriodFilter.start">
+            <summary>
+            The start date of this obligation period
+            Date in the format YYYY-MM-DD
+            For example: 2017-01-25
+            </summary>
+        </member>
+        <member name="T:PX.Objects.Localizations.GB.HMRC.DAC.VATPeriodFilter.end">
+            <summary>
+            The end date of this obligation period
+            Date in the format YYYY-MM-DD
+            For example: 2017-01-25
+            </summary>
+        </member>
+        <member name="T:PX.Objects.Localizations.GB.HMRC.DAC.VATPeriodFilter.due">
+            <summary>
+            The due date for this obligation period, in the format YYYY-MM-DD.
+            For example: 2017-01-25. The due date for monthly/quarterly obligations is one month and seven days from the end date.
+            The due date for Payment On Account customers is the last working day of the month after the end date.
+            For example if the end date is 2018-02-28, the due date is 2018-03-29
+            (because the 31 March is a Saturday and the 30 March is Good Friday).
+            </summary>
+        </member>
+        <member name="T:PX.Objects.Localizations.GB.HMRC.DAC.VATPeriodFilter.status">
+            <summary>
+            Which obligation statuses to return (O = Open, F = Fulfilled)
+            For example: F
+            </summary>
+        </member>
+        <member name="T:PX.Objects.Localizations.GB.HMRC.DAC.VATPeriodFilter.periodKey">
+            <summary>
+            The ID code for the period that this obligation belongs to. The format is a string of four alphanumeric characters. Occasionally the format includes the # symbol.
+            For example: 18AD, 18A1, #001
+            </summary>
+        </member>
+        <member name="T:PX.Objects.Localizations.GB.HMRC.DAC.VATPeriodFilter.received">
+            <summary>
+            The obligation received date, is returned when status is (F = Fulfilled)
+            Date in the format YYYY-MM-DD
+            For example: 2017-01-25
+            </summary>
+        </member>
+        <member name="T:PX.Objects.Localizations.GB.HMRC.Exceptions.VATAPIException">
+            <summary>
+            Exception returned by the VAT API when sending or viewing the return or retrieve obligations. 
+            </summary>
+        </member>
+        <member name="T:PX.Objects.Localizations.GB.HMRC.Exceptions.VATAPIInvalidToken">
+            <summary>
+            Exceptions returned by VAT API when the token is invalid.
+            </summary>
+        </member>
+        <member name="F:PX.Objects.Localizations.GB.HMRC.Model.Error.REFRESH_TOKEN_IS_INVALID">
+            <summary>
+            Refresh Token is missing
+            </summary>
+        </member>
+        <member name="F:PX.Objects.Localizations.GB.HMRC.Model.Error.REFRESH_TOKEN_IS_MISSING">
+            <summary>
+            Refresh Token is missing
+            </summary>
+        </member>
+        <member name="F:PX.Objects.Localizations.GB.HMRC.Model.Error.VRN_INVALID">
+            <summary>
+            The provided VRN is invalid
+            </summary>
+        </member>
+        <member name="F:PX.Objects.Localizations.GB.HMRC.Model.Error.PERIOD_KEY_INVALID">
+            <summary>
+            Invalid period key
+            </summary>
+        </member>
+        <member name="F:PX.Objects.Localizations.GB.HMRC.Model.Error.INVALID_REQUEST">
+            <summary>
+            Invalid request
+            </summary>
+        </member>
+        <member name="F:PX.Objects.Localizations.GB.HMRC.Model.Error.VAT_TOTAL_VALUE">
+            <summary>
+            totalVatDue should be equal to the sum of vatDueSales and vatDueAcquisitions
+            </summary>
+        </member>
+        <member name="F:PX.Objects.Localizations.GB.HMRC.Model.Error.VAT_NET_VALUE">
+            <summary>
+            netVatDue should be the difference between the largest and the smallest values among totalVatDue and vatReclaimedCurrPeriod
+            </summary>
+        </member>
+        <member name="F:PX.Objects.Localizations.GB.HMRC.Model.Error.INVALID_NUMERIC_VALUE">
+            <summary>
+            please provide a numeric field
+            </summary>
+        </member>
+        <member name="F:PX.Objects.Localizations.GB.HMRC.Model.Error.INVALID_MONETARY_AMOUNT">
+            <summary>
+            1. amounts should be a non-negative number less than 9999999999999.99 with up to 2 decimal places
+            2. The value must be between -9999999999999 and 9999999999999
+            3. amount should be a monetary value (to 2 decimal places), between 0 and 99999999999.99
+            </summary>
+        </member>
+        <member name="F:PX.Objects.Localizations.GB.HMRC.Model.Error.MISSING_CREDENTIALS">
+            <summary>
+            No OAuth token supplied for user-restricted or application-restricted endpoint
+            </summary>
+        </member>
+        <member name="F:PX.Objects.Localizations.GB.HMRC.Model.Error.INVALID_CREDENTIALS">
+            <summary>
+            Invalid OAuth token supplied for user-restricted or application-restricted endpoint (including expired token)
+            </summary>
+        </member>
+        <member name="F:PX.Objects.Localizations.GB.HMRC.Model.Error.UNAUTHORIZED">
+            <summary>
+            Supplied OAuth token not authorised to access data for given tax identifier(s)
+            </summary>
+        </member>
+        <member name="F:PX.Objects.Localizations.GB.HMRC.Model.Error.INCORRECT_ACCESS_TOKEN_TYPE">
+            <summary>
+            User-restricted API is being accessed with a server token
+            </summary>
+        </member>
+        <member name="F:PX.Objects.Localizations.GB.HMRC.Model.Error.HTTPS_REQUIRED">
+            <summary>
+            Request done with HTTP
+            </summary>
+        </member>
+        <member name="F:PX.Objects.Localizations.GB.HMRC.Model.Error.RESOURCE_FORBIDDEN">
+            <summary>
+            The OAuth token's application is not subscribed to the API
+            </summary>
+        </member>
+        <member name="F:PX.Objects.Localizations.GB.HMRC.Model.Error.INVALID_SCOPE">
+            <summary>
+            The scope of the OAuth token is not sufficient to access the API
+            </summary>
+        </member>
+        <member name="F:PX.Objects.Localizations.GB.HMRC.Model.Error.CLIENT_OR_AGENT_NOT_AUTHORISED">
+            <summary>
+            The client and/or agent is not authorised.
+            </summary>
+        </member>
+        <member name="F:PX.Objects.Localizations.GB.HMRC.Model.Error.DATE_RANGE_TOO_LARGE">
+            <summary>
+            The date of the requested return cannot be more than four years from the current date
+            </summary>
+        </member>
+        <member name="F:PX.Objects.Localizations.GB.HMRC.Model.Error.NOT_FINALISED">
+            <summary>
+            User has not declared VAT return as final
+            </summary>
+        </member>
+        <member name="F:PX.Objects.Localizations.GB.HMRC.Model.Error.DUPLICATE_SUBMISSION">
+            <summary>
+            User has already submitted a VAT return for the given period
+            </summary>
+        </member>
+        <member name="F:PX.Objects.Localizations.GB.HMRC.Model.Error.TAX_PERIOD_NOT_ENDED">
+            <summary>
+            Return submitted too early
+            </summary>
+        </member>
+        <member name="F:PX.Objects.Localizations.GB.HMRC.Model.Error.MATCHING_RESOURCE_NOT_FOUND">
+            <summary>
+            No endpoint could be found in the API for the request path
+            </summary>
+        </member>
+        <member name="F:PX.Objects.Localizations.GB.HMRC.Model.Error.NOT_FOUND">
+            <summary>
+            The remote endpoint has indicated that no associated data is found
+            </summary>
+        </member>
+        <member name="F:PX.Objects.Localizations.GB.HMRC.Model.Error.HTTP_NOT_FOUND">
+            <summary>
+            No API could be found for the context
+            </summary>
+        </member>
+        <member name="F:PX.Objects.Localizations.GB.HMRC.Model.Error.INTERNAL_SERVER_ERROR">
+            <summary>
+            Internal server error
+            </summary>
+        </member>
+        <member name="F:PX.Objects.Localizations.GB.HMRC.Model.Error.NOT_IMPLEMENTED">
+            <summary>
+            API not implemented/deployed
+            </summary>
+        </member>
+        <member name="F:PX.Objects.Localizations.GB.HMRC.Model.Error.SERVER_ERROR">
+            <summary>
+            Service unavailable
+            </summary>
+        </member>
+        <member name="F:PX.Objects.Localizations.GB.HMRC.Model.Error.SCHEDULED_MAINTENANCE">
+            <summary>
+            Scheduled maintenance
+            </summary>
+        </member>
+        <member name="F:PX.Objects.Localizations.GB.HMRC.Model.Error.GATEWAY_TIMEOUT">
+            <summary>
+            Request timed out
+            </summary>
+        </member>
+        <member name="P:PX.Objects.Localizations.GB.HMRC.Model.Obligation.start">
+            <summary>
+            The start date of this obligation period
+            Date in the format YYYY-MM-DD
+            For example: 2017-01-25
+            </summary>
+        </member>
+        <member name="P:PX.Objects.Localizations.GB.HMRC.Model.Obligation.end">
+            <summary>
+            The end date of this obligation period
+            Date in the format YYYY-MM-DD
+            For example: 2017-01-25
+            </summary>
+        </member>
+        <member name="P:PX.Objects.Localizations.GB.HMRC.Model.Obligation.due">
+            <summary>
+            The due date for this obligation period, in the format YYYY-MM-DD.
+            For example: 2017-01-25. The due date for monthly/quarterly obligations is one month and seven days from the end date.
+            The due date for Payment On Account customers is the last working day of the month after the end date.
+            For example if the end date is 2018-02-28, the due date is 2018-03-29
+            (because the 31 March is a Saturday and the 30 March is Good Friday).
+            </summary>
+        </member>
+        <member name="P:PX.Objects.Localizations.GB.HMRC.Model.Obligation.status">
+            <summary>
+            Which obligation statuses to return (O = Open, F = Fulfilled)
+            For example: F
+            </summary>
+        </member>
+        <member name="P:PX.Objects.Localizations.GB.HMRC.Model.Obligation.periodKey">
+            <summary>
+            The ID code for the period that this obligation belongs to. The format is a string of four alphanumeric characters. Occasionally the format includes the # symbol.
+            For example: 18AD, 18A1, #001
+            </summary>
+        </member>
+        <member name="P:PX.Objects.Localizations.GB.HMRC.Model.Obligation.received">
+            <summary>
+            The obligation received date, is returned when status is (F = Fulfilled)
+            Date in the format YYYY-MM-DD
+            For example: 2017-01-25
+            </summary>///
+        </member>
+        <member name="P:PX.Objects.Localizations.GB.HMRC.Model.ObligationsRequest.from">
+            <summary>
+            Date from which to return obligations. Mandatory unless the status is O.
+            For example: 2017-01-25
+            </summary>
+        </member>
+        <member name="P:PX.Objects.Localizations.GB.HMRC.Model.ObligationsRequest.to">
+            <summary>
+            Date to which to return obligations. Mandatory unless the status is O.
+            For example: 2017-01-25
+            </summary>
+        </member>
+        <member name="P:PX.Objects.Localizations.GB.HMRC.Model.ObligationsRequest.status">
+            <summary>
+            Which obligation statuses to return (O=Open, F=Fulfilled)
+            For example: F
+            </summary>
+        </member>
+        <member name="T:PX.Objects.Localizations.GB.HMRC.Model.RequestAuthorisation">
+            <summary>
+            Authorisation
+            </summary>
+        </member>
+        <member name="P:PX.Objects.Localizations.GB.HMRC.Model.RequestAuthorisation.vrn">
+            <summary>
+            VAT registration number.
+            A nine-digit number.
+            For example: 123456789
+            </summary>
+        </member>
+        <member name="P:PX.Objects.Localizations.GB.HMRC.Model.RequestAuthorisation.serverToken">
+            <summary>
+            Server token of Head of HTTP request
+            Example: Authorization - Bearer 70fc461f8c82d2a322cfe87066ffb284
+            </summary>
+        </member>
+        <member name="T:PX.Objects.Localizations.GB.HMRC.Model.VATreturn">
+            <summary>
+            Submit VAT return for period
+            </summary>
+        </member>
+        <member name="P:PX.Objects.Localizations.GB.HMRC.Model.VATreturn.periodKey">
+            <summary>
+            The ID code for the period that this obligation belongs to. 
+            The format is a string of four alphanumeric characters. Occasionally the format includes the # symbol.
+            For example: 18AD, 18A1, #001
+            </summary>
+        </member>
+        <member name="P:PX.Objects.Localizations.GB.HMRC.Model.VATreturn.vatDueSales">
+            <summary>
+            VAT due on sales and other outputs. 
+            This corresponds to box 1 on the VAT Return form. 
+            The value must be between -9999999999999.99 and 9999999999999.99.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.Localizations.GB.HMRC.Model.VATreturn.vatDueAcquisitions">
+            <summary>
+            VAT due on acquisitions from other EC Member States. 
+            This corresponds to box 2 on the VAT Return form. 
+            The value must be between -9999999999999.99 and 9999999999999.99.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.Localizations.GB.HMRC.Model.VATreturn.totalVatDue">
+            <summary>
+            Total VAT due (the sum of vatDueSales and vatDueAcquisitions). 
+            This corresponds to box 3 on the VAT Return form. 
+            The value must be between -9999999999999.99 and 9999999999999.99.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.Localizations.GB.HMRC.Model.VATreturn.vatReclaimedCurrPeriod">
+            <summary>
+            VAT reclaimed on purchases and other inputs (including acquisitions from the EC). 
+            This corresponds to box 4 on the VAT Return form. 
+            The value must be between -9999999999999.99 and 9999999999999.99.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.Localizations.GB.HMRC.Model.VATreturn.netVatDue">
+            <summary>
+            The difference between totalVatDue and vatReclaimedCurrPeriod. 
+            This corresponds to box 5 on the VAT Return form. 
+            The value must be between 0.00 and 99999999999.99
+            </summary>
+        </member>
+        <member name="P:PX.Objects.Localizations.GB.HMRC.Model.VATreturn.totalValueSalesExVAT">
+            <summary>
+            Total value of sales and all other outputs excluding any VAT. 
+            This corresponds to box 6 on the VAT Return form. 
+            The value must be between -9999999999999 and 9999999999999.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.Localizations.GB.HMRC.Model.VATreturn.totalValuePurchasesExVAT">
+            <summary>
+            Total value of purchases and all other inputs excluding any VAT (including exempt purchases). 
+            This corresponds to box 7 on the VAT Return form. 
+            The value must be between -9999999999999 and 9999999999999.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.Localizations.GB.HMRC.Model.VATreturn.totalValueGoodsSuppliedExVAT">
+            <summary>
+            Total value of all supplies of goods and related costs, excluding any VAT, to other EC member states. 
+            This corresponds to box 8 on the VAT Return form. 
+            The value must be between -9999999999999 and 9999999999999.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.Localizations.GB.HMRC.Model.VATreturn.totalAcquisitionsExVAT">
+            <summary>
+            Total value of acquisitions of goods and related costs excluding any VAT, from other EC member states. 
+            This corresponds to box 9 on the VAT Return form. 
+            The value must be between -9999999999999 and 9999999999999.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.Localizations.GB.HMRC.Model.VATreturn.finalised">
+            <summary>
+            Declaration that the user has finalised their VAT return.
+            For example: true
+            </summary>
+        </member>
+        <member name="T:PX.Objects.Localizations.GB.HMRC.Model.VaTreturnResponse">
+            <summary>
+            HTTP status: 201 (Created)
+            </summary>
+        </member>
+        <member name="P:PX.Objects.Localizations.GB.HMRC.Model.VaTreturnResponse.processingDate">
+            <summary>
+            The time that the message was processed in the system.
+            </summary>		///
+        </member>
+        <member name="P:PX.Objects.Localizations.GB.HMRC.Model.VaTreturnResponse.paymentIndicator">
+            <summary>
+            Unique number that represents the form bundle.
+            The system stores VAT Return data in forms, which are held in a unique form bundle.
+            Must conform to the regular expression ^[0-9]{12}$
+            </summary>
+        </member>
+        <member name="P:PX.Objects.Localizations.GB.HMRC.Model.VaTreturnResponse.formBundleNumber">
+            <summary>
+            Is DD if the netVatDue value is a debit and HMRC holds a Direct Debit Instruction for the client.
+            Is BANK if the netVatDue value is a credit and HMRC holds the client's bank data.
+            Otherwise not present.
+            Limited to the following possible values:
+            DD
+            BANK
+            </summary>
+        </member>
+        <member name="P:PX.Objects.Localizations.GB.HMRC.Model.VaTreturnResponse.chargeRefNumber">
+            <summary>
+            The charge reference number is returned, only if the netVatDue value is a debit.
+            Between 1 and 16 characters.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.Localizations.GB.HMRC.VATApi">
+            <summary>
+            VAT (MTD) API
+            https://developer.service.hmrc.gov.uk/api-documentation/docs/api/service/vat-api/1.0
+            </summary>
+        </member>
+        <member name="M:PX.Objects.Localizations.GB.HMRC.VATApi.RefreshAccessToken">
+            <summary>
+            Refresh Access Token if it is need
+            </summary>
+        </member>
+        <member name="M:PX.Objects.Localizations.GB.HMRC.VATApi.addMandatoryHeader(System.Net.Http.HttpRequestMessage,PX.Objects.Localizations.GB.HMRC.HMRCHeaderData)">
+            <summary>
+            https://developer.service.hmrc.gov.uk/api-documentation/docs/fraud-prevention
+            https://github.com/hmrc/vat-api/issues/565
+            https://doc.uzerp.com/modules/accounts/vat/
+            </summary>
+            <param name="httpRequest"></param>
+        </member>
+        <member name="M:PX.Objects.Localizations.GB.HMRC.VATApi.CheckApiResponse(System.Net.Http.HttpResponseMessage,System.Nullable{PX.Objects.Localizations.GB.HMRC.VATApiType})">
+            <summary>
+            Check Api Response
+            </summary>
+            <param name="response"></param>
+        </member>
+        <member name="M:PX.Objects.Localizations.GB.HMRC.VATApi.Obligations(PX.Objects.Localizations.GB.HMRC.Model.ObligationsRequest,PX.Objects.Localizations.GB.HMRC.HMRCHeaderData,System.String)">
+            <summary>
+            Retrieve VAT obligations
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PX.Objects.Localizations.GB.HMRC.VATApi.Returns(System.String,PX.Objects.Localizations.GB.HMRC.HMRCHeaderData)">
+            <summary>
+            Submit VAT return for period
+            </summary>
+            <param name="periodkey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PX.Objects.Localizations.GB.HMRC.VATMaint.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+    </members>
+</doc>

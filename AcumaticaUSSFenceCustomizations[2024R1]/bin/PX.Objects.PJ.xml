@@ -1,0 +1,1513 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PX.Objects.PJ</name>
+    </assembly>
+    <members>
+        <member name="T:PX.Objects.PJ.Common.DAC.ContactForCurrentProject.PK">
+            <summary>
+            Primary Key
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.Common.DAC.ContactForCurrentProject.FK">
+            <summary>
+            Foreign Keys
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.Common.DAC.ContactForCurrentProject.FK.Project">
+            <summary>
+            Project
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.Common.Descriptor.Attributes.ClearRelatedEntitiesAttribute">
+            <summary>
+            Attribute used for clearing values associated with <see cref="T:PX.Objects.PM.PMTask"/> when deleting a <see cref="T:PX.Objects.PM.PMTask"/>.
+            Unlike <see cref="T:PX.Data.PXParentAttribute"/> not require DataView of the child entity in related Graph.
+            Should be set on <see cref="T:PX.Objects.PM.PMTask"/> properties as use <see cref="T:PX.Objects.PM.PMTask.taskID"/> property.
+            </summary>
+        </member>
+        <member name="M:PX.Objects.PJ.Common.Descriptor.Attributes.LinkRefNoteAttribute.GetPrimaryGraphType(PX.Data.PXCache,System.Object,System.Type)">
+            <summary>
+            Temporary fix for Change Request
+            because Acumatica commented out the PXPrimaryGraph attribute in PMChangeRequest DAC.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.Common.Descriptor.Attributes.ResetResponseDueDateAttribute">
+            <summary>
+            Attribute used for resetting response due date on <see cref="T:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation"/>
+            and <see cref="T:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue"/> classes.
+            Referenced <see cref="P:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementClass.ProjectManagementClassId"/>.
+            </summary>
+        </member>
+        <member name="M:PX.Objects.PJ.DailyFieldReports.Common.GenericGraphExtensions.CreatedFromDailyFieldReportExtension`1.CreateDailyFieldReportRelation(System.Nullable{System.Int32})">
+            <summary>
+            You should override this method in case of Base DAC key field isn't of string type.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.DailyFieldReports.Common.GenericGraphExtensions.DailyFieldReportEntryExtension`1">
+            <summary>
+            This generic graph extension is used only for <see cref="T:PX.Objects.PJ.DailyFieldReports.PJ.Graphs.DailyFieldReportEntry" /> graph.
+            Generic type of this extension is required for correct working with Features availability.
+            </summary>
+        </member>
+        <member name="M:PX.Objects.PJ.DailyFieldReports.EP.GraphExtensions.ExpenseClaimDetailEntryExt._(PX.Data.Events.RowSelected{PX.Objects.PJ.DailyFieldReports.Common.MappedCacheExtensions.DailyFieldReportRelatedDocument})">
+            <summary>
+            Project availabitily logic moved to <see cref="T:PX.Objects.PJ.DailyFieldReports.EP.GraphExtensions.ExpenseClaimDetailEntryProjectAvailabilityExt" />
+            because another Acumatica Graph Extension overrides our logic.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.DailyFieldReports.PJ.DAC.DailyFieldReport">
+            <summary>
+            Contains the main properties of a daily field report.
+            Daily field reports are used by project managers and site supervisors to record observations,
+            activities, and conditions that occur on a project site every day.
+            The records of this type are created and edited through the Daily Field Report (PJ304000) form
+            (which corresponds to the <see cref="T:PX.Objects.PJ.DailyFieldReports.PJ.Graphs.DailyFieldReportEntry"/> graph).
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.DailyFieldReports.PJ.DAC.DailyFieldReport.CreatedById">
+            <summary>
+            i
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.DailyFieldReports.PJ.DAC.DailyFieldReportProgressWorksheet">
+            <summary>
+            Represents the class for the link between a <see cref="T:PX.Objects.PM.PMProgressWorksheet">progress worksheet</see> and a <see cref="T:PX.Objects.PJ.DailyFieldReports.PJ.DAC.DailyFieldReport">daily field report</see>.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.DailyFieldReports.PJ.DAC.DailyFieldReportProgressWorksheet.DailyFieldReportProgressWorksheetId">
+            <summary>
+            The unique ID of the link between the <see cref="T:PX.Objects.PM.PMProgressWorksheet">progress worksheet</see> and the <see cref="T:PX.Objects.PJ.DailyFieldReports.PJ.DAC.DailyFieldReport">daily field report</see>.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.DailyFieldReports.PJ.DAC.DailyFieldReportProgressWorksheet.DailyFieldReportId">
+            <summary>
+            The unique ID of the <see cref="T:PX.Objects.PJ.DailyFieldReports.PJ.DAC.DailyFieldReport">daily field report</see>.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.DailyFieldReports.PJ.DAC.DailyFieldReportProgressWorksheet.ProgressWorksheetId">
+            <summary>
+            The unique ID of the <see cref="T:PX.Objects.PM.PMProgressWorksheet">progress worksheet</see>.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.DailyFieldReports.PJ.DAC.DailyFieldReportSubcontractorActivity.WorkingTimeSpent">
+            <summary>
+            Represents time in minutes.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.DailyFieldReports.PJ.DAC.EquipmentProjection">
+            <summary>
+            Is a projection DAC over <see cref="T:PX.Objects.EP.EPEquipmentDetail"/>, <see cref="T:PX.Objects.EP.EPEquipmentTimeCard"/>,
+            <see cref="T:PX.Objects.EP.EPEquipment"/>, and <see cref="T:PX.Objects.PJ.DailyFieldReports.PJ.DAC.DailyFieldReportEquipment"/> classes.
+            The records of this type are created and edited through the <b>Equipment</b> tab of the Daily Field Report (PJ304000) form
+            (which corresponds to the <see cref="!:DailyFieldReportEntry"/> graph).
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.DailyFieldReports.PJ.GraphExtensions.DailyFieldReportEntryProgressWorksheetExtension.CostBudgetLineFilter.ProjectID">
+            <summary>
+            The identifier of the <see cref="T:PX.Objects.PM.PMProject">project</see> associated with the Cost Budget Line Filter.
+            </summary>
+            <value>
+            The value of this field corresponds to the value of the <see cref="P:PX.Objects.PM.PMProject.ContractID"/> field.
+            </value>
+        </member>
+        <member name="P:PX.Objects.PJ.DailyFieldReports.PJ.GraphExtensions.DailyFieldReportEntryProgressWorksheetExtension.CostBudgetLineFilter.TaskID">
+            <summary>
+            The identifier of the <see cref="T:PX.Objects.PM.PMTask">task</see> associated with the cost budget line filter.
+            </summary>
+            <value>
+            The value of this field corresponds to the value of the <see cref="P:PX.Objects.PM.PMTask.TaskID"/> field.
+            </value>
+        </member>
+        <member name="P:PX.Objects.PJ.DailyFieldReports.PJ.GraphExtensions.DailyFieldReportEntryProgressWorksheetExtension.CostBudgetLineFilter.AccountGroupID">
+            <summary>The identifier of the <see cref="T:PX.Objects.PM.PMAccountGroup">account group</see> associated with the Cost Budget Line Filter.</summary>
+            <value>
+            The value of this field corresponds to the value of the <see cref="P:PX.Objects.PM.PMAccountGroup.GroupID" /> field.
+            </value>
+        </member>
+        <member name="P:PX.Objects.PJ.DailyFieldReports.PJ.GraphExtensions.DailyFieldReportEntryProgressWorksheetExtension.CostBudgetLineFilter.InventoryID">
+            <summary>
+            The identifier of the <see cref="T:PX.Objects.IN.InventoryItem">inventory item</see> associated with the Cost Budget Line Filter.
+            </summary>
+            <value>
+            The value of this field corresponds to the value of the <see cref="P:PX.Objects.IN.InventoryItem.InventoryID"/> field.
+            </value>
+        </member>
+        <member name="P:PX.Objects.PJ.DailyFieldReports.PJ.GraphExtensions.DailyFieldReportEntryProgressWorksheetExtension.CostBudgetLineFilter.CostCodeFrom">
+            <summary>
+            The identifier of the <see cref="T:PX.Objects.PM.PMCostCode">cost code</see> associated with the Cost Budget Line Filter.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.DailyFieldReports.PJ.GraphExtensions.DailyFieldReportEntryProgressWorksheetExtension.CostBudgetLineFilter.CostCodeTo">
+            <summary>
+            The identifier of the <see cref="T:PX.Objects.PM.PMCostCode">cost code</see> associated with the Cost Budget Line Filter.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.DailyFieldReports.PM.CacheExtensions.PmChangeRequestExt.DailyFieldReportId">
+            <summary>
+            The identifier of the <see cref="T:PX.Objects.PJ.DailyFieldReports.PJ.DAC.DailyFieldReport">daily field report</see> from which the change request was created.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.DrawingLogs.PJ.DAC.DrawingLog">
+            <summary>
+            Contains the main properties of a drawing log.
+            A drawing log is a collection of drawings and designs related to a project.
+            The records of this type are created and edited through the Drawing Log (PJ303000) form
+            (which corresponds to the <see cref="T:PX.Objects.PJ.DrawingLogs.PJ.Graphs.DrawingLogEntry"/> graph).
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.DrawingLogs.PJ.DAC.DrawingLogFilter.ProjectIssueID">
+            <summary>
+            The <see cref="T:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue">project issue</see> for filtering drawing logs.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.DrawingLogs.PJ.DAC.DrawingLogFilter.RFIID">
+            <summary>
+            The <see cref="T:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation">request for information</see> for filtering drawing logs.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.DrawingLogs.PJ.Graphs.DrawingLogsMaint.ShouldDrawingLogBeInserted">
+            <summary>
+            Gets or sets a value indicating whether this field should prevent
+            inserting non committed <see cref="T:PX.Objects.PJ.DrawingLogs.PJ.DAC.DrawingLog"/> on updating <see cref="T:PX.Objects.PJ.DrawingLogs.PJ.DAC.DrawingLogFilter"/>.
+            </summary>
+        </member>
+        <member name="M:PX.Objects.PJ.DrawingLogs.PJ.Graphs.DrawingLogsMaint.ChangeFilterStatusToAvoidConfirmationDialogOnAttachFile(PX.Data.PXEntryStatus)">
+            <summary>
+            This method used for updating Filter status to avoid confirmation dialog on attempt to
+            attach files to Drawing Log document. Confirmation dialog invokes because Filter view is a
+            primary view for DrawingLogsMaint, so in case if Filter status not marked as PXEntryStatus.Notchanged
+            confirmation dialog will be appear.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.OutlookIntegration.OU.DAC.ProjectIssueOutlook.summary">
+            <inheritdoc cref="T:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.summary"/>
+        </member>
+        <member name="P:PX.Objects.PJ.OutlookIntegration.OU.DAC.ProjectIssueOutlook.Summary">
+            <inheritdoc cref="P:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.Summary"/>
+        </member>
+        <member name="T:PX.Objects.PJ.OutlookIntegration.OU.DAC.ProjectIssueOutlook.projectId">
+            <inheritdoc cref="T:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.projectId"/>
+        </member>
+        <member name="P:PX.Objects.PJ.OutlookIntegration.OU.DAC.ProjectIssueOutlook.ProjectId">
+            <inheritdoc cref="P:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.ProjectId"/>
+        </member>
+        <member name="T:PX.Objects.PJ.OutlookIntegration.OU.DAC.ProjectIssueOutlook.classId">
+            <inheritdoc cref="T:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.classId"/>
+        </member>
+        <member name="P:PX.Objects.PJ.OutlookIntegration.OU.DAC.ProjectIssueOutlook.ClassId">
+            <inheritdoc cref="P:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.ClassId"/>
+        </member>
+        <member name="T:PX.Objects.PJ.OutlookIntegration.OU.DAC.ProjectIssueOutlook.priorityId">
+            <inheritdoc cref="T:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.priorityId"/>
+        </member>
+        <member name="P:PX.Objects.PJ.OutlookIntegration.OU.DAC.ProjectIssueOutlook.PriorityId">
+            <inheritdoc cref="P:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.PriorityId"/>
+        </member>
+        <member name="T:PX.Objects.PJ.OutlookIntegration.OU.DAC.ProjectIssueOutlook.ownerID">
+            <inheritdoc cref="T:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.ownerID"/>
+        </member>
+        <member name="P:PX.Objects.PJ.OutlookIntegration.OU.DAC.ProjectIssueOutlook.OwnerID">
+            <inheritdoc cref="P:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.OwnerID"/>
+        </member>
+        <member name="T:PX.Objects.PJ.OutlookIntegration.OU.DAC.ProjectIssueOutlook.dueDate">
+            <inheritdoc cref="T:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.dueDate"/>
+        </member>
+        <member name="P:PX.Objects.PJ.OutlookIntegration.OU.DAC.ProjectIssueOutlook.DueDate">
+            <inheritdoc cref="P:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.DueDate"/>
+        </member>
+        <member name="T:PX.Objects.PJ.OutlookIntegration.OU.DAC.ProjectIssueOutlook.creationDate">
+            <inheritdoc cref="T:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.creationDate"/>
+        </member>
+        <member name="P:PX.Objects.PJ.OutlookIntegration.OU.DAC.ProjectIssueOutlook.CreationDate">
+            <inheritdoc cref="P:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.CreationDate"/>
+        </member>
+        <member name="T:PX.Objects.PJ.OutlookIntegration.OU.DAC.RequestForInformationOutlook.summary">
+            <inheritdoc cref="T:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.summary"/>
+        </member>
+        <member name="P:PX.Objects.PJ.OutlookIntegration.OU.DAC.RequestForInformationOutlook.Summary">
+            <inheritdoc cref="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.Summary"/>
+        </member>
+        <member name="T:PX.Objects.PJ.OutlookIntegration.OU.DAC.RequestForInformationOutlook.classId">
+            <inheritdoc cref="T:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.classId"/>
+        </member>
+        <member name="P:PX.Objects.PJ.OutlookIntegration.OU.DAC.RequestForInformationOutlook.ClassId">
+            <inheritdoc cref="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.ClassId"/>
+        </member>
+        <member name="T:PX.Objects.PJ.OutlookIntegration.OU.DAC.RequestForInformationOutlook.priorityId">
+            <inheritdoc cref="T:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.incoming"/>
+        </member>
+        <member name="P:PX.Objects.PJ.OutlookIntegration.OU.DAC.RequestForInformationOutlook.Incoming">
+            <inheritdoc cref="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.Incoming"/>
+        </member>
+        <member name="T:PX.Objects.PJ.OutlookIntegration.OU.DAC.RequestForInformationOutlook.projectId">
+            <inheritdoc cref="T:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.status"/>
+        </member>
+        <member name="P:PX.Objects.PJ.OutlookIntegration.OU.DAC.RequestForInformationOutlook.Status">
+            <inheritdoc cref="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.Status"/>
+        </member>
+        <member name="T:PX.Objects.PJ.OutlookIntegration.OU.DAC.RequestForInformationOutlook.incoming">
+            <inheritdoc cref="T:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.priorityId"/>
+        </member>
+        <member name="P:PX.Objects.PJ.OutlookIntegration.OU.DAC.RequestForInformationOutlook.PriorityId">
+            <inheritdoc cref="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.PriorityId"/>
+        </member>
+        <member name="T:PX.Objects.PJ.OutlookIntegration.OU.DAC.RequestForInformationOutlook.status">
+            <inheritdoc cref="T:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.projectId"/>
+        </member>
+        <member name="P:PX.Objects.PJ.OutlookIntegration.OU.DAC.RequestForInformationOutlook.ProjectId">
+            <inheritdoc cref="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.ProjectId"/>
+        </member>
+        <member name="T:PX.Objects.PJ.OutlookIntegration.OU.DAC.RequestForInformationOutlook.contactId">
+            <inheritdoc cref="!:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.contactId"/>
+        </member>
+        <member name="P:PX.Objects.PJ.OutlookIntegration.OU.DAC.RequestForInformationOutlook.ContactId">
+            <inheritdoc cref="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.ContactId"/>
+        </member>
+        <member name="T:PX.Objects.PJ.OutlookIntegration.OU.DAC.RequestForInformationOutlook.ownerID">
+            <inheritdoc cref="!:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.ownerId"/>
+        </member>
+        <member name="P:PX.Objects.PJ.OutlookIntegration.OU.DAC.RequestForInformationOutlook.OwnerId">
+            <inheritdoc cref="!:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.OwnerId"/>
+        </member>
+        <member name="T:PX.Objects.PJ.OutlookIntegration.OU.DAC.RequestForInformationOutlook.dueResponseDate">
+            <inheritdoc cref="T:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.dueResponseDate"/>
+        </member>
+        <member name="P:PX.Objects.PJ.OutlookIntegration.OU.DAC.RequestForInformationOutlook.DueResponseDate">
+            <inheritdoc cref="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.DueResponseDate"/>
+        </member>
+        <member name="T:PX.Objects.PJ.OutlookIntegration.OU.DAC.RequestForInformationOutlook.isScheduleImpact">
+            <inheritdoc cref="T:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.isScheduleImpact"/>
+        </member>
+        <member name="P:PX.Objects.PJ.OutlookIntegration.OU.DAC.RequestForInformationOutlook.IsScheduleImpact">
+            <inheritdoc cref="!:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.IsScheduleImpact"/>
+        </member>
+        <member name="T:PX.Objects.PJ.OutlookIntegration.OU.DAC.RequestForInformationOutlook.scheduleImpact">
+            <inheritdoc cref="T:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.scheduleImpact"/>
+        </member>
+        <member name="P:PX.Objects.PJ.OutlookIntegration.OU.DAC.RequestForInformationOutlook.ScheduleImpact">
+            <inheritdoc cref="!:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.ScheduleImpact"/>
+        </member>
+        <member name="T:PX.Objects.PJ.OutlookIntegration.OU.DAC.RequestForInformationOutlook.isCostImpact">
+            <inheritdoc cref="T:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.isCostImpact"/>
+        </member>
+        <member name="P:PX.Objects.PJ.OutlookIntegration.OU.DAC.RequestForInformationOutlook.IsCostImpact">
+            <inheritdoc cref="!:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.IsCostImpact"/>
+        </member>
+        <member name="T:PX.Objects.PJ.OutlookIntegration.OU.DAC.RequestForInformationOutlook.costImpact">
+            <inheritdoc cref="T:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.costImpact"/>
+        </member>
+        <member name="P:PX.Objects.PJ.OutlookIntegration.OU.DAC.RequestForInformationOutlook.CostImpact">
+            <inheritdoc cref="!:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.CostImpact"/>
+        </member>
+        <member name="T:PX.Objects.PJ.OutlookIntegration.OU.DAC.RequestForInformationOutlook.designChange">
+            <inheritdoc cref="T:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.designChange"/>
+        </member>
+        <member name="P:PX.Objects.PJ.OutlookIntegration.OU.DAC.RequestForInformationOutlook.DesignChange">
+            <inheritdoc cref="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.DesignChange"/>
+        </member>
+        <member name="T:PX.Objects.PJ.OutlookIntegration.OU.DAC.RequestForInformationOutlook.creationDate">
+            <inheritdoc cref="T:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.creationDate"/>
+        </member>
+        <member name="P:PX.Objects.PJ.OutlookIntegration.OU.DAC.RequestForInformationOutlook.CreationDate">
+            <inheritdoc cref="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.CreationDate"/>
+        </member>
+        <member name="T:PX.Objects.PJ.OutlookIntegration.OU.Descriptor.Attributes.ResetOutlookResponseDueDateAttribute">
+            <summary>
+            Attribute used for resetting response due date on <see cref="T:PX.Objects.PJ.OutlookIntegration.OU.DAC.RequestForInformationOutlook"/>
+            and <see cref="T:PX.Objects.PJ.OutlookIntegration.OU.DAC.ProjectIssueOutlook"/> classes.
+            Referenced <see cref="P:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementClass.ProjectManagementClassId"/>.
+            </summary>
+        </member>
+        <member name="M:PX.Objects.PJ.OutlookIntegration.OU.GraphExtensions.OuSearchMaintRelatedActivityExtension.CreateProjectTimeActivity(System.Nullable{System.Int32})">
+            <summary>
+            Creates <see cref="T:PX.Objects.CR.PMTimeActivity"/> in order to email be displayed on Project Activities tab.
+            Deletes all previously created activities linked to this email.
+            <see cref="T:PX.Objects.CR.PMTimeActivity"/> is created implicitly on <see cref="T:PX.Objects.CR.CRSMEmail"/> inserting.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.PhotoLogs.PJ.DAC.PhotoLog">
+            <summary>
+            Contains the main properties of a photo log.
+            A photo log is used to store all the photos taken during a project.
+            The records of this type are created and edited through the Photo Log (PJ305000) form
+            (which corresponds to the <see cref="T:PX.Objects.PJ.PhotoLogs.PJ.Graphs.PhotoLogEntry"/> graph).
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.PhotoLogs.PJ.DAC.PhotoLog.PhotoLogClassID">
+            <summary>
+            Constant ClassID for this DAC. Used for API calls.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.PhotoLogs.PJ.DAC.PhotoLog.Attributes">
+            <summary>
+            Required attributes for DAC to be used in API.
+            Internal use only.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementClass">
+            <summary>
+            Represents a project management class.
+            Project management classes provide the default settings for <see cref="!:ProjectIssue">project issues</see>
+            and <see cref="!:RequestForInformation">requests for information</see>.
+            The records of this type are created and edited through the Project Management Classes (PJ201000) form
+            (which corresponds to the <see cref="T:PX.Objects.PJ.ProjectManagement.PJ.Graphs.ProjectManagementClassMaint"/> graph).
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementClass.ProjectManagementClassId">
+            <summary>
+            The identifier of the project management class.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementClass.Description">
+            <summary>
+            The description of the project management class.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementClass.IsInternal">
+            <summary>
+            A Boolean value that indicates (if set to <see langword="true" />) that the project management class is internal.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementClass.UseForProjectIssue">
+            <summary>
+            A Boolean value that indicates (if set to <see langword="true" />) that the project management class is available for selection in a project issue.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementClass.UseForRequestForInformation">
+            <summary>
+            A Boolean value that indicates (if set to <see langword="true" />) that the project management class is available for selection in a request for information.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementClass.RequestForInformationResponseTimeFrame">
+            <summary>
+            The response time frame of the request for information that is related a project management class.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementClass.ProjectIssueResponseTimeFrame">
+            <summary>
+            The response time frame of a project issue that is related to a project management class.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementClass.requestForInformationResponseTimeFrame">
+            <inheritdoc cref="P:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementClass.RequestForInformationResponseTimeFrame"/>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementClass.projectIssueResponseTimeFrame">
+            <inheritdoc cref="P:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementClass.ProjectIssueResponseTimeFrame"/>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementClass.isInternal">
+            <inheritdoc cref="P:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementClass.IsInternal"/>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementClass.description">
+            <inheritdoc cref="P:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementClass.Description"/>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementClass.useForProjectIssue">
+            <inheritdoc cref="P:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementClass.UseForProjectIssue"/>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementClass.useForRequestForInformation">
+            <inheritdoc cref="P:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementClass.UseForRequestForInformation"/>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementClass.projectManagementClassId">
+            <inheritdoc cref="P:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementClass.ProjectManagementClassId"/>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementSetup">
+            <summary>
+            Represents the tenant-level project management preferences record that contains the general settings
+            for project issues, requests for information, daily field reports, and other aspects of project management.
+            The single record of this type is created and edited on the Project Management Preferences (PJ101000) form 
+            (which corresponds to the <see cref="T:PX.Objects.PJ.ProjectManagement.PJ.Graphs.ProjectManagementSetupMaint"/> graph).
+            </summary> 
+        </member>
+        <member name="P:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementSetup.AnswerDaysCalculationType">
+            <summary>
+            The way of calculating the date in the <see cref="T:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.dueDate"/> and <see cref="T:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.dueResponseDate"/>.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementSetup.CalendarId">
+            <summary>
+            The <see cref="T:PX.Objects.CS.CSCalendar">calendar</see> that defines the working days.
+            </summary>
+            <value>
+            The value of this field corresponds to the value of the <see cref="T:PX.Objects.CS.CSCalendar.calendarID"/> field.
+            </value>
+        </member>
+        <member name="P:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementSetup.RequestForInformationNumberingId">
+            <summary>
+            The <see cref="T:PX.Objects.CS.Numbering">numbering sequence</see> that is used for requests for information.
+            </summary>
+            <value>
+            The value of this field corresponds to the value of the <see cref="T:PX.Objects.CS.Numbering.numberingID"/> field.
+            </value>
+        </member>
+        <member name="P:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementSetup.ProjectIssueNumberingId">
+            <summary>
+            The <see cref="T:PX.Objects.CS.Numbering">numbering sequence</see> that is used for project issue.
+            </summary>
+            <value>
+            The value of this field corresponds to the value of the <see cref="T:PX.Objects.CS.Numbering.numberingID"/> field.
+            </value>
+        </member>
+        <member name="P:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementSetup.DefaultEmailNotification">
+            <summary>
+            The <see cref="T:PX.SM.Notification">notification template</see> that is used for the emails related to requests for information.
+            </summary>
+            <value>
+            The value of this field corresponds to the value of the <see cref="T:PX.SM.Notification.notificationID"/> field.
+            </value>
+        </member>
+        <member name="P:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementSetup.ProjectIssueAssignmentMapId">
+            <summary>
+            The <see cref="T:PX.Objects.EP.EPAssignmentMap">assignment map</see> that is used to assign owners to project issues.
+            </summary>
+            <value>
+            The value of this field corresponds to the value of the <see cref="T:PX.Objects.EP.EPAssignmentMap.assignmentMapID"/> field.
+            </value>
+        </member>
+        <member name="P:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementSetup.RequestForInformationAssignmentMapId">
+            <summary>
+            The <see cref="T:PX.Objects.EP.EPAssignmentMap">assignment map</see> that is used to assign owners to requests for information.
+            </summary>
+            <value>
+            The value of this field corresponds to the value of the <see cref="T:PX.Objects.CS.Numbering.numberingID"/> field.
+            </value>
+        </member>
+        <member name="P:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementSetup.DailyFieldReportNumberingId">
+            <summary>
+            The <see cref="T:PX.Objects.CS.Numbering">numbering sequence</see> that is used for daily field reports.
+            </summary>
+            <value>
+            The value of this field corresponds to the value of the <see cref="T:PX.Objects.CS.Numbering.numberingID"/> field.
+            </value>
+        </member>
+        <member name="P:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementSetup.DailyFieldReportApprovalMapId">
+            <summary>
+            The <see cref="T:PX.Objects.EP.EPAssignmentMap">approval map</see> of a daily field report.
+            </summary>
+            <value>
+            The value of this field corresponds to the value of the <see cref="T:PX.Objects.EP.EPAssignmentMap.assignmentMapID"/> field.
+            </value>
+        </member>
+        <member name="P:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementSetup.PendingApprovalNotification">
+            <summary>
+            The <see cref="T:PX.SM.Notification">notification template</see> that is used to send email notifications to approvers of daily field reports.
+            </summary>
+            <value>
+            The value of this field corresponds to the value of the <see cref="T:PX.SM.Notification.notificationID"/> field.
+            </value>
+        </member>
+        <member name="P:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementSetup.IsHistoryLogEnabled">
+            <summary>
+            A Boolean value that indicates (if set to <see langword="true" />) that the history tab, with the history of each action performed on a daily field report, is displayed on the Daily Field Report (PJ304000) form.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementSetup.SubmittalNumberingId">
+            <summary>
+            The <see cref="T:PX.Objects.CS.Numbering">numbering sequence</see> that is used for submittals.
+            </summary>
+            <value>
+            The value of this field corresponds to the value of the <see cref="T:PX.Objects.CS.Numbering.numberingID"/> field.
+            </value>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementSetup.requestForInformationNumberingId">
+            <inheritdoc cref="P:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementSetup.RequestForInformationNumberingId"/>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementSetup.defaultEmailNotification">
+            <inheritdoc cref="P:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementSetup.DefaultEmailNotification"/>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementSetup.projectIssueNumberingId">
+            <inheritdoc cref="P:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementSetup.ProjectIssueNumberingId"/>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementSetup.projectIssueAssignmentMapId">
+            <inheritdoc cref="P:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementSetup.ProjectIssueAssignmentMapId"/>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementSetup.requestForInformationAssignmentMapId">
+            <inheritdoc cref="P:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementSetup.RequestForInformationAssignmentMapId"/>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementSetup.answerDaysCalculationType">
+            <inheritdoc cref="P:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementSetup.AnswerDaysCalculationType"/>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementSetup.calendarId">
+            <inheritdoc cref="P:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementSetup.CalendarId"/>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementSetup.dailyFieldReportNumberingId">
+            <inheritdoc cref="P:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementSetup.DailyFieldReportNumberingId"/>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementSetup.dailyFieldReportApprovalMapId">
+            <inheritdoc cref="P:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementSetup.DailyFieldReportApprovalMapId"/>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementSetup.pendingApprovalNotification">
+            <inheritdoc cref="P:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementSetup.PendingApprovalNotification"/>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementSetup.isHistoryLogEnabled">
+            <inheritdoc cref="P:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementSetup.IsHistoryLogEnabled"/>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementSetup.submittalNumberingId">
+            <inheritdoc cref="P:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementSetup.SubmittalNumberingId"/>
+        </member>
+        <member name="M:PX.Objects.PJ.ProjectManagement.PJ.Graphs.AssignBaseMassProcess`3.GetAssignmentMapId(PX.Data.PXGraph)">
+            <summary>
+            This method is used to get AssignmentMapId field value from different setup entities. We create search
+            variable for get AssgnmentMapId field name and create view from which we will get this value.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectManagement.PJ.Services.ProjectManagementClassUsageService">
+            <summary>
+            Provides common logic for "Use For" fields of a <see cref="T:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementClass"/>.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.ProjectManagement.PM.CacheExtensions.PmChangeRequestExtension.ConvertedFrom">
+            <summary>
+            The type of the document from which the change request was created.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.ProjectManagement.PM.CacheExtensions.PmChangeRequestExtension.RFIID">
+            <summary>
+            The identifier of the <see cref="T:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation">request for information</see> that is associated with the change request.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.ProjectManagement.PM.CacheExtensions.PmChangeRequestExtension.ProjectIssueID">
+            <summary>
+            The identifier of the <see cref="T:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue">project issue</see> associated with the change request.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue">
+            <summary>
+            Contains the main properties of a project issue.
+            Project issues are used for tracking and reporting on all activities
+            related to various issues discovered on a construction site.
+            The records of this type are created and edited through the Project Issue (PJ302000) form
+            (which corresponds to the <see cref="T:PX.Objects.PJ.ProjectsIssue.PJ.Graphs.ProjectIssueMaint"/> graph).
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.PK">
+            <summary>
+            Primary Key
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.FK">
+            <summary>
+            Foreign Keys
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.FK.Project">
+            <summary>
+            Project
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.FK.ProjectTask">
+            <summary>
+            Project Task
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.FK.OwnerContact">
+            <summary>
+            Owner
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.projectIssueId">
+            <inheritdoc cref="P:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.ProjectIssueId"/>
+        </member>
+        <member name="P:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.ProjectIssueId">
+            <summary>
+            The unique identifier of the project issue in the database.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.projectIssueCd">
+            <inheritdoc cref="P:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.ProjectIssueCd"/>
+        </member>
+        <member name="P:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.ProjectIssueCd">
+            <summary>
+            The project issue ID displayed on the form.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.summary">
+            <inheritdoc cref="P:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.Summary"/>
+        </member>
+        <member name="P:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.Summary">
+            <summary>
+            The summary of the project issue.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.projectId">
+            <inheritdoc cref="P:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.ProjectId"/>
+        </member>
+        <member name="P:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.ProjectId">
+            <summary>
+            The identifier of the <see cref="T:PX.Objects.PM.PMProject">project</see> that is related to this project issue.
+            </summary>
+            <value>
+            The value of this field corresponds to the value of the <see cref="T:PX.Objects.PM.PMProject.contractID"/> field.
+            </value>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.projectTaskId">
+            <inheritdoc cref="P:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.ProjectTaskId"/>
+        </member>
+        <member name="P:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.ProjectTaskId">
+            <summary>
+            The identifier of the <see cref="T:PX.Objects.PM.PMTask">project task</see> that is related to this project issue.
+            </summary>
+            <value>
+            The value of this field corresponds to the value of the <see cref="T:PX.Objects.PM.PMTask.taskID"/> field.
+            </value>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.classId">
+            <inheritdoc cref="P:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.ClassId"/>
+        </member>
+        <member name="P:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.ClassId">
+            <summary>
+            The <see cref="T:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementClass">project management class</see> of the project issue.
+            </summary>
+            <value>
+            The value of this field corresponds to the value of the <see cref="P:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementClass.ProjectManagementClassId"/> field.
+            </value>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.ownerID">
+            <inheritdoc cref="P:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.OwnerID"/>
+        </member>
+        <member name="P:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.OwnerID">
+            <summary>
+            The <see cref="T:PX.Objects.CR.Contact">employee</see> assigned to the project issue.
+            </summary>
+            <value>
+            The value of this field corresponds to the value of the <see cref="T:PX.Objects.CR.Contact.contactID"/> field.
+            </value>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.workgroupID">
+            <inheritdoc cref="P:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.WorkgroupID"/>
+        </member>
+        <member name="P:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.WorkgroupID">
+            <summary>
+            The identifier of the <see cref="T:PX.TM.EPCompanyTree">project workgroup</see>.
+            </summary>
+            <value>
+            The value of this field corresponds to the value of the <see cref="P:PX.TM.EPCompanyTree.WorkGroupID"/> field.
+            </value>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.description">
+            <inheritdoc cref="P:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.Description"/>
+        </member>
+        <member name="P:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.Description">
+            <summary>
+            The details of the project issue. 
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.priorityId">
+            <inheritdoc cref="P:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.PriorityId"/>
+        </member>
+        <member name="P:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.PriorityId">
+            <summary>
+            The <see cref="T:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementClassPriority">priority</see> of the project issue.
+            </summary>
+            <value>
+            The value of this field corresponds to the value of the <see cref="P:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementClassPriority.PriorityId"/> field.
+            </value>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.status">
+            <inheritdoc cref="P:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.Status"/>
+        </member>
+        <member name="P:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.Status">
+            <summary>
+            The status of the project issue.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.MajorStatus">
+            <summary>
+            The major status of the project issue.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.dueDate">
+            <inheritdoc cref="P:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.DueDate"/>
+        </member>
+        <member name="P:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.DueDate">
+            <summary>
+            The due date of the project issue.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.resolvedOn">
+            <inheritdoc cref="P:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.ResolvedOn"/>
+        </member>
+        <member name="P:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.ResolvedOn">
+            <summary>
+            The resolved date of the project issue.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.creationDate">
+            <inheritdoc cref="P:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.CreationDate"/>
+        </member>
+        <member name="P:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.CreationDate">
+            <summary>
+            The creation date of the project issue.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.convertedTo">
+            <inheritdoc cref="P:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.ConvertedTo"/>
+        </member>
+        <member name="P:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.ConvertedTo">
+            <summary>
+            The reference number of the request for information or change request created for the project issue.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.RelatedEntityDescription">
+            <summary>
+            The record or document related to the project issue.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.priorityIcon">
+            <inheritdoc cref="P:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.PriorityIcon"/>
+        </member>
+        <member name="P:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.PriorityIcon">
+            <summary>
+            The priority icon of the project issue.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.projectIssueTypeId">
+            <inheritdoc cref="P:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.ProjectIssueTypeId"/>
+        </member>
+        <member name="P:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.ProjectIssueTypeId">
+            <summary>
+            The <see cref="T:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssueType">type</see> of the project issue.
+            </summary>
+            <value>
+            The value of this field corresponds to the value of the <see cref="P:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssueType.ProjectIssueTypeId"/> field.
+            </value>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.isScheduleImpact">
+            <inheritdoc cref="!:IsScheduleImpact"/>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.scheduleImpact">
+            <inheritdoc cref="!:ScheduleImpact"/>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.isCostImpact">
+            <inheritdoc cref="!:IsCostImpact"/>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssue.costImpact">
+            <inheritdoc cref="!:CostImpact"/>
+        </member>
+        <member name="T:PX.Objects.PJ.ProjectsIssue.PJ.DAC.ProjectIssueType.PK">
+            <summary>
+            Primary Key
+            </summary>
+        </member>
+        <member name="M:PX.Objects.PJ.ProjectsIssue.PJ.Graphs.ProjectIssuesMaint.UpdateProjectIssueViewCacheIfRequired">
+            <summary>
+            This method is used for updating ProjectIssue view cache, because
+            mobile framework without these data can't find the row on which users are clicking.
+            By default Cached collection contains only the last row in the list.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation">
+            <summary>
+            Contains the main properties of a request for information.
+            Requests for information (RFIs) are used for obtaining information
+            that is not present in (or cannot be inferred from) the contract documents.
+            The records of this type are created and edited through the Request for Information (PJ301000) form
+            (which corresponds to the <see cref="T:PX.Objects.PJ.RequestsForInformation.PJ.Graphs.RequestForInformationMaint"/> graph).
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.PK">
+            <summary>
+            Primary Key
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.FK">
+            <summary>
+            Foreign Keys
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.FK.Project">
+            <summary>
+            Project
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.FK.ProjectTask">
+            <summary>
+            Project Task
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.FK.OwnerContact">
+            <summary>
+            Owner
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.FK.BusinessAccount">
+            <summary>
+            Business Account
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.FK.Contact">
+            <summary>
+            Contact
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.RequestForInformationId">
+            <summary>
+            The unique identifier of the request for information in the database.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.RequestForInformationCd">
+            <summary>
+            The unique identifier of the request for information displayed on the form.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.Summary">
+            <summary>
+            A brief description of the request for information.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.IncomingRequestForInformationId">
+            <summary>
+            The identifier of the <see cref="T:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation">incoming request for information</see>.
+            </summary>
+            <value>
+            The value of this field corresponds to the value of the <see cref="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.RequestForInformationId"/> field.
+            </value>
+        </member>
+        <member name="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.RequestForInformationNumber">
+            <summary>
+            A character number of the request for information.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.ClassId">
+            <summary>
+            The <see cref="T:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementClass">project management class</see> that the request for information belongs to.
+            </summary>
+            <value>
+            The value of this field corresponds to the value of the <see cref="P:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementClass.ProjectManagementClassId"/> field.
+            </value>
+        </member>
+        <member name="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.ProjectId">
+            <summary>
+            The <see cref="T:PX.Objects.PM.PMProject">project</see> related to the request for information.
+            </summary>
+            <value>
+            The value of this field corresponds to the value of the <see cref="P:PX.Objects.PM.PMProject.ContractID"/> field.
+            </value>
+        </member>
+        <member name="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.ProjectTaskId">
+            <summary>
+            The <see cref="T:PX.Objects.PM.PMTask">project task</see> related to the request for information.
+            </summary>
+            <value>
+            The value of this field corresponds to the value of the <see cref="P:PX.Objects.PM.PMTask.TaskID"/> field.
+            </value>
+        </member>
+        <member name="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.OwnerID">
+            <summary>
+            The <see cref="T:PX.Objects.EP.EPEmployee">Employee</see> assigned to the request for information.
+            </summary>
+            <value>
+            The value of this field corresponds to the <see cref="P:PX.Objects.CR.BAccount.BAccountID"/> field.
+            </value>
+        </member>
+        <member name="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.WorkgroupID">
+            <summary>
+            The <see cref="T:PX.TM.EPCompanyTree">workgroup</see> to work on the request for information.
+            </summary>
+            <value>
+            The value of this field corresponds to the <see cref="P:PX.TM.EPCompanyTree.WorkGroupID">EPCompanyTree.WorkGroupID</see> field.
+            </value>
+        </member>
+        <member name="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.RequestDetails">
+            <summary>
+            The question related to the request for information.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.RequestAnswer">
+            <summary>
+            The answer to the <see cref="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.RequestDetails">question</see>.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.LastModifiedRequestAnswer">
+            <summary>
+            The date on which the request for information was last modified.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.Attributes">
+            <summary>
+            A set of attributes related to the request for information.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.Status">
+            <summary>
+            The status of the request for information.
+            </summary>
+            <value>
+            The field can have one of the values described in <see cref="T:PX.Objects.PJ.RequestsForInformation.PJ.Descriptor.Attributes.RequestForInformationStatusAttribute"/>.
+            </value>
+        </member>
+        <member name="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.MajorStatus">
+            <summary>
+            The major status of the request for information (legacy).
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.BusinessAccountId">
+            <summary>
+            The customer or vendor account related to the request for information.
+            </summary>
+            <value>
+            The value of this field corresponds to the <see cref="P:PX.Objects.CR.BAccount.BAccountID"/> field.
+            </value>
+        </member>
+        <member name="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.ContactId">
+            <summary>
+            A <see cref="T:PX.Objects.CR.Contact">contact</see> on the customer side.
+            </summary>
+            <value>
+            The value of this field corresponds to the <see cref="P:PX.Objects.CR.Contact.ContactID"/> field.
+            </value>
+        </member>
+        <member name="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.DesignChange">
+            <summary>
+            A Boolean value that indicates (if the value is <see langword="true" />) that the project design has been affected by the request for information.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.Incoming">
+            <summary>
+            A Boolean value that indicates (if the value is <see langword="true" />) that the request for information is incoming.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.DocumentationLink">
+            <summary>
+            The link to the external documentation.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.SpecSection">
+            <summary>
+            The reference number of the section in the specification related to the request for information.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.CreationDate">
+            <summary>
+            The date and time when the request for information has been created.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.CreatedById">
+            <summary>
+            The user name of the employee that has created the request for information.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.PriorityId">
+            <summary>
+            The priority of the request for information.
+            </summary>
+            <value>
+            The value of this field corresponds to the <see cref="P:PX.Objects.PJ.ProjectManagement.PJ.DAC.ProjectManagementClassPriority.PriorityId"/> field.
+            </value>
+        </member>
+        <member name="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.ConvertedTo">
+            <summary>
+            The reference number of the change request or outgoing request for information created for the request for information.
+            </summary>
+            <value>
+            The value of this field corresponds to the <see cref="P:PX.Data.Note.NoteID"/> field.
+            </value>
+        </member>
+        <member name="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.ConvertedFrom">
+            <summary>
+            The reference number of the document from which the request for information has been created.
+            </summary>
+            <value>
+            The value of this field corresponds to the <see cref="P:PX.Data.Note.NoteID"/> field.
+            </value>
+        </member>
+        <member name="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.Reason">
+            <summary>
+            The reason of the request of information.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformation.DueResponseDate">
+            <summary>
+            The date on which the answer for the request for information has to be received.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformationRelation">
+            <summary>
+            Represents the relations between a request for information and a customer, an employee, or another related entity.
+            The records of this type are created and edited through the <b>Relations</b> tab of the Request for Information (PJ301000) form
+            (which corresponds to the <see cref="T:PX.Objects.PJ.RequestsForInformation.PJ.Graphs.RequestForInformationMaint"/> graph).
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformationRelation.RequestForInformationRelationId">
+            <summary>
+            The unique identifier of the relation between this request for information and another entity.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformationRelation.RequestForInformationNoteId">
+            <summary>
+            The unique identifier of the <see cref="T:PX.Data.Note">note</see> associated with the relation of the request for information.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformationRelation.Role">
+            <summary>
+            The role of the relation of the request for information.
+            </summary>
+            <value>
+            The field can have one of the values described in <see cref="T:PX.Objects.PJ.RequestsForInformation.PJ.Descriptor.Attributes.RequestForInformationRoleListAttribute"/>.
+            </value>
+        </member>
+        <member name="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformationRelation.IsPrimary">
+            <summary>
+            A Boolean value that indicates (if the value is <see langword="true" />) that the current row is considered the primary relation of the selected role.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformationRelation.Type">
+            <summary>
+            The type of the entity that is related to the request for information.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformationRelation.DocumentNoteId">
+            <summary>
+            The unique identifier of the document that is relevant for the request for information.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformationRelation.BusinessAccountId">
+            <summary>
+            The unique identifier of the <see cref="T:PX.Objects.CR.BAccount">business account</see> in the database.
+            </summary>
+            <value>
+            The value of this field corresponds to the <see cref="P:PX.Objects.CR.BAccount.BAccountID"/> field.
+            </value>
+        </member>
+        <member name="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformationRelation.BusinessAccountCd">
+            <summary>
+            The identifier of the <see cref="T:PX.Objects.CR.BAccount">business account</see> displayed on the form.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformationRelation.ContactId">
+            <summary>
+            The <see cref="T:PX.Objects.CR.Contact">contact</see> associated with the relation of the request for information. 
+            </summary>
+            <value>
+            The value of this field corresponds to the <see cref="P:PX.Objects.CR.Contact.ContactID"/> field.
+            </value>
+        </member>
+        <member name="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformationRelation.AddToCc">
+            <summary>
+            A Boolean value that indicates (if the value is <see langword="true" />) that the contact should receive a copy of emails.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformationRelation.BusinessAccountName">
+            <summary>
+            The name of the <see cref="T:PX.Objects.CR.BAccount">business account</see> associated with the relation of the request for information.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformationRelation.ContactName">
+            <summary>
+            The name of the <see cref="T:PX.Objects.CR.Contact">contact</see> associated with the relation of the request for information.
+            </summary>
+        </member>
+        <member name="P:PX.Objects.PJ.RequestsForInformation.PJ.DAC.RequestForInformationRelation.ContactEmail">
+            <summary>
+            The email address of the contact person.
+            </summary>
+        </member>
+        <member name="M:PX.Objects.PJ.RequestsForInformation.PJ.Graphs.RequestForInformationMaint.ResetSearchParameterIfRequired(System.String,System.Object[])">
+            <summary>
+            This is temporary solution for Acumatica Support Case = 089889
+            Reset search parameter to null for custom selector based on <see cref="T:PX.Objects.PJ.RequestsForInformation.PJ.Descriptor.Attributes.DocumentSelectorProviders.DocumentSelectorProvider"/>.
+            </summary>
+        </member>
+        <member name="M:PX.Objects.PJ.RequestsForInformation.PJ.Services.RequestForInformationEmailActivityService.GetSubject">
+            <summary>
+            TODO: review <see cref="F:PX.Objects.PJ.RequestsForInformation.Descriptor.RequestForInformationMessages.RequestForInformationEmailDefaultSubject"/>.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal">
+            <summary>
+            Contains the main properties of a submittal.
+            The records of this type are created and edited through the Submittals (PJ306000) form
+            (which corresponds to the <see cref="!:SubmittalEntry"/> graph).
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.PK">
+            <summary>
+            Primary Key
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.FK">
+            <summary>
+            Foreign Keys
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.FK.SubmittalType">
+            <summary>
+            Submittal Type
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.FK.Project">
+            <summary>
+            Project
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.FK.ProjectTask">
+            <summary>
+            Project Task
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.FK.CostCode">
+            <summary>
+            Cost Code
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.FK.OwnerContact">
+            <summary>
+            Owner
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.FK.CurrentWorkflowItemContact">
+            <summary>
+            Ball In Court Contact
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.submittalID">
+            <inheritdoc cref="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.SubmittalID"/>
+        </member>
+        <member name="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.SubmittalID">
+            <summary>
+            The unique identifier of the submittal.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.revisionID">
+            <inheritdoc cref="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.RevisionID"/>
+        </member>
+        <member name="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.RevisionID">
+            <summary>
+            The revision number of the submittal.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.typeID">
+            <inheritdoc cref="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.TypeID"/>
+        </member>
+        <member name="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.TypeID">
+            <summary>
+            The <see cref="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalType">type</see> of the submittal. 
+            </summary>
+            <value>
+            The value of this field corresponds to the value of the <see cref="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalType.submittalTypeID"/> field.
+            </value>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.summary">
+            <inheritdoc cref="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.Summary"/>
+        </member>
+        <member name="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.Summary">
+            <summary>
+            The summary of the submittal.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.status">
+            <inheritdoc cref="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.Status"/>
+        </member>
+        <member name="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.Status">
+            <summary>
+            The status of the submittal.
+            </summary>
+            <value>
+            The field can have one of the values described in <see cref="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.status.Labels"/>.
+            </value>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.reason">
+            <inheritdoc cref="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.Reason"/>
+        </member>
+        <member name="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.Reason">
+            <summary>
+            The reason of the submittal.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.isLastRevision">
+            <inheritdoc cref="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.IsLastRevision"/>
+        </member>
+        <member name="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.IsLastRevision">
+            <summary>
+            A Boolean value that indicates (if set to <see langword="true" />) that this record is the last revision for submittal.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.projectId">
+            <inheritdoc cref="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.ProjectId"/>
+        </member>
+        <member name="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.ProjectId">
+            <summary>
+            The <see cref="T:PX.Objects.PM.PMProject">project</see> of the submittal.
+            </summary>
+            <value>
+            The value of this field corresponds to the value of the <see cref="T:PX.Objects.PM.PMProject.contractID"/> field.
+            </value>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.projectTaskId">
+            <inheritdoc cref="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.ProjectTaskId"/>
+        </member>
+        <member name="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.ProjectTaskId">
+            <summary>
+            The <see cref="T:PX.Objects.PM.PMTask">project task</see> of the submittal.
+            </summary>
+            <value>
+            The value of this field corresponds to the value of the <see cref="T:PX.Objects.PM.PMTask.taskID"/> field.
+            </value>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.costCodeID">
+            <inheritdoc cref="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.CostCodeID"/>
+        </member>
+        <member name="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.CostCodeID">
+            <summary>
+            The <see cref="T:PX.Objects.PM.PMCostCode">cost code</see> of the submittal.
+            </summary>
+            <value>
+            The value of this field corresponds to the value of the <see cref="T:PX.Objects.PM.PMCostCode.costCodeID"/> field.
+            </value>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.specificationInfo">
+            <inheritdoc cref="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.SpecificationInfo"/>
+        </member>
+        <member name="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.SpecificationInfo">
+            <summary>
+            The specification information of the submittal.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.specificationSection">
+            <inheritdoc cref="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.SpecificationSection"/>
+        </member>
+        <member name="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.SpecificationSection">
+            <summary>
+            The specification section of the submittal.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.dateOnSite">
+            <inheritdoc cref="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.DateOnSite"/>
+        </member>
+        <member name="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.DateOnSite">
+            <summary>
+            The date by which the documents or materials related to the submittal have to be at the construction site.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.dateCreated">
+            <inheritdoc cref="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.DateCreated"/>
+        </member>
+        <member name="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.DateCreated">
+            <summary>
+            The date when the submittal was created.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.dueDate">
+            <inheritdoc cref="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.DueDate"/>
+        </member>
+        <member name="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.DueDate">
+            <summary>
+            The due date of the submittal.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.dateClosed">
+            <inheritdoc cref="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.DateClosed"/>
+        </member>
+        <member name="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.DateClosed">
+            <summary>
+            The date when the submittal was closed.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.daysOverdue">
+            <inheritdoc cref="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.DaysOverdue"/>
+        </member>
+        <member name="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.DaysOverdue">
+            <summary>
+            The quantity of days for which the submittal was overdue.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.ownerID">
+            <inheritdoc cref="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.OwnerID"/>
+        </member>
+        <member name="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.OwnerID">
+            <summary>
+            The <see cref="T:PX.Objects.CR.Contact">owner</see> of the submittal.
+            </summary>
+            <value>
+            The value of this field corresponds to the value of the <see cref="T:PX.Objects.CR.Contact.contactID"/> field.
+            </value>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.workgroupID">
+            <inheritdoc cref="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.WorkgroupID"/>
+        </member>
+        <member name="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.WorkgroupID">
+            <summary>
+            The workgroup of the submittal.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.currentWorkflowItemContactID">
+            <inheritdoc cref="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.CurrentWorkflowItemContactID"/>
+        </member>
+        <member name="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.CurrentWorkflowItemContactID">
+            <summary>
+            The identifier of the <see cref="T:PX.Objects.CR.Contact"> contact</see> of the current workflow.
+            </summary>
+            <value>
+            The value of this field corresponds to the value of the <see cref="T:PX.Objects.CR.Contact.contactID"/> field.
+            </value>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.currentWorkflowItemLineNbr">
+            <inheritdoc cref="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.CurrentWorkflowItemLineNbr"/>
+        </member>
+        <member name="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.CurrentWorkflowItemLineNbr">
+            <summary>
+            The line number of current workflow of submittal.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.description">
+            <inheritdoc cref="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.Description"/>
+        </member>
+        <member name="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.Description">
+            <summary>.
+            The detailed description of the submittal.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalType.PK">
+            <summary>
+            Primary Key
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem">
+            <summary>
+            Represents a submittal workflow record.
+            The records of this type are created and edited through the <b>Submittal Workflow</b> tab of the
+            Submittals (PJ306000) form (which corresponds to the <see cref="!:SubmittalEntry"/> graph).
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.PK">
+            <summary>
+            Primary Key
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.FK">
+            <summary>
+            Foreign Keys
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.FK.Submittal">
+            <summary>
+            Submittal
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.FK.Contact">
+            <summary>
+            Contact For Current Project
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.submittalID">
+            <inheritdoc cref="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.SubmittalID"/>
+        </member>
+        <member name="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.SubmittalID">
+            <summary>
+            The identifier of a workflow for processing of the submittal.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.revisionID">
+            <inheritdoc cref="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.RevisionID"/>
+        </member>
+        <member name="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.RevisionID">
+            <summary>
+            The identifier of the <see cref="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal">revision</see> of the submittal.
+            </summary>
+            <value>
+            The value of this field corresponds to the value of the <see cref="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittal.revisionID"/> field.
+            </value>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.lineNbr">
+            <inheritdoc cref="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.LineNbr"/>
+        </member>
+        <member name="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.LineNbr">
+            <summary>
+            The identifier of the submittal workflow item.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.contactID">
+            <inheritdoc cref="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.ContactID"/>
+        </member>
+        <member name="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.ContactID">
+            <summary>
+            The identifier of the <see cref="T:PX.Objects.PJ.Common.DAC.ContactForCurrentProject"> Contact.</see>
+            </summary>
+            <value>
+            The value of this field corresponds to the value of the <see cref="T:PX.Objects.PJ.Common.DAC.ContactForCurrentProject.contactID"/> field.
+            </value>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.role">
+            <inheritdoc cref="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.Role"/>
+        </member>
+        <member name="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.Role">
+            <summary>
+            The role of a workflow for processing of the submittal.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.status">
+            <inheritdoc cref="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.Status"/>
+        </member>
+        <member name="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.Status">
+            <summary>
+            The status of the workflow for processing of the submittal.
+            </summary>
+            <value>
+            The field can have one of the values described in <see cref="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.status.FullLabels"/>.
+            </value>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.startDate">
+            <inheritdoc cref="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.StartDate"/>
+        </member>
+        <member name="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.StartDate">
+            <summary>
+            The start date of the workflow for processing of the submittal.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.daysForReview">
+            <inheritdoc cref="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.DaysForReview"/>
+        </member>
+        <member name="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.DaysForReview">
+            <summary>
+            The number of days to review the workflow for processing of the submittal.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.dueDate">
+            <inheritdoc cref="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.DaysForReview"/>
+        </member>
+        <member name="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.DueDate">
+            <summary>
+            The due date of the workflow for processing of the submittal.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.completionDate">
+            <inheritdoc cref="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.CompletionDate"/>
+        </member>
+        <member name="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.CompletionDate">
+            <summary>
+            The completion date of the workflow for processing of the submittal.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.dateReceived">
+            <inheritdoc cref="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.DateReceived"/>
+        </member>
+        <member name="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.DateReceived">
+            <summary>
+            The date when the workflow for processing of the submittal was received.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.dateSent">
+            <inheritdoc cref="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.DateSent"/>
+        </member>
+        <member name="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.DateSent">
+            <summary>
+            The date when the workflow for processing of the submittal was sent.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.canDelete">
+            <inheritdoc cref="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.CanDelete"/>
+        </member>
+        <member name="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.CanDelete">
+            <summary>
+            A Boolean value that indicates (if set to <see langword="true" />) that a user can delete the workflow for processing of the submittal.
+            </summary>
+        </member>
+        <member name="T:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.emailTo">
+            <inheritdoc cref="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.EmailTo"/>
+        </member>
+        <member name="P:PX.Objects.PJ.Submittals.PJ.DAC.PJSubmittalWorkflowItem.EmailTo">
+            <summary>
+            A Boolean value that indicates (if set to <see langword="true" />) that a user can email the workflow for processing of the submittal.
+            </summary>
+        </member>
+    </members>
+</doc>

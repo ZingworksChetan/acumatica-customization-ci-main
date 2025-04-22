@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PX.OAuthClient</name>
+    </assembly>
+    <members>
+        <member name="T:PX.OAuthClient.Localization.ErrorMessages">
+            <summary>
+            Represents values for exceptions that can occur in Stellart.NET Platform,
+            PXMessages class automatically binds these values to resource strings.
+            In resource file each key must represent name of assembly in which PXMessages-derived class
+            is declared and name of this class (for example, keys from ErrorMessages resources must be declared
+            as PX_Data_ErrorMessages_NotCurrentOrOptionalParameter or PX_Data_ErrorMessages_FieldIsEmpty).
+            Name of resource file must coincide with name of PXMessages-derived class (for this class resource
+            files must have the following names: ErrorMessages.resx, ErrorMessages.en-GB.resx, ErrorMessages.ru-RU.resx, etc.)
+            </summary>
+        </member>
+        <member name="P:PX.OAuthClient.Processors.IExternalApplicationProcessor.HasRefreshToken">
+            <summary>
+            Should return true for OAuth applications. When true, there are visible Authentication token fields and buttons SIGN IN and REFRESH TOKEN
+            </summary>
+        </member>
+    </members>
+</doc>

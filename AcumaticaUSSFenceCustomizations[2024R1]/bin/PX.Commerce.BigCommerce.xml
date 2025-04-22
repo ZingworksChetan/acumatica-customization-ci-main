@@ -1,0 +1,2780 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PX.Commerce.BigCommerce</name>
+    </assembly>
+    <members>
+        <member name="T:PX.Commerce.BigCommerce.API.REST.BCRestClientFactory">
+            <summary>
+            BCRestClientFactory
+             </summary>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.API.REST.BCRestClientFactory.#ctor(System.Net.Http.IHttpClientFactory)">
+            <summary>
+            BCRestClientFactory
+            </summary>
+            <param name="clientFactory"></param>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.API.REST.BCRestClientFactory.GetRestClient(PX.Commerce.BigCommerce.BCBindingBigCommerce)">
+            <summary>
+            returns BigcommerceRestClient instance
+            </summary>
+            <param name="binding"></param>
+            <returns></returns>
+        </member>
+        <member name="T:PX.Commerce.BigCommerce.API.REST.PriceListRestDataProviderFactory">
+            <inheritdoc/>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.API.REST.PriceListRestDataProviderFactory.CreateInstance(PX.Commerce.BigCommerce.API.REST.IBigCommerceRestClient)">
+            <inheritdoc/>
+        </member>
+        <member name="T:PX.Commerce.BigCommerce.API.REST.PriceListRecordRestDataProviderFactory">
+            <inheritdoc/>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.API.REST.PriceListRecordRestDataProviderFactory.CreateInstance(PX.Commerce.BigCommerce.API.REST.IBigCommerceRestClient)">
+            <inheritdoc/>
+        </member>
+        <member name="T:PX.Commerce.BigCommerce.API.REST.PriceListRestDataProvider">
+            <inheritdoc/>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.PriceListRestDataProvider.GetListUrl">
+            <inheritdoc/>		
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.PriceListRestDataProvider.GetSingleUrl">
+            <inheritdoc/>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.API.REST.PriceListRestDataProvider.#ctor(PX.Commerce.BigCommerce.API.REST.IBigCommerceRestClient)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.API.REST.PriceListRestDataProvider.Create(PX.Commerce.BigCommerce.API.REST.PriceList)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.API.REST.PriceListRestDataProvider.GetAll(System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.API.REST.PriceListRestDataProvider.DeletePriceList(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="T:PX.Commerce.BigCommerce.API.REST.PriceListRecordRestDataProvider">
+            <inheritdoc/>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.PriceListRecordRestDataProvider.GetListUrl">
+            <inheritdoc/>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.PriceListRecordRestDataProvider.GetSingleUrl">
+            <inheritdoc/>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.PriceListRecordRestDataProvider.BatchSize">
+            <summary>
+            Price List Upsert accepts up to 1000 records per batch
+            </summary>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.API.REST.PriceListRecordRestDataProvider.#ctor(PX.Commerce.BigCommerce.API.REST.IBigCommerceRestClient)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.API.REST.PriceListRecordRestDataProvider.Upsert(System.Collections.Generic.List{PX.Commerce.BigCommerce.API.REST.PriceListRecord},System.String,System.Func{PX.Commerce.BigCommerce.API.REST.ItemProcessCallback{PX.Commerce.BigCommerce.API.REST.PriceListRecord},System.Threading.Tasks.Task})">
+            <inheritdoc/>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.API.REST.PriceListRecordRestDataProvider.GetAllRecords(System.String,PX.Commerce.BigCommerce.API.REST.IFilter,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.API.REST.PriceListRecordRestDataProvider.DeleteRecords(System.String,System.String,System.String)">
+            <inheritdoc/>		
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.API.REST.OrderShipmentsRestDataProvider.Create(PX.Commerce.BigCommerce.API.REST.OrdersShipmentData,System.String)">
+            <remarks>
+            Presuming that a valid carrier code is used, a tracking link is generated if either shipping_provider or tracking_carrier is supplied alongside a tracking number.<br/>
+            Providing only the tracking number will result in an unclickable text in the customer facing email.
+            Acceptable values for shipping_provider include an empty string (""), auspost, canadapost, endicia, usps, fedex, royalmail, ups, upsready, upsonline, or shipperhq.
+            Acceptable values for tracking_carrier include an empty string ("") or one of the valid <see href="https://github.com/bigcommerce/dev-docs/blob/master/assets/csv/tracking_carrier_values.csv">tracking-carrier values.</see>
+            </remarks>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.API.REST.ProductVariantBatchRestDataProvider.GetVariants(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Returns a list of product Variants own by the <paramref name="parentId"/>.<br/>
+            <seealso href="https://developer.bigcommerce.com/api-reference/02db3ddfc6be7-get-all-product-variants">Link for more details.</seealso>
+            </summary>
+            <param name="parentId"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.PriceListRecord.localPriceInventoryNoteId">
+            <summary>
+            Contains the NoteId of the inventory item that is related directly to the price record in the ERP
+            If we define prices at the template item level, all variants records will have the note id of the template item
+            If we define a price at the variant level, this field will contain the noteid of the variant inventory item.
+            This field is not sent to BC, but used to store the local inventory id
+            so that we can relate it to the current external record after syncing.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderAddressData.FirstName">
+            <summary>
+            The first name of the addressee
+            
+            [string(255)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderAddressData.LastName">
+            <summary>
+            The last name of the addressee.
+            
+            [string(255)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderAddressData.Company">
+            <summary>
+            The company of the addressee.
+            
+            [string(100)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderAddressData.Street1">
+            <summary>
+            The first street line of the address.
+            
+            [string(255)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderAddressData.Street2">
+            <summary>
+            The second street line of the address.
+            
+            [string(255)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderAddressData.City">
+            <summary>
+            The city or suburb of the address.
+            
+            [string(50)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderAddressData.State">
+            <summary>
+            The state of the address.
+            
+            [string(50)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderAddressData.ZipCode">
+            <summary>
+            The zip or postcode of the address.
+            
+            [string(50)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderAddressData.Country">
+            <summary>
+            The country of the address.
+            
+            [string(50)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderAddressData.CountryIso2">
+            <summary>
+            The country code of the country field.
+            
+            [string(50)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderAddressData.Phone">
+            <summary>
+            The phone number of the addressee.
+            
+            [string(50)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderAddressData.Email">
+            <summary>
+            The email address of the addressee.
+            
+            [string(255)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.Id">
+            <summary>
+            The ID of the order. This is auto-generated for new orders.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.SubtotalTax">
+            <summary>
+            The amount of tax on the subtotal.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.TotalTax">
+            <summary>
+            The total tax for the order.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.ShippingCostTax">
+            <summary>
+            The total tax for the shipping cost.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.ShippingCostTaxClassId">
+            <summary>
+            The ID of the tax class used for taxing shipping costs
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.HandlingCostTax">
+            <summary>
+            The total tax for the handling cost.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.HandlingCostTaxClassId">
+            <summary>
+            The ID of the tax class used for taxing handling costs.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.WrappingCostTax">
+            <summary>
+            The total tax for the wrapping cost.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.WrappingCostTaxClassId">
+            <summary>
+            The ID of the tax class used for taxing wrapping costs.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.Status">
+            <summary>
+            The textual description of the status. 
+            
+            [string(100)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.PaymentStatus">
+            <summary>
+            The status of the payment. A payment status may be one of the following, 
+            depending on the payment method used: 
+            
+            authorized
+            captured
+            refunded
+            partially
+            refunded
+            voided
+            </summary>
+            
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.DateShipped">
+            <summary>
+            The date the order was shipped.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.StoreCreditAmount">
+            <summary>
+            The amount of store credit the customer used to pay for the order.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.CurrencyId">
+            <summary>
+            The ID of the currency used by the customer to place the order.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.CurrencyCode">
+            <summary>
+            The 3 letter currency code of the currency used to place the order. (Store version 7.3.6+)
+            
+            [string(3)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.DefaultCurrencyId">
+            <summary>
+            The ID of the store's default currency at the time of the order.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.DefaultCurrencyCode">
+            <summary>
+            The 3 letter currency code of the store's default currency at the time of the order. (Store version 7.3.6+) 
+            
+            [string(3)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.StoreDefaultCurrencyCode">
+            <summary>
+            The currency code of the store's default currency.
+            
+            [string(3)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.StoreDefaultToTransactionalExchangeRate">
+            <summary>
+            The exchange rate between the store's default currency and the transactional currency used in the order.
+            
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.CurrencyExchangeRate">
+            <summary>
+            The exchange rate of the currency used to place the order.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.ShippingAddressCount">
+            <summary>
+            The amount of addresses that items were shipped to for the order.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.CouponDiscount">
+            <summary>
+            The total discount given on the order due to applied coupons.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.BillingAddress">
+            <summary>
+            The address that the order is billed to.  
+            Billing Address section below for a definition of this object. 
+            
+            See https://developer.bigcommerce.com/display/API/Orders
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.CustomerId">
+            <summary>
+            The ID of the customer that placed the order or 0 if it was a guest order.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.StatusId">
+            <summary>
+            The status of the order. A list of available statuses can be retrieved 
+            from Order Statuses
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.SubtotalExcludingTax">
+            <summary>
+            The subtotal of the order excluding tax.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.SubtotalIncludingTax">
+            <summary>
+            The subtotal of the order including tax.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.BaseShippingCost">
+            <summary>
+            The base shipping cost of the order. The base shipping cost is the 
+            sum of all of the shipping costs minus any discount amounts to the 
+            shipping costs. It may be inc or ex tax depending on the "Prices Entered With Tax?" 
+            tax setting.The base shipping * cost is the sum of all of the base shipping costs on 
+            each address. A * base shipping cost is a price entered by the store owner, either 
+            inc or * ex tax.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.ShippingCostExcludingTax">
+            <summary>
+            The total shipping cost of the order excluding tax.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.ShippingCostIncludingTax">
+            <summary>
+            The total shipping cost of the order including tax.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.BaseHandlingCost">
+            <summary>
+            The base handling cost of the order. The base handling cost is the 
+            sum of the all the handling costs. It may be inc or ex tax depending 
+            on the "Prices Entered With Tax?" tax setting.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.HandlingCostExcludingTax">
+            <summary>
+            The handling cost of the order excluding tax.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.HandlingCostIncludingTax">
+            <summary>
+            The handing cost of the order including tax.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.BaseWrappingCost">
+            <summary>
+            The base wrapping cost of the order. The base wrapping cost is the sum 
+            of all the wrapping costs on the items. It may be inc or ex tax depending 
+            on the "Prices Entered With Tax?" tax setting.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.WrappingCostExcludingTax">
+            <summary>
+            The wrapping cost of the order including tax.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.WrappingCostIncludingTax">
+            <summary>
+            The wrapping cost of the order excluding tax.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.TotalExcludingTax">
+            <summary>
+            The total of the order excluding tax.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.TotalIncludingTax">
+            <summary>
+            The total of the order including tax.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.ItemsTotal">
+            <summary>
+            The total quantity of the items (sum of products * quantity) in the order.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.ItemsShipped">
+            <summary>
+            The quantity of items that have been shipped.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.PaymentMethod">
+            <summary>
+            The payment method used for the order.
+            
+            [string(100)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.PaymentProviderId">
+            <summary>
+            The ID or reference number of a payment from the payment provider/gateway.
+            
+            [string(255)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.RefundedAmount">
+            <summary>
+            The amount that that has been refunded for the order.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.OrderIsDigital">
+            <summary>
+            Indicates if the order contains purely digital delivery products.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.GiftCertificateAmount">
+            <summary>
+            The amount of a gift certificate the customer used to pay for the order.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.IpAddress">
+            <summary>
+            The IP address of the user that placed the order.
+            
+            [string(30)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.GeoIpCountry">
+            <summary>
+            The country the order was placed from as determined by GeoIP location.
+            
+            [string(50)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.GeoIpCountryIso2">
+            <summary>
+            The country code of the geoip_country field.
+            
+            [string(50)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.StaffNotes">
+            <summary>
+            Staff notes on the order.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.CustomerMessage">
+            <summary>
+            An order message left by the customer when placing the order.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.DiscountAmount">
+            <summary>
+            The total discounts applied to the order, excluding coupons.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.IsDeleted">
+            <summary>
+            Indicates if the order was deleted (archived).
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.OrderSource">
+            <summary>
+            Orders submitted via the store’s website will include a www value. Orders submitted via the API will be set to external. A read-only value.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrderData.ExternalSource">
+            <summary>
+            For orders submitted or modified via the API, using a PUT or POST operation, you can optionally pass in a value identifying the system used to generate the order. 
+            For example: POS. Otherwise, the value will be null.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersCouponData.Id">
+            <summary>
+            The ID of the order coupon applied to the order.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersCouponData.OrderId">
+            <summary>
+            The ID of the order the coupon was applied to. 
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersCouponData.CouponId">
+            <summary>
+            The ID of the actual Coupon that was applied to the order. 
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersCouponData.CouponCode">
+            <summary>
+            The code of the coupon.
+            string(50) 
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersCouponData.CouponAmount">
+            <summary>
+            The amount that the coupon is configured to discount. eg. 10 for 10% or $10 discount. 
+            
+            decimal(20,4)
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersCouponData.CouponType">
+            <summary>
+            The type of coupon which is one of the following int values:
+            0 - Dollar amount off each item in the order
+            1 - Percentage off each item in the order
+            2 - Dollar amount off the order total
+            3 - Dollar amount off the shipping total
+            4 - Free shipping
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductData.Id">
+            <summary>
+            The ID of the product.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductData.Sku">
+            <summary>
+            The SKU of the product.
+            
+            [string(250)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductData.ProductName">
+            <summary>
+            The name of the product.
+            
+            [string(250)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductData.ProductType">
+             <summary>
+             The type of product that is one of the following values:
+            
+             physical
+             digital
+             giftcertificate
+             </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductData.BasePrice">
+            <summary>
+            The base price of the product as entered by the store owner. 
+            May be inc or ex tax depending on the "Prices Entered With Tax?" tax setting.
+            
+            [decimal(20,4)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductData.PriceExcludingTax">
+            <summary>
+            The price of the product excluding tax.
+            
+            [decimal(20,4)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductData.PriceIncludingTax">
+            <summary>
+            The price of the product include tax.
+            
+            [decimal(20,4)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductData.PriceTax">
+            <summary>
+            The amount of tax on the product price.
+            
+            [decimal(20,4)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductData.BaseTotal">
+            <summary>
+            The total base price (base_price * quantity).
+            
+            [decimal(20,4)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductData.TotalExcludingTax">
+            <summary>
+            The total price (price * quantity) excluding tax.
+            
+            [decimal(20,4)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductData.TotalIncludingTax">
+            <summary>
+            The total price (price * quantity) including tax.
+            
+            [decimal(20,4)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductData.TotalTax">
+            <summary>
+            The tax on the total price.
+            
+            [decimal(20,4)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductData.Weight">
+            <summary>
+            The weight of the product.
+            
+            [decimal(20,4)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductData.Quantity">
+            <summary>
+            The quantity of the product that was purchased.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductData.OrderId">
+            <summary>
+            The ID of the order that this product is associated with.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductData.ProductId">
+            <summary>
+            The ID of the actual product this order product refers to.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductData.VariandId">
+            <summary>
+            The ID of the actual product variant this order product refers to.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductData.BaseCostPrice">
+            <summary>
+            The base cost price of the product as entered by the store owner. 
+            May be inc or ex tax depending on the "Prices Entered With Tax?" tax setting.
+            
+            [decimal(20,4)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductData.CostPriceIncludingTax">
+            <summary>
+            The cost price of the product excluding tax.
+            
+            [decimal(20,4)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductData.CostPriceExcludingTax">
+            <summary>
+            The cost price of the product including tax.
+            
+            [decimal(20,4)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductData.CostPriceTax">
+            <summary>
+            The amount of tax on the cost price.
+            
+            [decimal(20,4)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductData.IsRefunded">
+            <summary>
+            Indicates if this product has been refunded.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductData.QuantityRefund">
+            <summary>
+            The Qty that was refunded by the customer.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductData.RefundAmount">
+            <summary>
+            The amount that was refunded to the customer.
+            
+            [decimal(20,4)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductData.ReturnId">
+            <summary>
+            The ID of the return request submitted for this product.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductData.WrappingName">
+            <summary>
+            The name of the wrapping applied to the product.
+            
+            [string(100)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductData.BaseWrappingCost">
+            <summary>
+            The base wrapping cost as entered by the store owner. 
+            May be inc or ex tax depending on the "Prices Entered With Tax?" tax setting.
+            [decimal(20,4)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductData.WrappingCostExcludingTax">
+            <summary>
+            The wrapping cost excluding tax.
+            
+            [decimal(20,4)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductData.WrappingCostIncludingTax">
+            <summary>
+            The wrapping cost including tax.
+            
+            [decimal(20,4)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductData.WrappingCostTax">
+            <summary>
+            The amount of tax on the wrapping cost.
+            
+            [decimal(20,4)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductData.WrappingMessage">
+            <summary>
+            The message left by the customer for the wrapping.
+            
+            [text]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductData.QuantityShipped">
+            <summary>
+            The quantity of the product that has been shipped at this time.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductData.EventName">
+            <summary>
+            The name of the event date defined for the product.
+            
+            [string(255)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductData.FixedShippingCost">
+            <summary>
+            The fixed shipping cost for the product as defined by the store owner. 
+            May be inc or ex tax depending on the "Prices Entered With Tax?" tax setting.
+            [decimal(20,4)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductData.OrderAddressId">
+            <summary>
+            The ID of the shipping address that this product is associated with.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductData.EbayItemId">
+            <summary>
+            eBay's item ID for this product when it was listed on eBay.
+            
+            [string(19)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductData.AppliedDiscounts">
+            <summary>
+            A list of discounts (such as from Coupons or Discount Rules) applied to this product. 
+            See the Product Discounts section below for a definition of this object.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductData.EbayTransactionId">
+            <summary>
+            eBay's transaction ID for this product when purchased on eBay.
+            [string(19)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductData.OptionSetId">
+            <summary>
+            The ID of the option set applied to this product.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductData.ParentOrderProductId">
+            <summary>
+            The ID of order product if this product was bundled with another product.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductData.IsBundledProduct">
+            <summary>
+            Indicates if this product was bundled with another product.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductData.BinPickingNumber">
+            <summary>
+            The bin picking number for the product.
+            
+            [string(255)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductData.ProductOptions">
+            <summary>
+            The Product Options chosen/configured by the customer when adding the product to their cart. 
+            See the Product Options section below for a definition of this object.
+            See https://developer.bigcommerce.com/display/API/Order+Products
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductData.ConfigurableFields">
+            <summary>
+            The Configurable Fields chosen/configured by the customer when adding the product to their cart. 
+            See the Configurable Fields section below for a definition of this object.
+            See https://developer.bigcommerce.com/display/API/Order+Products
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductsConfigurableField.Id">
+            <summary>
+            The ID of the order configurable field applied to the order product.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductsConfigurableField.ConfigurableFieldId">
+            <summary>
+            The ID of the configurable field originally applied to the Product.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductsConfigurableField.OrderId">
+            <summary>
+            The ID of the order the configurable field is associated with. 
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductsConfigurableField.OrderProductId">
+            <summary>
+            The ID of the order product the configurable field is associated with.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductsConfigurableField.ProductId">
+            <summary>
+            The ID of the actual product the field was applied to.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductsConfigurableField.FieldValue">
+             <summary>
+             The value that was configured/chosen by the customer. The data type of the value depends on the type of field, as described below:
+            
+             Short Text - text
+             Textarea - text
+             Select Box - text
+             Checkbox - boolean
+             File - string(255) - A URI to the file supplied by the customer
+             </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductsConfigurableField.OriginalFilename">
+            <summary>
+            The name of the file as originally uploaded by the customer.
+            
+            string(255)
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductsConfigurableField.NameLabel">
+            <summary>
+            The name/label of the field. 
+            
+            string(255)
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductsConfigurableField.FieldType">
+             <summary>
+             The type of configurable field, one of the following string values:
+            
+            text (Short Text)
+            textarea
+            select
+            checkbox
+            file
+            
+             ?string(50)
+             </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductsConfigurableField.SelectBoxOptions">
+            <summary>
+            The list of valid options for a Select Box field as defined on the Product. 
+            
+            ?string(255)
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductsDiscount.Id">
+             <summary>
+             The identifier for this discount. Possible IDs are listed below:
+            
+             coupon (A regular per-item coupon)
+             total-coupon (A coupon discounting the order total)
+             Discount Rule ID (Internal ID of a Discount Rule) 
+             </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductsDiscount.DiscountAmount">
+            <summary>
+            The amount of the discount 
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductsDiscount.Code">
+            <summary>
+            The amount of the discount 
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductsOption.Id">
+            <summary>
+            The ID of the order product option applied to the order product.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductsOption.OrderProductId">
+            <summary>
+            The ID of the order product the option is applied to. 
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductsOption.OptionId">
+            <summary>
+            The ID of the Product Option the order product option refers to. 
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductsOption.ProductOptionId">
+            <summary>
+            The ID of the Product Option that was applied to the actual product. 
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductsOption.ProductOptionType">
+            <summary>
+            The type of Product Option. eg. Multiple choice 
+            
+            string(255)
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductsOption.DisplayStyle">
+            <summary>
+            The display style of the Product Option. eg. Radio 
+            
+            string(255)
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductsOption.Name">
+            <summary>
+            The unique internal reference name of the Product Option. 
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductsOption.DisplayName">
+            <summary>
+            The display name of the Product Option (as shown on the product page). 
+            
+            string(255)
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductsOption.Value">
+            <summary>
+            The customer supplied value for this option. The value depends on the type 
+            of Product Option. See the Product Option supplemental document for more details.  
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersProductsOption.DisplayValue">
+            <summary>
+            A readable representation of the customer supplied value. 
+            
+            text 
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ShipmentData.ExternShipmentsToRemove">
+            <summary>
+            Existing extern shipments need to remove before creating the same.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ShipmentData.ExternOrdersToUpdate">
+            <summary>
+            Existing extern order status need to update if Shipments are created but order in Acumatica has been deleted.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersShipmentData.Id">
+            <summary>
+            The ID of the shipment.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersShipmentData.CustomerId">
+            <summary>
+            The ID of the customer that placed the order.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersShipmentData.TrackingNumber">
+            <summary>
+            The tracking number for the shipment.
+             string(50)
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersShipmentData.ShippingMethod">
+            <summary>
+            Extra detail to describe the shipment, with values like: Standard, My Custom Shipping Method Name, etc. 
+            Can also be used for live quotes from some shipping providers.
+            string(100)
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersShipmentData.ShippingProvider">
+            <summary>
+            Enum of the BigCommerce shipping-carrier integration/module. 
+            (Note: This property should be included in a POST request to create a shipment object. 
+            If it is omitted from the request, the property's value will default to custom, and no tracking link will be generated in the email. 
+            To avoid this behavior, you can pass the property as an empty string.)
+             string(50)
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersShipmentData.TrackingCarrier">
+            <summary>
+            Optional, but if you include it, its value must refer/map to the same carrier service as the shipping_provider
+            string(100)
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersShipmentData.OrderId">
+            <summary>
+            The ID of the order this shipment is associated with.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersShipmentData.Comments">
+            <summary>
+            Any comments the store owner has added regarding the shipment.
+            
+            text
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersShipmentData.OrderAddressId">
+            <summary>
+            The ID of the order address this shipment is associated with.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersShipmentData.BillingAddress">
+            <summary>
+            The billing address of the order. 
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersShipmentData.ShippingAddress">
+            <summary>
+            The shipping address of the shipment. 
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersShipmentData.ShipmentItems">
+            <summary>
+            The items in the shipment. 
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersShipmentItem.OrderProductId">
+            <summary>
+            The ID of the Order Product the item is associated with.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersShipmentItem.ProductId">
+            <summary>
+            The ID of the Product the item is associated with.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersShipmentItem.Quantity">
+            <summary>
+            The quantity of the item in the shipment.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersShippingAddressData.BaseCost">
+            <summary>
+            The base cost of the shipping for the items associated with the shipping address.
+            decimal(20,4)
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersShippingAddressData.BaseHandlingCost">
+            <summary>
+            The base handling cost.
+            decimal(20,4)
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersShippingAddressData.City">
+            <summary>
+            The city or suburb of the address.
+            [string(50)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersShippingAddressData.Company">
+            <summary>
+            The company of the addressee.
+            [string(100)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersShippingAddressData.CostExcludingTax">
+            <summary>
+            The cost of the shipping excluding tax. 
+            decimal(20,4)
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersShippingAddressData.CostIncludingTax">
+            <summary>
+            The cost of the shipping including tax. 
+            
+            decimal(20,4)
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersShippingAddressData.CostTax">
+            <summary>
+            The amount of tax on the shipping cost. 
+            decimal(20,4)
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersShippingAddressData.CostTaxClassId">
+            <summary>
+            The ID of the tax class used to tax the shipping cost. 
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersShippingAddressData.Country">
+            <summary>
+            The country of the address.
+            string(50)
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersShippingAddressData.CountryIso2">
+            <summary>
+            The country code of the country field.
+            string(50)
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersShippingAddressData.Email">
+            <summary>
+            The email address of the addressee.
+            string(255)
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersShippingAddressData.HandlingCostExcludingTax">
+            <summary>
+            The handling cost excluding tax. 
+            
+            decimal(20,4)
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersShippingAddressData.HandlingCostIncludingTax">
+            <summary>
+            The handling cost including tax. 
+            decimal(20,4)
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersShippingAddressData.HandlingCostTax">
+            <summary>
+            The amount of tax on the handling cost. 
+            decimal(20,4)
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersShippingAddressData.HandlingCostTaxClassId">
+            <summary>
+            The ID of the tax class used to tax the handling cost. 
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersShippingAddressData.FirstName">
+            <summary>
+            The first name of the addressee
+            [string(255)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersShippingAddressData.Id">
+            <summary>
+            The ID of the shipping address. 
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersShippingAddressData.ItemsShipped">
+            <summary>
+            The quantity of items that have been shipped. 
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersShippingAddressData.ItemsTotal">
+            <summary>
+            The total amount of items (sum of the products * quantity) assigned 
+            to the shipping address. 
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersShippingAddressData.LastName">
+            <summary>
+            The last name of the addressee.
+            [string(255)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersShippingAddressData.OrderId">
+            <summary>
+            The ID of the order this shipping address is associated with.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersShippingAddressData.Phone">
+            <summary>
+            The phone number of the addressee.
+            string(50)
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersShippingAddressData.ShippingMethod">
+            <summary>
+            The name of the shipping method. 
+            string(250) 
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersShippingAddressData.ShippingZoneId">
+            <summary>
+            The ID of the shipping zone the shipping address is associated with. 
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersShippingAddressData.ShippingZoneName">
+            <summary>
+            The name of the shipping zone the shipping address is associated with. 
+            string(250)
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersShippingAddressData.State">
+            <summary>
+            The state of the address.
+            string(50)
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersShippingAddressData.Street1">
+            <summary>
+            The first street line of the address.
+            [string(255)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersShippingAddressData.Street2">
+            <summary>
+            The second street line of the address.
+            [string(255)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.OrdersShippingAddressData.ZipCode">
+            <summary>
+            The zip or postcode of the address.
+            [string(20)]
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.Name">
+            <summary>
+            The product name.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.Type">
+            <summary>
+            The product type: physical – a physical stock unit; digital – a digital download.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.Sku">
+            <summary>
+            User-defined product code/stock keeping unit (SKU).
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.Description">
+            <summary>
+            The product description, which can include HTML formatting.
+            </summary>        
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.Weight">
+            <summary>
+            Weight of the product, which can be used when calculating shipping costs. (optional)	number (double float)
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.Width">
+            <summary>
+            Width of the product, which can be used when calculating shipping costs. (optional)	number (double float)
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.Depth">
+            <summary>
+            Depth of the product, which can be used when calculating shipping costs. (optional)	number (double float)
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.Height">
+            <summary>
+            Height of the product, which can be used when calculating shipping costs. (optional)	number (double float)
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.Price">
+            <summary>
+            The price of the product. The price should include or exclude tax, based on the store settings.  Number (double float)	 (optional)
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.CostPrice">
+            <summary>
+            The cost price of the product. Stored for reference only; it is not used or displayed anywhere on the store.  (optional)	number (double float)
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.RetailPrice">
+            <summary>
+            The retail cost of the product. If entered, the retail cost price will be shown on the product page. (optional)	number (double float)
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.SalePrice">
+            <summary>
+            If entered, the sale price will be used instead of value in the price field when calculating the product’s cost. (optional)	number (double float)
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.TaxClassId">
+            <summary>
+            The ID of the tax class applied to the product. (NOTE: Value ignored if automatic tax is enabled.)   (optional)	integer
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.ProductTaxCode">
+            <summary>
+            Accepts AvaTax System Tax Codes, which identify products and services that fall into special sales-tax categories. By using these codes, 
+            merchants who subscribe to BigCommerce’s Avalara Premium integration can calculate sales taxes more accurately. Stores without Avalara 
+            Premium will ignore the code when calculating sales tax. Do not pass more than one code; the codes are case-sensitive. For details, 
+            please see Avalara’s documentation.  (optional)	string
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.Categories">
+            <summary>
+            An array of IDs for the categories to which this product belongs. When updating a product, 
+            if an array of categories is supplied, all product categories will be overwritten. 
+            Does not accept more than 1,000 ID values.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.BrandId">
+            <summary>
+            The ID associated with the product’s brand.  (optional)	integer
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.InventoryTracking">
+            <summary>
+            The type of inventory tracking for the product. 
+            Values are: 
+            none – inventory levels will not be tracked; 
+            product – inventory levels will be tracked using the inventory_level and inventory_warning_level fields; 
+            variant – inventory levels will be tracked based on variants, which maintain their own warning levels and inventory levels.
+            (optional) string
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.InventoryLevel">
+            <summary>
+            Current inventory level of the product. Simple inventory tracking 
+            must be enabled (see the inventory_tracking field) for this to 
+            take effect.  (optional)	integer
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.FixedCostShippingPrice">
+            <summary>
+            A fixed shipping cost for the product. 
+            If defined, this value will be used during checkout instead of normal shipping-cost calculation.
+             (optional)  number (double float)
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.IsFreeShipping">
+            <summary>
+            Flag used to indicate whether the product has free shipping. 
+            If true, the shipping cost for the product will be zero.
+             (optional)	boolean
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.IsVisible">
+            <summary>
+            Flag used to determine whether the product should be displayed to customers browsing the store. 
+            If true, the product will be displayed. 
+            If false, the product will be hidden from view.
+             (optional)	boolean
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.IsFeatured">
+            <summary>
+            Flag used to determine whether the product should be 
+            included in the featured products panel when visitors view the store.
+             (optional)	boolean
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.RelatedProducts">
+            <summary>
+            An array of IDs for related products.
+            (optional)	integer array
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.Warranty">
+            <summary>
+            Warranty information displayed on the product page. Can include HTML formatting. 
+            (optional)	string	
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.BinPickingNumber">
+            <summary>
+            The BIN picking number for the product.  (optional)	string	
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.LayoutFile">
+            <summary>
+            The layout template file used to render this product. (optional)	string	
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.Upc">
+            <summary>
+            The product UPC code, which is used in feeds for shopping comparison 
+            sites and external channel integrations. (optional)	string	
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.SearchKeywords">
+            <summary>
+             A comma-separated list of keywords that can be used to locate the product when searching the store. (optional)	string	
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.GiftWrappingOptionsType">
+            <summary>
+            Type of gift-wrapping options. Values: 
+            any – allow any gift-wrapping options in the store; 
+            none – disallow gift-wrapping on the product; 
+            list – provide a list of IDs in the gift_wrapping_options_list field. 
+            (optional)	string	
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.GiftWrappingOptionsList">
+            <summary>
+            A list of gift-wrapping option IDs.  
+            (optional)	integer array	
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.SortOrder">
+            <summary>
+            Priority to give this product when included in product lists 
+            on category pages and in search results. 
+            Lower integers will place the product closer to the top of the results.
+            (optional)	integer
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.Condition">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.IsConditionShown">
+            <summary>
+            The product condition. 
+            Will be shown on the product page if the is_condition_shown field’s value is true. 
+            Possible values: New, Used, Refurbished.        
+            (optional)	string	
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.OrderQuantityMinimum">
+            <summary>
+            The minimum quantity an order must contain, to be eligible to purchase this product. (optional)	integer	
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.OrderQuantityMaximum">
+            <summary>
+            The maximum quantity an order can contain when purchasing the product.  (optional)	integer	
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.PageTitle">
+            <summary>
+            Custom title for the product page. If not defined, the product name will be used as the meta title.  (optional)	string	
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.MetaKeywords">
+            <summary>
+             Custom meta keywords for the product page. If not defined, the store’s default keywords will be used. (optional)	string array	
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.MetaDescription">
+            <summary>
+            Custom meta description for the product page. If not defined, the store’s default meta description will be used. (optional)	string	
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.ViewCount">
+            <summary>
+            The number of times the product has been viewed.   (optional)	integer	
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.PreorderMessage">
+            <summary>
+            Custom expected-date message to display on the product page. 
+            If undefined, the message defaults to the storewide setting. 
+            Can contain the %%DATE%% placeholder, which will be substituted for the release date.
+            (optional)	string	
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.IsPreorderOnly">
+            <summary>
+            If set to false, the product will not change its availability from preorder to available on the release date. 
+            Otherwise, the product’s availability/status will change to available on the release date.
+             (optional)	boolean
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.PreorderDate">
+            <summary>
+            Pre-order release date. See the availability field for details on setting a product’s availability to accept pre-orders.   
+            (optional)	DateTime string	
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.PriceHiddenLabel">
+            <summary>
+            By default, an empty string. If is_price_hidden is true, the value of price_hidden_label is displayed instead of the price. 
+            (NOTE: To successfully set a non-empty string value, with is_price_hidden set to true, the availability value must be disabled.)
+            (optional)	string
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.CustomUrl">
+            <summary>
+            The custom URL for the product on the storefront. 
+            inline_response_200_custom_url	
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.BulkPricingRules">
+            <summary>
+            Common BulkPricingRule properties
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductData.Availability">
+            <summary>
+             The product’s availability. Availability options are: 
+             available – the product can be purchased in the storefront; 
+             disabled – the product is listed in the storefront, but cannot be purchased; 
+             preorder – the product is listed for pre-orders.
+             (optional)	string	
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductQtyData.InventoryLevel">
+            <summary>
+            Current inventory level of the product. Simple inventory tracking 
+            must be enabled (see the inventory_tracking field) for this to 
+            take effect.  (optional)	integer
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductQtyData.InventoryWarningLevel">
+            <summary>
+            Inventory warning level for the product. When the product’s inventory level drops below the warning level, 
+            the store owner will be informed. Simple inventory tracking must be enabled 
+            (see the inventory_tracking field) for this to take effect. (optional)	integer
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductQtyData.InventoryTracking">
+            <summary>
+            The type of inventory tracking for the product. 
+            Values are: 
+            none – inventory levels will not be tracked; 
+            product – inventory levels will be tracked using the inventory_level and inventory_warning_level fields; 
+            variant – inventory levels will be tracked based on variants, which maintain their own warning levels and inventory levels.
+            (optional) string
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductQtyData.PreorderDate">
+            <summary>
+            Pre-order release date. See the availability field for details on setting a product’s availability to accept pre-orders.   
+            (optional)	DateTime string	
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductQtyData.IsPriceHidden">
+            <summary>
+            Set to false by default, indicating that this product’s price should be shown on the product page. 
+            If set to true, the price is hidden. 
+            NOTE: To successfully set is_price_hidden to true, the availability value must be disabled.
+            (optional)	boolean
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductQtyData.Availability">
+            <summary>
+             The product’s availability. Availability options are: 
+             available – the product can be purchased in the storefront; 
+             disabled – the product is listed in the storefront, but cannot be purchased; 
+             preorder – the product is listed for pre-orders.
+             (optional)	string	
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductQtyData.AvailabilityDescription">
+            <summary>
+            Availability text displayed on the checkout page, under the product title. 
+            Tells the customer how long it will normally take to ship this product, 
+            for example: “Usually ships in 24 hours.” 
+            (optional)	string	
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.RelatedProductsData.RelatedProducts">
+            <summary>
+            An array of IDs for related products.
+            (optional)	integer array
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductsBulkPricingRules.QuantityMin">
+            <summary>
+            The minimum inclusive quantity of a product to satisfy this rule.Must be greater than or equal to zero.
+            (optional) integer 
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductsBulkPricingRules.QuantityMax">
+            <summary>
+            The maximum inclusive quantity of a product to satisfy this rule.
+            Must be greater than the quantity_min value – unless this field has a value of 0 (zero), 
+            in which case there will be no maximum bound for this rule.
+            (optional) integer 
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductsBulkPricingRules.Type">
+            <summary>
+            The type of adjustment that is made. Values: 
+            price – the adjustment amount per product; 
+            percent – the adjustment as a percentage of the original price; 
+            fixed – the adjusted absolute price of the product.
+            (optional) string 
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductsBulkPricingRules.Amount">
+            <summary>
+            The value of the adjustment by the bulk pricing rule.   double float (number)  (optional)  
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductsBulkPricingRules.Id">
+            <summary>
+            The ID of the bulk pricing rule. (optional) integer 
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductsVariantData.CostPrice">
+            <summary>
+             (optional) number (double float)	The cost price of the variant.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductsVariantData.Price">
+            <summary>
+             (optional) number (double float)	This variant’s base price on the storefront. If this value is null, the product’s default price (set in the Product resource’s price field) will be used as the base price.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductsVariantData.SalePrice">
+            <summary>
+             (optional) number (double float)	This variant’s base weight on the storefront. If this value is null, the product’s default weight (set in the Product resource’s weight field) will be used as the base weight.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductsVariantData.Mpn">
+            <summary>
+            Manufacturer Part Number (MPN) — MPN is a series of letters or numbers assigned to product by its manufacturer. 
+            There is no MPN standard so its format can vary between different manufacturers/companies.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductsVariantData.Gtin">
+            <summary>
+            Global Trade Item Number (GTIN) — An identifier for trade items that is 
+            incorporated into several product identifying standards like ISBN, UPC, and EAN.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ProductsVariantData.OptionValues">
+            <summary>
+            Array of option and option values IDs that make up this variant. Will be empty if the variant is the product’s base variant
+            </summary>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.API.REST.ProductVariantOptionValueData.IsSimilarTo(PX.Commerce.Core.API.AttributeValue)">
+            <summary>
+            Defines if the instance is similar to the specified <paramref name="attribute"/>.
+            </summary>
+            <param name="attribute">The attribute value to compare.</param>
+            <returns>True if current instance is similar to the specified attribute; otherwise false.</returns>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.API.REST.ProductVariantOptionValueData.IsSimilarTo(PX.Commerce.Objects.TemplateMappedOptions)">
+            <summary>
+            Defines if the instance is similar to the specified <paramref name="mappedOption"/>.
+            </summary>
+            <param name="mappedOption">The template mapped option to compare.</param>
+            <returns>True if current instance is similar to the specified template mapped option; otherwise false.</returns>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ShippingZoneData.Id">
+            <summary>
+            The unique numeric identifier for the shipping zone.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ShippingZoneData.Name">
+            <summary>
+            The name of the shipping zone, specified by the user.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ShippingZoneData.ProfileId">
+            <summary>
+            The ID of the shipping zone's delivery profile. Shipping profiles allow merchants to create product-based or location-based shipping rates.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.ShippingZoneData.LocationGroupId">
+            <summary>
+            The ID of the shipping zone's location group. 
+            Location groups allow merchants to create shipping rates that apply only to the specific locations in the group.
+            </summary>
+        </member>
+        <member name="F:PX.Commerce.BigCommerce.API.REST.OrderPaymentEvent.Purchase">
+            <summary>
+            The authorization and capture of a payment performed in one single step.
+            </summary>
+        </member>
+        <member name="F:PX.Commerce.BigCommerce.API.REST.OrderPaymentEvent.Authorization">
+            <summary>
+            Money that the customer has agreed to pay.
+            </summary>
+        </member>
+        <member name="F:PX.Commerce.BigCommerce.API.REST.OrderPaymentEvent.Capture">
+            <summary>
+            A transfer of money that was reserved during the authorization of a shop.
+            </summary>
+        </member>
+        <member name="F:PX.Commerce.BigCommerce.API.REST.OrderPaymentEvent.Refund">
+            <summary>
+            The partial or full return of captured money to the customer.
+            </summary>
+        </member>
+        <member name="F:PX.Commerce.BigCommerce.API.REST.OrderPaymentEvent.Void">
+            <summary>
+            The cancellation of a pending authorization or capture.
+            </summary>
+        </member>
+        <member name="F:PX.Commerce.BigCommerce.API.REST.OrdersCouponType.DollarAmountOffEachItemInOrder">
+            <summary>
+            0 - Dollar amount off each item in the order
+            </summary>
+        </member>
+        <member name="F:PX.Commerce.BigCommerce.API.REST.OrdersCouponType.PercentageOffEachItemInOrder">
+            <summary>
+            1 - Percentage off each item in the order
+            </summary>
+        </member>
+        <member name="F:PX.Commerce.BigCommerce.API.REST.OrdersCouponType.DollarAmountAffOrderTotal">
+            <summary>
+            2 - Dollar amount off the order total
+            </summary>
+        </member>
+        <member name="F:PX.Commerce.BigCommerce.API.REST.OrdersCouponType.DollarAmountOffShippingTotal">
+            <summary>
+            3 - Dollar amount off the shipping total
+            </summary>
+        </member>
+        <member name="F:PX.Commerce.BigCommerce.API.REST.OrdersCouponType.FreeShipping">
+            <summary>
+            4 - Free shipping
+            </summary>
+        </member>
+        <member name="F:PX.Commerce.BigCommerce.API.REST.OrdersCouponType.Promotion">
+            <summary>
+            5 - promotion
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.FilterOrders.IsDeleted">
+            <summary>
+            ‘true’ or 'false’	  
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.FilterProducts.NameIn">
+            <summary>
+            Names to include, in a comma-separated list
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.API.REST.FilterProducts.CategoriesIn">
+            <summary>
+            Filter items by categories. 
+            NOTE: To ensure that your request will retrieve products that are also cross-listed in 
+            additional categories beyond the categories  you’ve specified. 
+            use the syntax: CategoriesIn = "295,296")
+            </summary>
+        </member>
+        <member name="T:PX.Commerce.BigCommerce.API.REST.IBCRestClientFactory">
+            <summary>
+            BC rest client factory
+            </summary>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.API.REST.IBCRestClientFactory.GetRestClient(PX.Commerce.BigCommerce.BCBindingBigCommerce)">
+            <summary>
+            Get bigcommerce client
+            </summary>
+            <param name="binding"></param>
+            <returns></returns>
+        </member>
+        <member name="T:PX.Commerce.BigCommerce.API.REST.IPriceListRestDataProvider">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.API.REST.IPriceListRestDataProvider.Create(PX.Commerce.BigCommerce.API.REST.PriceList)">
+            <summary>
+            Creates a price list in the external system
+            </summary>
+            <param name="priceList"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.API.REST.IPriceListRestDataProvider.DeletePriceList(System.String)">
+            <summary>
+            Deletes a price list in the external system
+            </summary>
+            <param name="priceListId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.API.REST.IPriceListRestDataProvider.GetAll(System.Threading.CancellationToken)">
+            <summary>
+            Get all the price lists that exist in the external system.
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:PX.Commerce.BigCommerce.API.REST.IPriceListRecordRestDataProvider">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.API.REST.IPriceListRecordRestDataProvider.DeleteRecords(System.String,System.String,System.String)">
+            <summary>
+            Deletes a record in a price list id
+            </summary>
+            <param name="priceListId">Price list id in the external system.</param>
+            <param name="id">product / variant id</param>
+            <param name="currency">the currency of the price.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.API.REST.IPriceListRecordRestDataProvider.GetAllRecords(System.String,PX.Commerce.BigCommerce.API.REST.IFilter,System.Threading.CancellationToken)">
+            <summary>
+            Gets all the prices that belong to the price list.
+            </summary>
+            <param name="priceListId"></param>
+            <param name="filter"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.API.REST.IPriceListRecordRestDataProvider.Upsert(System.Collections.Generic.List{PX.Commerce.BigCommerce.API.REST.PriceListRecord},System.String,System.Func{PX.Commerce.BigCommerce.API.REST.ItemProcessCallback{PX.Commerce.BigCommerce.API.REST.PriceListRecord},System.Threading.Tasks.Task})">
+            <summary>
+            Bulk insert of a price list.
+            </summary>
+            <param name="priceListRecords"></param>
+            <param name="priceListId"></param>
+            <param name="callback"></param>
+        </member>
+        <member name="T:PX.Commerce.BigCommerce.BCBindingBigCommerce">
+            <summary>
+            Represents a binding for a BigCommerce store.
+            </summary>
+        </member>
+        <member name="T:PX.Commerce.BigCommerce.BCBindingBigCommerce.PK">
+            <summary>
+            Utility to retrieve a binding by binding ID.
+            </summary>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCBindingBigCommerce.PK.Find(PX.Data.PXGraph,System.Nullable{System.Int32},PX.Data.PKFindOptions)">
+            <summary>
+            Find the binding with the specified binding ID.
+            </summary>
+            <param name="graph">The graph to search.</param>
+            <param name="binding">The ID of the binding to find.</param>
+            <returns>The found binding or null if not found.</returns>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.BCBindingBigCommerce.BindingID">
+            <summary>
+            The primary key and identity of the binding.
+            </summary>
+        </member>
+        <member name="T:PX.Commerce.BigCommerce.BCBindingBigCommerce.bindingID">
+            <inheritdoc cref="P:PX.Commerce.BigCommerce.BCBindingBigCommerce.BindingID"/>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.BCBindingBigCommerce.StoreBaseUrl">
+            <summary>
+            The base URL of the BigCommerce store.
+            </summary>
+        </member>
+        <member name="T:PX.Commerce.BigCommerce.BCBindingBigCommerce.storeBaseUrl">
+            <inheritdoc cref="P:PX.Commerce.BigCommerce.BCBindingBigCommerce.StoreBaseUrl"/>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.BCBindingBigCommerce.StoreXAuthClient">
+            <summary>
+            The client ID of the BigCommerce store.
+            </summary>
+        </member>
+        <member name="T:PX.Commerce.BigCommerce.BCBindingBigCommerce.storeXAuthClient">
+            <inheritdoc cref="P:PX.Commerce.BigCommerce.BCBindingBigCommerce.StoreXAuthClient"/>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.BCBindingBigCommerce.StoreXAuthToken">
+            <summary>
+            The access token of the BigCommerce store.
+            </summary>
+        </member>
+        <member name="T:PX.Commerce.BigCommerce.BCBindingBigCommerce.storeXAuthToken">
+            <inheritdoc cref="P:PX.Commerce.BigCommerce.BCBindingBigCommerce.StoreXAuthToken"/>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.BCBindingBigCommerce.StoreWDAVServerUrl">
+            <summary>
+            The URL of the DAV server of the BigCommerce store.
+            </summary>
+        </member>
+        <member name="T:PX.Commerce.BigCommerce.BCBindingBigCommerce.storeWDAVServerUrl">
+            <inheritdoc cref="P:PX.Commerce.BigCommerce.BCBindingBigCommerce.StoreWDAVServerUrl"/>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.BCBindingBigCommerce.StoreWDAVClientUser">
+            <summary>
+            The username for the DAV server of the BigCommerce store.
+            </summary>
+        </member>
+        <member name="T:PX.Commerce.BigCommerce.BCBindingBigCommerce.storeWDAVClientUser">
+            <inheritdoc cref="P:PX.Commerce.BigCommerce.BCBindingBigCommerce.StoreWDAVClientUser"/>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.BCBindingBigCommerce.StoreWDAVClientPass">
+            <summary>
+            The password for the DAV server of the BigCommerce store.
+            </summary>
+        </member>
+        <member name="T:PX.Commerce.BigCommerce.BCBindingBigCommerce.storeWDAVClientPass">
+            <inheritdoc cref="P:PX.Commerce.BigCommerce.BCBindingBigCommerce.StoreWDAVClientPass"/>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.BCBindingBigCommerce.StoreAdminUrl">
+            <summary>
+            The admin URL of the BigCommerce store.
+            </summary>
+        </member>
+        <member name="T:PX.Commerce.BigCommerce.BCBindingBigCommerce.storeAdminUrl">
+            <inheritdoc cref="P:PX.Commerce.BigCommerce.BCBindingBigCommerce.StoreAdminUrl"/>
+        </member>
+        <member name="T:PX.Commerce.BigCommerce.BCBindingBigCommerceExtension">
+            <summary>
+            Cache extension for BC Binding for Big Commerce specific features.
+            </summary>
+        </member>
+        <member name="F:PX.Commerce.BigCommerce.BigCommerceConstants.HttpPartialSuccess">
+            <summary>
+            Typically indicates that a partial failure has occurred, such as when a POST or PUT request is successful, but saving the URL has failed.
+            </summary>
+        </member>
+        <member name="F:PX.Commerce.BigCommerce.BigCommerceConstants.HttpInvalidData">
+            <summary>
+            This is the result of missing required fields, or of invalid data.
+            </summary>
+        </member>
+        <member name="T:PX.Commerce.BigCommerce.BCConnectorFactory">
+            <inheritdoc cref="T:PX.Commerce.Core.IConnectorFactory"/>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.BCConnectorFactory.Type">
+            <inheritdoc cref="P:PX.Commerce.Core.IConnectorFactory.Type"/>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.BCConnectorFactory.Description">
+            <inheritdoc cref="P:PX.Commerce.Core.IConnectorFactory.Description"/>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.BCConnectorFactory.Enabled">
+            <inheritdoc cref="P:PX.Commerce.Core.IConnectorFactory.Enabled"/>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCConnectorFactory.GenerateExternID(PX.Commerce.Core.BCExternNotification)">
+            <inheritdoc cref="M:PX.Commerce.Core.IConnectorFactory.GenerateExternID(PX.Commerce.Core.BCExternNotification)"/>
+        </member>
+        <member name="T:PX.Commerce.BigCommerce.BCConnector">
+            <inheritdoc cref="T:PX.Commerce.Core.IConnector"/>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.BCConnector.ConnectorType">
+            <inheritdoc cref="P:PX.Commerce.Core.IConnector.ConnectorType"/>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.BCConnector.ConnectorName">
+            <inheritdoc cref="P:PX.Commerce.Core.IConnector.ConnectorName"/>
+        </member>
+        <member name="T:PX.Commerce.BigCommerce.IBasePriceDataProvider">
+            <summary>
+            Data provider for base price processor
+            </summary>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.IBasePriceDataProvider.RetrieveBasePricesByIds(System.Collections.Generic.List{PX.Commerce.Core.BCSyncStatus},PX.Data.PXGraph,System.Int32,System.String)">
+            <summary>
+            Returns the list of base prices to be synced to the external system.
+            </summary>
+            <param name="graph"></param>
+            <param name="bindingId"></param>
+            <param name="connectorType"></param>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.IBasePriceDataProvider.RetrieveBasePriceListToFetch(PX.Commerce.Core.PrepareMode,System.Nullable{System.DateTime},PX.Data.PXGraph,System.Int32,System.String)">
+            <summary>
+            Retrieves all updated base prices that must be fetched.
+            </summary>
+            <param name="graph"></param>
+            <param name="prepareMode"></param>
+            <param name="startDate"></param>
+            <param name="bindingId"></param>
+            <param name="connectorType"></param>
+            <returns></returns>
+        </member>
+        <member name="T:PX.Commerce.BigCommerce.BasePriceDataProvider">
+            <summary>
+            Provides the two methods to retrieve data for both the Fetch and GetBucket methods (Export)	
+            </summary>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BasePriceDataProvider.RetrieveBasePriceListToFetch(PX.Commerce.Core.PrepareMode,System.Nullable{System.DateTime},PX.Data.PXGraph,System.Int32,System.String)">
+            <summary>
+            Returns the list of updated prices from the database.
+            This list contains all the prices (defined by the price type) and their statuses (BCSyncStatus record) if it exists in the database for both
+            the price and the inventory item. 
+            It returns:
+            Sale Prices that have a corresponding InventoryItem record in the database and of type <paramref name="priceType"/> 
+            (Inner Join) Inventory Item related to the Sale price (*)
+            (Outer Join) BCSyncStatus record of the corresponding Sale Price
+            (Outer Join) BCSyncStatus record of the corresponding to the inventory item
+            (Outer Join) BCSyncStatus record of the corresponding to the template item (in case the inventory item is a variant)
+            (Outer Join) BCSyncDetail record of the corresponding to the variant item (in case the inventory item is a variant)
+            (Inner Join) To all the sale prices that have been defined for the InventoryItem (*)
+            Conditions:
+            InventoryItem.Status is not equal Deleted, Unknown or Inactive
+            InventoryItem.EntityType is one of StockItem, NonStockItem or ProductWithVariant
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BasePriceDataProvider.RetrieveBasePricesByIds(System.Collections.Generic.List{PX.Commerce.Core.BCSyncStatus},PX.Data.PXGraph,System.Int32,System.String)">
+            <summary>
+            This method returns a list of PriceListDetails based on the list of ids passed as parameter. 
+            It returns only the prices that have a corresponding InventoryItem record in the database and of type <paramref name="priceType"/> with 
+            </summary>
+            <param name="graph"></param>
+            <param name="bindingId"></param>
+            <param name="connectorType"></param>
+            <param name="ids">List of BCSyncStatus Ids to be returned</param>
+            <returns></returns>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BasePriceDataProvider.GetPriceListWithDeletions(System.String,System.String,PX.Data.PXGraph,System.Int32,System.String)">
+            <summary>
+            Checks the BCSyncDetails for records that have no corresponding ARSalesPrice record in the database.
+            Picks their corresponding BCSyncStatus records and returns them as a list of PriceListDetails because they need to be deleted from the external system
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:PX.Commerce.BigCommerce.BasePriceDetailsDTO">
+            <summary>
+            Holds details about the price with values from different tables.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.BasePriceDetailsDTO.SalesPrice">
+            <summary>
+            Price details. The entity can be empty (null) in the case of a deleted price.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.BasePriceDetailsDTO.InventoryItem">
+            <summary>
+            InventoryItem to which the price applies
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.BasePriceDetailsDTO.Warehouse">
+            <summary>
+            Warehouse related to the price/
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.BasePriceDetailsDTO.PriceSyncStatus">
+            <summary>
+            BCSyncStatus for the base price or the price list
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.BasePriceDetailsDTO.PriceSyncDetails">
+            <summary>
+            Every price synced as part of the price list will have a BCSyncDetail record.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.BasePriceDetailsDTO.InventorySyncStatus">
+            <summary>
+            BCSyncStatus for the inventory item
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.BasePriceDetailsDTO.VariantInventorySyncStatus">
+            <summary>
+            BCSyncStatus for the variant inventory item in case of a variant
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.BasePriceDetailsDTO.VariantInventorySyncDetail">
+            <summary>
+            BCSyncDetail for the variant inventory item in case of a variant
+            </summary>
+        </member>
+        <member name="T:PX.Commerce.BigCommerce.InventoryItemsEntityTypeSequence">
+            <summary>
+            Sequence used to filter inventory items by type
+            </summary>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.InventoryItemsEntityTypeSequence.GetValues(PX.Data.PXGraph)">
+            <summary>
+            
+            </summary>
+            <param name="graph"></param>
+            <returns></returns>
+        </member>
+        <member name="T:PX.Commerce.BigCommerce.BCSyncStatusForInventoryItem">
+            <summary>
+            When writing FBQL queries and we need to join the same table multiple times, we need to define a different entity for each join.
+            Hence the following entities are defined.
+            </summary>
+        </member>
+        <member name="T:PX.Commerce.BigCommerce.ICustomerClassPriceListDataProvider">
+            <summary>
+            Data Provider interface to implement data provider for the Price List Processor.
+            </summary>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.ICustomerClassPriceListDataProvider.RetrieveExistingPriceLists(PX.Data.PXGraph,System.Int32,System.String)">
+            <summary>
+            Returns the list of Price Lists that have been created in the database and which CustomerClass has been already synced with BC.
+            </summary>
+            <param name="graph"></param>
+            <param name="bindingId"></param>
+            <param name="connectorType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.ICustomerClassPriceListDataProvider.RetrievePriceListInfoByNoteId(System.Guid,PX.Data.PXGraph,System.Int32,System.String)">
+            <summary>
+            Returns informations on a particular price list.
+            </summary>
+            <param name="priceListNoteId"></param>
+            <param name="graph"></param>
+            <param name="bindingId"></param>
+            <param name="connectorType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.ICustomerClassPriceListDataProvider.RetrieveUpdatedPricesByListId(System.Nullable{System.Guid},PX.Commerce.Core.PrepareMode,System.Nullable{System.DateTime},PX.Data.PXGraph,System.Int32,System.String)">
+            <summary>
+            Returns all the prices that have been updated since the last sync date for the given price list.
+            This method is used only to indicate that a particular price list has been updated and needs to be synced.
+            Used in the FetchBuckExport method.
+            </summary>
+            <param name="priceListNoteId"></param>
+            <param name="graph"></param>
+            <param name="prepareMode"></param>
+            <param name="startDate"></param>
+            <param name="bindingId"></param>
+            <param name="connectorType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.ICustomerClassPriceListDataProvider.RetrieveInventoryVariantItemsForTempateID(System.Int32,System.Guid,PX.Data.PXGraph,System.Int32,System.String)">
+            <summary>
+            Retrieve all Inventory Items that are related to the template item (in case the inventory item is a variant) for which no price has been synced yet.
+            Must return inventory items only and only if no variant of the same matrix has a price synced.
+            </summary>
+            <param name="templateId"></param>
+            <param name="priceListNoteId"></param>
+            <param name="graph"></param>
+            <param name="bindingId"></param>
+            <param name="connectorType"></param>
+            <returns></returns>
+        </member>
+        <member name="T:PX.Commerce.BigCommerce.CustomerClassPriceListDataProvider">
+            <inheritdoc/>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.CustomerClassPriceListDataProvider.RetrieveUpdatedPricesByListId(System.Nullable{System.Guid},PX.Commerce.Core.PrepareMode,System.Nullable{System.DateTime},PX.Data.PXGraph,System.Int32,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.CustomerClassPriceListDataProvider.RetrieveExistingPriceLists(PX.Data.PXGraph,System.Int32,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.CustomerClassPriceListDataProvider.RetrievePriceListInfoByNoteId(System.Guid,PX.Data.PXGraph,System.Int32,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.CustomerClassPriceListDataProvider.RetrieveInventoryVariantItemsForTempateID(System.Int32,System.Guid,PX.Data.PXGraph,System.Int32,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.CustomerClassPriceListDataProvider.GetPricesForInventoriesByBatch(System.Nullable{System.Guid},System.Collections.Generic.List{System.Int32},PX.Data.PXGraph,System.Int32,System.String)">
+            <summary>
+            Return the whole list of prices for a particular a list of inventory items
+            with the sync status and the corrsponding AR prices records.
+            Note that if an inventory item has no prices, this method will return anyway the inventory items with no prices
+            so that we can delete it afterwards in the external system.
+            </summary>
+            <param name="priceListNoteId"></param>
+            <param name="inventoryIds"></param>
+            <param name="graph"></param>
+            <param name="bindingId"></param>
+            <param name="connectorType"></param>
+            <returns></returns>ConvertToStr
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.CustomerClassPriceListDataProvider.GetInventoryItemsThatHaveChangedPrices(System.Guid,System.Nullable{System.DateTime},PX.Commerce.Core.PrepareMode,PX.Data.PXGraph,System.Int32,System.String)">
+            <summary>
+            Returns the Ids of all the inventory items that have prices that have changed since the last sync or have never been synced yet.
+            </summary>
+            <param name="priceClassNoteId"></param>
+            <param name="startDate"></param>
+            <param name="prepareMode"></param>
+            <param name="graph"></param>
+            <param name="bindingId"></param>
+            <param name="connectorType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.CustomerClassPriceListDataProvider.GetInventoryItemsThatHaveDeletedPrices(System.Guid,PX.Data.PXGraph,System.Int32,System.String)">
+            <summary>
+            Gets the list of all already synced prices via BCSyncDetail (status is Synced already)
+            Left Outer with the corresponding ARSalesPrice using the LocalID
+            If there is no ARSalesPrice record then it means it has been deleted
+            Consider to return the InventoryItem ID.
+            </summary>
+            <param name="priceClassNoteId"></param>
+            <param name="graph"></param>
+            <param name="bindingId"></param>
+            <param name="connectorType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.CustomerClassPriceListDataProvider.RetrievePriceListDescriptors(System.Nullable{System.Guid},PX.Data.PXGraph,System.Int32,System.String)">
+            <summary>
+            Retrieve one price list if the pricelistnodeid is provided otherwise the list of all lists.
+            </summary>
+            <param name="priceListNoteId"></param>
+            <param name="graph"></param>
+            <param name="bindingId"></param>
+            <param name="connectorType"></param>
+            <returns></returns>
+        </member>
+        <member name="T:PX.Commerce.BigCommerce.PriceListDescriptorDTO">
+            <summary>
+            Class used to hold details of a price list and its status
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.PriceListDescriptorDTO.PriceListID">
+            <summary>
+            The id (name) of the price list
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.PriceListDescriptorDTO.PriceClassNoteID">
+            <summary>
+            NoteID
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.PriceListDescriptorDTO.Status">
+            <summary>
+            BCSyncStatus of the price list if it has been synced
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.PriceListDescriptorDTO.CustomerPriceClassStatus">
+            <summary>
+            The Status of the customer price class.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.PriceListDescriptorDTO.IsEmpty">
+            <summary>
+            Indicates whether the price list is empty (has any prices attached to it		
+            </summary>
+        </member>
+        <member name="T:PX.Commerce.BigCommerce.PriceListDetailsDTO">
+            <summary>
+            Holds details about the price with values from different tables.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.PriceListDetailsDTO.SalesPrice">
+            <summary>
+            Price details. The entity can be empty (null) in the case of a deleted price.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.PriceListDetailsDTO.InventoryItem">
+            <summary>
+            InventoryItem to which the price applies
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.PriceListDetailsDTO.PriceSyncStatus">
+            <summary>
+            BCSyncStatus for the base price or the price list
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.PriceListDetailsDTO.PriceSyncDetails">
+            <summary>
+            Every price synced as part of the price list will have a BCSyncDetail record.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.PriceListDetailsDTO.InventorySyncStatus">
+            <summary>
+            BCSyncStatus for the inventory item
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.PriceListDetailsDTO.VariantInventorySyncStatus">
+            <summary>
+            BCSyncStatus for the variant inventory item in case of a variant
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.PriceListDetailsDTO.VariantInventorySyncDetail">
+            <summary>
+            BCSyncDetail for the variant inventory item in case of a variant
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.PriceListDetailsDTO.CustomerClassSyncStatus">
+            <summary>
+            BCSyncStatus for the customer price class entity
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.PriceListDetailsDTO.PriceClass">
+            <summary>
+            Details about the price class
+            </summary>
+        </member>
+        <member name="T:PX.Commerce.BigCommerce.BCAvailabilityRestrictor">
+            <summary>
+            Class responsible for implement restriction for <see cref="T:PX.Commerce.BigCommerce.MappedAvailability"/>.
+            </summary>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCAvailabilityRestrictor.RestrictExport(PX.Commerce.Core.IProcessor,PX.Commerce.Core.IMappedEntity,PX.Commerce.Core.FilterMode)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCAvailabilityRestrictor.RestrictImport(PX.Commerce.Core.IProcessor,PX.Commerce.Core.IMappedEntity,PX.Commerce.Core.FilterMode)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCCustomerProcessor.ProcessMappedListForImport(System.Collections.Generic.List{PX.Commerce.Core.IMappedEntity},System.Boolean)">
+            <inheritdoc cref="!:BCProcessorSingleBase&lt;TGraph, TEntityBucket, TPrimaryMapped&gt;.ProcessMappedListForImport"/>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCLocationBaseProcessor`3.GetCustomerFormFields(System.Collections.Generic.IList{PX.Commerce.BigCommerce.API.REST.CustomerFormFieldData},System.String)">
+            <summary>
+            Searches for <paramref name="fieldName"/> in <paramref name="customerFormFields"/> and returns first found value(s).
+            </summary>
+            <param name="customerFormFields"></param>
+            <param name="fieldName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCNonStockItemProcessor.CreateEntityForFetch">
+            <summary>
+            Initialize a new object of the entity to be used to Fetch bucket
+            </summary>
+            <returns>The initialized entity</returns>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCNonStockItemProcessor.CreateEntityForGet">
+            <summary>
+            Initialize a new object of the entity to be used to Get bucket
+            </summary>
+            <returns>The initialized entity</returns>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCNonStockItemProcessor.CreateMappedEntity(PX.Commerce.Core.API.NonStockItem,System.Nullable{System.Guid},System.Nullable{System.DateTime})">
+            <summary>
+            Creates a mapped entity for the passed entity
+            </summary>
+            <param name="entity">The entity to create the mapped entity from</param>
+            <param name="syncId">The sync id of the entity</param>
+            <param name="syncTime">The timestamp of the last modification</param>
+            <returns>The mapped entity</returns>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCPaymentProcessor.CapturePayment(PX.Commerce.BigCommerce.MappedPayment,PX.Commerce.Core.API.Payment,System.String)">
+            <summary>
+            Performs card operation.
+            </summary>
+            <param name="obj"></param>
+            <param name="impl"></param>
+            <param name="transactionNumber"></param>
+            <returns>Updated payment.</returns>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCPaymentProcessor.UpsertPayment(PX.Commerce.BigCommerce.MappedPayment)">
+            <summary>
+            Creates or updates payment.
+            </summary>
+            <param name="obj"></param>
+            <returns>Updated Payment.</returns>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCPaymentProcessor.ReleasePayment(PX.Commerce.BigCommerce.MappedPayment,PX.Commerce.Core.API.Payment,System.Boolean,System.Boolean)">
+            <summary>
+            Evaluates if <paramref name="needRelease"/> is true and <paramref name="payment"/> status is <see cref="F:PX.Objects.AR.Messages.Balanced"/>.
+            If the evaluation is positive then releases <paramref name="payment"/>.
+            </summary>
+            <param name="obj"></param>
+            <param name="needRelease"></param>
+            <param name="payment"></param>
+            <param name="ignoreResult">Sets if payment releasing should be ignored. False by default.</param>
+            <remarks>This method uses its own transaction.</remarks>
+            <returns>The updated payment or the provided payment</returns>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCPaymentProcessor.VoidTransaction(PX.Commerce.BigCommerce.MappedPayment,PX.Commerce.Core.API.Payment,System.String)">
+            <summary>
+            Voids the <paramref name="payment"/> if there is a <see cref="P:PX.Commerce.Core.API.Payment.ProcessingCenterID"/>. Otherwise creates a new <see cref="T:PX.Commerce.Core.API.VoidCardPayment"/>.
+            </summary>
+            <param name="obj"></param>
+            <param name="payment"></param>
+            <param name="transactionNumber"></param>
+            <returns>Updated payment.</returns>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCPriceListProcessor.FetchBucketsExport(System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCPriceListProcessor.GetBucketsExport(System.Collections.Generic.List{PX.Commerce.Core.BCSyncStatus},System.Threading.CancellationToken)">
+            <summary>
+            Return the price lists to be updated.
+            For each id passed in the list, we must check the following:
+            What are the Inventory Items that have one of the conditions:
+            - One valid sale price that has been added (not synced yet)
+            - A sales price that has been modified
+            - A sales price that became effective (based on the effective / expiration dates)
+            - A sales price that has been deleted.
+            </summary>
+            <param name="ids"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCPriceListProcessor.IgnoreDependentEntityStatus(PX.Commerce.Core.BCSyncStatus)">
+            <summary>
+            Check the statuses to ignore when syncing.
+            </summary>
+            <param name="status"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCPriceListProcessor.IsValidPriceLine(PX.Commerce.BigCommerce.PriceDetailsForCustomerClass)">
+            <summary>
+            Checks whether the price is valid
+            </summary>
+            <param name="priceLine"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCPriceListProcessor.UpdateSyncStatus(PX.Commerce.BigCommerce.MappedPriceList,System.Nullable{System.DateTime},System.Boolean)">
+            <summary>
+            Calls the Ensure Status - Redirection needed in order to be able to mock the method for unit testing.
+            </summary>
+            <param name="obj"></param>
+            <param name="maxDateTime"></param>
+            <param name="forceSync"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCPriceListProcessor.GetPriceDetails(PX.Commerce.BigCommerce.PriceListDetailsDTO,System.String)">
+            <summary>
+            Returns a PriceDetails for price lists object
+            </summary>
+            <param name="dto"></param>
+            <param name="inventoryExternalId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCPriceListProcessor.GetStatusById(System.Nullable{System.Int32})">
+            <summary>
+            Redirection needed in order to be able to mock the method for unit testing.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCPriceListProcessor.MapBucketExport(PX.Commerce.BigCommerce.BCPriceListEntityBucket,PX.Commerce.Core.IMappedEntity,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCPriceListProcessor.GetVariantsPricesForTemplateItems(System.Nullable{System.Int32},System.Nullable{System.Guid},System.Nullable{System.Guid},System.String,PX.Commerce.BigCommerce.API.REST.PriceListRecord,PX.Commerce.BigCommerce.BCPriceListEntityBucket,System.Nullable{System.Int32},System.String)">
+            <summary>
+            A user can define a price for a template item and therefore, the price is applied to each variant
+            However, if a price has been defined for at least one of the variants, then we ignore this case and we do not even create a price details for the template.
+            </summary>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCPriceListProcessor.SaveBucketsExport(System.Collections.Generic.List{PX.Commerce.BigCommerce.BCPriceListEntityBucket},System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCPriceListProcessor.LinkCustomerGroupToPriceList(System.String,System.String,System.String)">
+            <summary>
+            Assign a customer group in Big Commerce to the price list that has been synced
+            </summary>
+            <param name="priceListId">The Price List Id to be assigned to the Customer Group</param>
+            <param name="customerGroupId">Customer Group Id in BigCommerce</param>
+            <param name="priceListExternalName">The name of the Customer Group in Big Commerce: Used for the error message only</param>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCPriceListProcessor.GetLocalPriceFromBucket(PX.Commerce.BigCommerce.BCPriceListEntityBucket,System.Guid,System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.String)">
+            <summary>
+            Retrieve the corresponding local price list detail for a particular price we synced.
+            </summary>
+            <param name="bucket"></param>
+            <param name="price"></param>
+            <param name="brqty"></param>
+            <param name="currency"></param>
+            <param name="priceInventoryItemNoteId">
+            NoteId of the inventory item that is bound to the price
+            If we define prices at the template item level, all variants records will have the note id of the template item
+            If we define a price at the variant level, this field will contain the noteid of the variant inventory item.
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCPriceListProcessor.DeleteRecordsForBucket(System.String,PX.Commerce.BigCommerce.BCPriceListEntityBucket,System.Threading.CancellationToken)">
+            <summary>
+            Delete all records marked with 'Delete=true'
+            </summary>
+            <param name="priceListId"></param>
+            <param name="bucket"></param>
+        </member>
+        <member name="T:PX.Commerce.BigCommerce.PriceListExternalKey">
+            <summary>
+            This class helps to create and read externalid from BCSyncDetail table that correspond to one price for a particular inventory item.
+            </summary>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.PriceListExternalKey.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.PriceListExternalKey.#ctor(System.String)">
+            <summary>
+            Construct the external key from a string.
+            </summary>
+            <param name="key"></param>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.PriceListExternalKey.PriceListId">
+            <summary>
+            External Price List Id
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.PriceListExternalKey.ProductID">
+            <summary>
+            External Product Id
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.PriceListExternalKey.VariantID">
+            <summary>
+            External Variant id	
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.PriceListExternalKey.Currency">
+            <summary>
+            Currency code
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.PriceListExternalKey.Index">
+            <summary>
+            Index of the price in the price list.
+            When we do have one price and a list of bulk prices (minimum quantiry > 1) the base sales price does not have an index
+            All the bulk prices have an index.
+            </summary>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.PriceListExternalKey.ToString">
+            <summary>
+            Format the key and returns it as a string.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.BCProductEntityBucket`1.ExternalProduct">
+            <summary>
+            Gets or sets the external product data.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.BCProductProcessor`5.ShouldImportSalesCategories">
+            <summary>
+            Returns true when sales category is enabled and direction is import or bidirectional
+            Used to enable/disable the sales category import as part of products import.
+            </summary>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.BCProductProcessor`5.ShouldExportSalesCategories">
+            <summary>
+            Returns true when sales category is enabled and direction is export or bidirectional
+            Used to enable/disable the sales category export as part of products import.
+            </summary>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCProductProcessor`5.CreateEntityForGet">
+            <summary>
+            Initialize a new object of the entity to be used to Get bucket
+            </summary>
+            <returns>The initialized entity</returns>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCProductProcessor`5.DeleteImageFromExternalSystem(System.String,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCProductProcessor`5.GetExternCustomFieldValue(`1,PX.Commerce.Core.ExternCustomFieldInfo,System.Object,System.String,System.String,System.String@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCProductProcessor`5.GetProductSku(PX.Commerce.Core.API.ProductItem,PX.Commerce.BigCommerce.API.REST.ProductData)">
+            <summary>
+            Gets the product SKU basing on the specified <paramref name="local"/> locally stored data and the specified <paramref name="external"/> external data.
+            </summary>
+            <param name="local">The locally stored product data.</param>
+            <param name="external">The external product data.</param>
+            <returns>The SKU.</returns>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCProductProcessor`5.CheckExistingForImport(`1,PX.Commerce.Core.BCSyncStatus,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCProductProcessor`5.AddSalesCategoryBucketForImport(`1)">
+            <summary>
+            Creates buckets for Sales Categories import.
+            </summary>
+            <param name="bucket"></param>		
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCProductProcessor`5.MapSalesCategories(`1,PX.Commerce.Core.API.ProductItem,PX.Commerce.BigCommerce.API.REST.ProductData,PX.Commerce.Core.API.ProductItem)">
+            <summary>
+            Map the categories attached to the imported product with the ERP product
+            </summary>
+            <param name="bucket"></param>
+            <param name="external"></param>
+            <param name="local"></param>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCProductProcessor`5.MapProductImport``1(PX.Commerce.BigCommerce.API.REST.ProductData,PX.Commerce.Core.API.ProductItem,System.Nullable{System.Int32})">
+            <summary>
+            Maps all the fields common between StockItems and Non Stock Items
+            </summary>		
+            <param name="external">The product from Shopify</param>
+            <param name="existing">The existing ERP product if it has already been synced</param>
+            <param name="defaultItemClassId">The default class id (from the settings)</param>		
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCProductProcessor`5.MapItemClassAndTaxCategory``1(PX.Commerce.BigCommerce.API.REST.ProductData,``0)">
+            <summary>
+            Maps the item class and related tax category.
+            </summary>
+            <param name="external">The external product data.</param>
+            <param name="local">The local product data.</param>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCProductProcessor`5.MapItemClass``1(PX.Commerce.BigCommerce.API.REST.ProductData,``0)">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="external"></param>
+            <param name="local"></param>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCProductProcessor`5.SetClassPropertiesForNonStockItems(PX.Commerce.Core.API.ProductItem,PX.Objects.IN.INItemClass)">
+            <summary>
+            Set the properties that are specific to non stock items
+            </summary>
+            <param name="productItem"></param>
+            <param name="itemClass"></param>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCProductProcessor`5.SetTaxCaterogyForProductItem(PX.Commerce.Core.API.ProductItem,PX.Commerce.BigCommerce.API.REST.ProductData,PX.Objects.IN.INItemClass)">
+            <summary>
+            Set the tax category from substitution list.
+            If no tax category is found, the method tries to get the tax category from the item class if item class is not null.
+            NB: If tax category has been mapped, it will not be updated.
+            </summary>
+            <param name="productItem">The local product item.</param>
+            <param name="external">The external product item.</param>
+            <param name="itemClass">The item class.</param>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCRefundsProcessor.OrderRefundShouldBeSkipped(PX.Commerce.BigCommerce.MappedRefunds,PX.Commerce.BigCommerce.API.REST.OrderRefund,PX.Commerce.Core.API.SalesOrder)">
+            <summary>
+            The method checks whether it needs to skip processing of a given refund. Skips refunds that were adjusted  before order completion
+            </summary>
+            <param name="existing"></param>
+            <param name="currentRefund"></param>
+            <param name="presentCROrder"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCRefundsProcessor.SetPaymentsExceptNeedRelease(System.Collections.Generic.List{PX.Commerce.Core.API.SalesOrderPayment},System.Collections.Generic.List{PX.Commerce.Core.API.SalesOrderPayment})">
+            <summary>
+            This method sets <paramref name="existingPayments"/> to <paramref name="cbapiPayments"/> excluding the field <see cref="F:PX.Commerce.Core.API.SalesOrderPayment.NeedRelease"/>.
+            </summary>
+            <param name="existingPayments"></param>
+            <param name="cbapiPayments"></param>
+            <returns>Updated List of SalesOrderPayment.</returns>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCSalesPriceProcessor.FetchBucketsExport(System.Threading.CancellationToken)">
+            <summary>
+            Create the list of buckets to be exported
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCSalesPriceProcessor.GetBucketsExport(System.Collections.Generic.List{PX.Commerce.Core.BCSyncStatus},System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCSalesPriceProcessor.GetPriceListGroupedByInvenotryItem(System.Collections.Generic.IEnumerable{PX.Commerce.BigCommerce.BasePriceDetailsDTO},System.Boolean)">
+            <summary>
+            Parses the list of prices and group them by Inventory ID. In fact, when we sync to Big Commerce, we sync one price list per inventory item
+            The price list must contain all applicable prices to the inventory item. Thus, all applicable prices must be sent to Big Commerce even if only
+            one of them has been updated in the database.
+            </summary>
+            <param name="listOfUpdatedBasePrice"></param>
+            <param name="addPriceDetails"></param>		
+            <returns></returns>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCSalesPriceProcessor.IsValidBasePrice(PX.Commerce.Core.API.SalesPriceDetail)">
+            <summary>
+            Validate the base price
+            Checks for the UOM, Warehouse, Expiration Date and Effective Date
+            </summary>
+            <param name="basePrice"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCSalesPriceProcessor.ValidateBucketsBeforeSync(System.Collections.Generic.List{PX.Commerce.BigCommerce.BCSalesPriceEnityBucket})">
+            <summary>
+            Validates the bucket right before syncing it.
+            For now, this method ensures that if there are variants, that the price list contains only breaking quantity 1 or 0
+            </summary>
+            <param name="buckets"></param>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCShipmentProcessor.RemoveSyncedOrphanShipments(PX.Commerce.BigCommerce.API.REST.ShipmentData,System.Collections.Generic.IEnumerable{PX.Commerce.Core.DetailInfo},System.Collections.Generic.List{PX.Commerce.BigCommerce.API.REST.OrdersShipmentData})">
+            <summary>
+            This method looks for shipments in BC that have been synced in the past (OrderLocalID is not null).
+            Look for those shipments that are not in the list of shipments to be synced.
+            in which case, it adds the ids to the list ExternShipmentsToBeRemoved.
+            </summary>
+            <param name="shipmentToSync"></param>
+            <param name="existingDetailsForShipment"></param>
+            <param name="existingExternalShipments"></param>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCShipmentProcessor.SetExternalOrderStatus(System.Boolean,System.Boolean,PX.Commerce.BigCommerce.MappedShipment,PX.Commerce.BigCommerce.MappedOrder,System.String)">
+            <summary>
+            Sets the status of the order on BigCommerce.
+            If it is a PickUp shipment and the order status is back order, then we do not change the status on BigCommerce.
+            If the status is not back order, we change the status:
+            - Completed in case of a pick up
+            - (If not pick up):  if current shipment type is Invoice than the order status becomes completed otherwise, BC order status is the same as AC order status.
+            - If pickup but it was synced anyway (means that the shipment has an empty Ship Via but had a tracking number.
+            </summary>
+            <param name="isPickUp"></param>
+            <param name="obj"></param>
+            <param name="mappedOrder"></param>
+            <param name="description"></param>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCShipmentProcessor.UpdateOrderStatus(System.String,System.Int32)">
+            <summary>
+            Uses provider to change the order status.
+            </summary>
+            <param name="orderID"></param>
+            <param name="orderStatusToChange"> A int representing a <see cref="T:PX.Commerce.BigCommerce.API.REST.OrderStatuses"/>.</param>
+            <returns>The resulted <see cref="T:PX.Commerce.BigCommerce.API.REST.OrderStatus"/>.</returns>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCStockItemProcessor.CreateEntityForFetch">
+            <summary>
+            Initialize a new object of the entity to be used to Fetch bucket
+            </summary>
+            <returns>The initialized entity</returns>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCStockItemProcessor.CreateEntityForGet">
+            <summary>
+            Initialize a new object of the entity to be used to Get bucket
+            </summary>
+            <returns>The initialized entity</returns>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCStockItemProcessor.CreateMappedEntity(PX.Commerce.Core.API.StockItem,System.Nullable{System.Guid},System.Nullable{System.DateTime})">
+            <summary>
+            Creates a mapped entity for the passed entity
+            </summary>
+            <param name="entity">The entity to create the mapped entity from</param>
+            <param name="syncId">The sync id of the entity</param>
+            <param name="syncTime">The timestamp of the last modification</param>
+            <returns>The mapped entity</returns>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCStockItemProcessor.GetItemStatus(PX.Commerce.BigCommerce.API.REST.ProductData)">
+            <summary>
+            The method checks the availability of the external product and returns the status of the local product.
+            The local product status will be set to inactive if the external product is disabled. In other cases, the status will be set to active.
+            </summary>
+            <param name="external"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCStockItemProcessor.SaveBucketImport(PX.Commerce.BigCommerce.BCStockItemEntityBucket,PX.Commerce.Core.IMappedEntity,System.String,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="P:PX.Commerce.BigCommerce.BCProductWithVariantEntityBucket.ExternalVariants">
+            <summary>
+            Get the external variants by variant id.
+            </summary>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCTemplateItemProcessor.CreateEntityForFetch">
+            <summary>
+            Initialize a new object of the entity to be used to Fetch bucket
+            </summary>
+            <returns>The initialized entity</returns>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCTemplateItemProcessor.CreateEntityForGet">
+            <summary>
+            Initialize a new object of the entity to be used to Get bucket
+            </summary>
+            <returns>The initialized entity</returns>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCTemplateItemProcessor.CreateMappedEntity(PX.Commerce.Core.API.TemplateItems,System.Nullable{System.Guid},System.Nullable{System.DateTime})">
+            <summary>
+            Creates a mapped entity for the passed entity
+            </summary>
+            <param name="entity">The entity to create the mapped entity from</param>
+            <param name="syncId">The sync id of the entity</param>
+            <param name="syncTime">The timestamp of the last modification</param>
+            <returns>The mapped entity</returns>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCTemplateItemProcessor.GetTargetObjectExport(System.Object,PX.Commerce.Core.IExternEntity,PX.Commerce.Core.BCEntityExportMapping)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCTemplateItemProcessor.AddOptionsConfigurationForImport(PX.Commerce.BigCommerce.API.REST.ProductData,System.Nullable{System.Int32},System.String)">
+            <summary>
+            Add all options to the Option Mapping Table
+            </summary>
+            <param name="product"></param>
+            <param name="syncId"></param>
+            <param name="externId"></param>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCTemplateItemProcessor.RemoveInvalidVariant(PX.Commerce.BigCommerce.API.REST.ProductData)">
+            <summary>
+            Big Commerce creates by default one variant with the same SKU of the product depending of the method that the product was created.
+            RemoveInvalidVariant objective is to remove this invalid method from the fetched data, so it can be treated and synced properly.
+            </summary>
+            <param name="externData"></param>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCTemplateItemProcessor.MapBucketImport(PX.Commerce.BigCommerce.BCProductWithVariantEntityBucket,PX.Commerce.Core.IMappedEntity,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCTemplateItemProcessor.AddOptionValuesDetails(PX.Commerce.BigCommerce.BCProductWithVariantEntityBucket)">
+            <summary>
+            Add sync details for options and options' values
+            </summary>
+            <param name="bucket"></param>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCTemplateItemProcessor.GetTemplateItem(System.Nullable{System.Guid})">
+            <summary>
+            Retrieves the Template item using the <see cref="T:PX.Commerce.Core.Model.ICBAPIService"/>.
+            </summary>
+            <param name="localID"></param>
+            <returns>The fetched <see cref="T:PX.Commerce.Core.API.TemplateItems"/>.</returns>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.BCTemplateItemProcessor.CreateProductItemFilter``1(System.String)">
+            <summary>
+            Creates a <typeparamref name="ProductItemType"/> using <paramref name="inventoryID"/> as filter for <see cref="P:PX.Commerce.Core.API.ProductItem.TemplateItemID"/>.
+            </summary>
+            <typeparam name="ProductItemType">Type of the filter to be created.</typeparam>
+            <param name="inventoryID"></param>
+            <returns>A new <typeparamref name="ProductItemType"/>.</returns>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.GeneralValidator.Validate(PX.Commerce.Core.IProcessor)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PX.Commerce.BigCommerce.GeneralValidator.Validate(PX.Commerce.Core.IProcessor,PX.Commerce.Core.IExternEntity)">
+            <inheritdoc/>
+        </member>
+    </members>
+</doc>
