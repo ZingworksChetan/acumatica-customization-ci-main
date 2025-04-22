@@ -1,0 +1,17 @@
+name: Trigger CI Pipeline
+
+on:
+  push:
+    branches:
+      - 'release/v*'
+
+jobs:
+  trigger-ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger deploy-to-dev workflow in CI repo
+        run: |
+          curl -X POST https://api.github.com/repos/ZingworksChetan/acumatica-customization-main/dispatches \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: token ${{ secrets.CICDTOKEN }}" \
+            -d '{"event_type":"deploy-to-dev","client_payload":{"branch":"${{ github.ref_name }}"}}'
