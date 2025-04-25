@@ -105,8 +105,7 @@ public class SOOrderEntry_Extension : PXGraphExtension<SOOrderEntry>
         if (sOLineDetails.OrderQty == 0)
         {
             // Acuminator disable once PX1050 HardcodedStringInLocalizationMethod [Justification]
-            throw new PXRowPersistingException(nameof(SOLine.orderQty), sOLineDetails.OrderQty, "Quantity must be greater than 0");
-        
+            throw new PXRowPersistingException(nameof(SOLine.orderQty), sOLineDetails.OrderQty, "Quantity must be greater than 0");        
         }
     }
 
